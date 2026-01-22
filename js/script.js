@@ -1,3 +1,7 @@
+// year
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
 const section = document.getElementById("hParallax");
 const track = document.getElementById("hTrack");
 
@@ -8,25 +12,23 @@ function clamp(n, min, max) {
 }
 
 function setSectionHeight() {
-    // Horizontal distance we need to travel
+    if (!section || !track) return;
+
     maxTranslate = track.scrollWidth - window.innerWidth;
     maxTranslate = Math.max(0, maxTranslate);
 
-    // Give vertical space to "spend" on the horizontal travel
     section.style.height = `${window.innerHeight + maxTranslate}px`;
 }
 
 function onScroll() {
-    const rect = section.getBoundingClientRect();
+    if (!section || !track) return;
 
-    // progress through the section in pixels
+    const rect = section.getBoundingClientRect();
     const progressPx = clamp(-rect.top, 0, maxTranslate);
 
-    // Move track left
     track.style.transform = `translate3d(${-progressPx}px, 0, 0)`;
 }
 
-// IMPORTANT: recalc after layout/images load too
 setSectionHeight();
 onScroll();
 

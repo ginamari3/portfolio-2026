@@ -1,131 +1,39 @@
-:root {
-    --bg: #1f2228;
-    --panelA: #2a2e36;
-    --panelB: #343945;
-    --text: #f2f3f5;
-    --muted: rgba(242, 243, 245, 0.75);
-    --radius: 22px;
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-    --max: 1040px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-    /* prevents sideways page scroll */
-}
-
-/* Header */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 22px;
-    background: linear-gradient(to bottom, rgba(31, 34, 40, 0.92), rgba(31, 34, 40, 0.25));
-    backdrop-filter: blur(10px);
-}
-
-.logo {
-    text-decoration: none;
-    font-weight: 750;
-    letter-spacing: 0.02em;
-    padding: 10px 12px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-}
-
-.nav {
-    display: flex;
-    gap: 14px;
-}
-
-.nav a {
-    text-decoration: none;
-    padding: 10px 12px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-}
-
-.container {
-    width: min(var(--max), calc(100% - 44px));
-    margin: 0 auto;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: system-ui, -apple-system, Arial, sans-serif;
-}
-
-.hero,
-.content,
-.footer {
-    padding: 8vh 6vw;
-}
-
-/* This section gets dynamic height from JS */
+/* ===== Horizontal parallax (vertical scroll drives horizontal motion) ===== */
 .h-parallax {
     position: relative;
 }
 
-/* Sticky viewport wrapper */
-.sticky {
+.h-parallax .sticky {
     position: sticky;
     top: 0;
     height: 100vh;
     overflow: hidden;
-    /* hides sideways movement */
     background: #efefef;
     border-top: 1px solid rgba(0, 0, 0, .08);
     border-bottom: 1px solid rgba(0, 0, 0, .08);
 }
 
-/* Horizontal row of slides */
-.track {
+.h-parallax .track {
     height: 100%;
     display: flex;
     will-change: transform;
 }
 
-/* Each slide is one viewport wide */
-.panel {
+.h-parallax .panel {
     flex: 0 0 100vw;
     height: 100%;
     padding: 6vh 6vw;
 }
 
-.panel-title {
+.h-parallax .panel-title {
     margin: 0 0 18px;
     font-size: 1.25rem;
     opacity: 0.75;
+    color: #111;
 }
 
 /* 2x3 grid */
-.grid {
+.h-parallax .grid {
     height: calc(100% - 56px);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -133,8 +41,7 @@ body {
     gap: 18px;
 }
 
-/* Project tiles */
-.tile {
+.h-parallax .tile {
     display: grid;
     place-items: center;
     text-decoration: none;
@@ -146,9 +53,8 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
 }
 
-/* Make it responsive: 2 columns on small screens */
 @media (max-width: 720px) {
-    .grid {
+    .h-parallax .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
     }
