@@ -1,113 +1,190 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Gina Triplett — Portfolio</title>
+    <meta charset="UTF-8" />
+    <title>Gina Triplett</title>
+    <meta name="description" content="Gina Triplett's portfolio showcasing projects and resume." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts (same as your example) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <!-- NAV -->
-    <header class="site-header">
-        <a class="logo" href="#top">GT</a>
-        <nav class="nav">
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <header id="top" class="site-header" data-navstate="closed">
+        <div class="container header-inner">
+            <div class="site-id">
+                <a class="brand" href="#top" aria-label="Home">GT</a>
+            </div>
+
+            <nav class="site-nav" aria-label="Primary">
+                <button class="menu-button" id="menuBtn" aria-expanded="false" aria-controls="menuList">
+                    Menu
+                </button>
+                <ul id="menuList">
+                    <li><a class="scroll" href="#work">projects</a></li>
+                    <li><a class="scroll" href="#about">about</a></li>
+                    <li><a class="scroll" href="#site-footer">contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- HERO (PARALLAX BACKGROUND) -->
-    <section class="hero parallax" id="top" data-speed="0.35">
-        <div class="hero__overlay"></div>
-        <div class="hero__content">
-            <p class="kicker">Interface Design • Brand • Web</p>
-            <h1>Gina Triplett</h1>
-            <p class="sub">I design clean, high-intent interfaces with strong systems, motion, and clarity.</p>
-            <div class="hero__cta">
-                <a class="btn" href="#work">View Work</a>
-                <a class="btn btn--ghost" href="#contact">Contact</a>
+    <main class="site-main">
+
+        <!-- HERO -->
+        <section class="hero" aria-label="Intro">
+            <div class="container hero-flex">
+                <div class="hero-image">
+                    <!-- swap to your real image path -->
+                    <img src="img/1-profilepic.jpg" alt="Photo of Gina Triplett">
+                </div>
+
+                <div class="hero-text">
+                    <h1>Hi, I’m Gina Triplett, an <span class="nowrap">Interface Designer</span> based in Honolulu.</h1>
+                    <p>Currently studying design and open to opportunities.</p>
+                    <a href="#work" class="cta-link">↓ View my work</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- INTRO -->
-    <section class="section section--intro">
-        <div class="container">
-            <h2 id="work">Selected Work</h2>
-            <p>Scroll down — your vertical scroll will drive the project groups horizontally.</p>
-        </div>
-    </section>
+        <!-- WORK -->
+        <section id="work" class="section">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
 
-    <!-- HORIZONTAL PARALLAX SECTION -->
-    <section class="h-parallax" id="hParallax">
-        <div class="sticky">
-            <div class="track" id="hTrack">
+                <div class="projects-grid-overlay">
+                    <!-- 1 -->
+                    <a href="projects/aether-website.html" class="project-tile reveal">
+                        <img src="img/thumbs/aether-web-thumb.jpg" alt="Aether Airlines Website">
+                        <div class="overlay">
+                            <h3>Aether Airlines — Website</h3>
+                            <p>Web • UI/UX</p>
+                        </div>
+                    </a>
 
-                <!-- Slide / Group 1 -->
-                <article class="panel">
-                    <h2 class="panel-title">Group 1</h2>
-                    <div class="grid">
-                        <a class="tile" href="#">Project 1</a>
-                        <a class="tile" href="#">Project 2</a>
-                        <a class="tile" href="#">Project 3</a>
-                        <a class="tile" href="#">Project 4</a>
-                        <a class="tile" href="#">Project 5</a>
-                        <a class="tile" href="#">Project 6</a>
-                    </div>
-                </article>
+                    <!-- 2 -->
+                    <a href="projects/aether-app.html" class="project-tile reveal">
+                        <img src="img/thumbs/aether-app-thumb.jpg" alt="Aether Airlines Mobile App">
+                        <div class="overlay">
+                            <h3>Aether Airlines — Mobile App</h3>
+                            <p>Mobile • UI</p>
+                        </div>
+                    </a>
 
-                <!-- Slide / Group 2 -->
-                <article class="panel">
-                    <h2 class="panel-title">Group 2</h2>
-                    <div class="grid">
-                        <a class="tile" href="#">Project 7</a>
-                        <a class="tile" href="#">Project 8</a>
-                        <a class="tile" href="#">Project 9</a>
-                        <a class="tile" href="#">Project 10</a>
-                        <a class="tile" href="#">Project 11</a>
-                        <a class="tile" href="#">Project 12</a>
-                    </div>
-                </article>
+                    <!-- 3 -->
+                    <a href="projects/aether-packaging.html" class="project-tile reveal">
+                        <img src="img/thumbs/aether-packaging-thumb.jpg" alt="Aether Airlines Packaging">
+                        <div class="overlay">
+                            <h3>Aether Airlines — Packaging</h3>
+                            <p>Brand • Packaging</p>
+                        </div>
+                    </a>
 
-                <!-- Slide / Group 3 -->
-                <article class="panel">
-                    <h2 class="panel-title">Group 3</h2>
-                    <div class="grid">
-                        <a class="tile" href="#">Project 13</a>
-                        <a class="tile" href="#">Project 14</a>
-                        <a class="tile" href="#">Project 15</a>
-                        <a class="tile" href="#">Project 16</a>
-                        <a class="tile" href="#">Project 17</a>
-                        <a class="tile" href="#">Project 18</a>
-                    </div>
-                </article>
+                    <!-- 4 -->
+                    <a href="projects/ll-animation.html" class="project-tile reveal">
+                        <img src="img/thumbs/ll-animation-thumb.jpg" alt="L&L Animation">
+                        <div class="overlay">
+                            <h3>L&amp;L Animation</h3>
+                            <p>Motion • Storyboard</p>
+                        </div>
+                    </a>
 
+                    <!-- 5 -->
+                    <a href="projects/booking-redesign.html" class="project-tile reveal">
+                        <img src="img/thumbs/booking-redesign-thumb.jpg" alt="Booking.com Redesign">
+                        <div class="overlay">
+                            <h3>Booking.com Redesign</h3>
+                            <p>UX • UI</p>
+                        </div>
+                    </a>
+
+                    <!-- 6 -->
+                    <a href="projects/corepower.html" class="project-tile reveal">
+                        <img src="img/thumbs/corepower-thumb.jpg" alt="CorePower Yoga Redesign">
+                        <div class="overlay">
+                            <h3>CorePower Redesign</h3>
+                            <p>Web • UI/UX</p>
+                        </div>
+                    </a>
+
+                    <!-- 7 -->
+                    <a href="projects/amsterdam-logo.html" class="project-tile reveal">
+                        <img src="img/thumbs/amsterdam-logo-thumb.jpg" alt="Amsterdam Logo">
+                        <div class="overlay">
+                            <h3>Amsterdam Logo</h3>
+                            <p>Identity • Logo</p>
+                        </div>
+                    </a>
+
+                    <!-- 8 -->
+                    <a href="projects/vaseline-logo.html" class="project-tile reveal">
+                        <img src="img/thumbs/vaseline-logo-thumb.jpg" alt="Vaseline Logo">
+                        <div class="overlay">
+                            <h3>Vaseline Logo</h3>
+                            <p>Identity • Mockups</p>
+                        </div>
+                    </a>
+
+                    <!-- 9 -->
+                    <a href="projects/olympic-pictograms.html" class="project-tile reveal">
+                        <img src="img/thumbs/olympic-pictograms-thumb.jpg" alt="Olympic Pictograms">
+                        <div class="overlay">
+                            <h3>Olympic Pictograms</h3>
+                            <p>System • Icons</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2>About</h2>
-            <p>Short bio goes here. Keep it 3–5 lines for now.</p>
-        </div>
-    </section>
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <div class="container about-flex">
+                <div class="about-img reveal">
+                    <img src="img/1-profilepic-2.png" alt="Gina Triplett">
+                </div>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Email / LinkedIn / Resume links.</p>
-        </div>
-    </section>
+                <div class="about-text reveal">
+                    <h2>About</h2>
+                    <p>I’m an interface designer based in Honolulu, focused on clean, engaging visual systems for
+                        digital experiences.</p>
 
-    <footer class="footer">
-        <div class="container">
-            <small>© <span id="year"></span> Gina Marie Triplett</small>
+                    <div id="more-about" class="more-about" hidden>
+                        <p>I’m currently enrolled in a design program and enjoy combining UI principles with playful
+                            visual styles. I care about storytelling, web accessibility, and intuitive interactions.
+                            Outside of design, I enjoy running, baking, and gaming.</p>
+                    </div>
+
+                    <button class="button" id="toggleAboutBtn" type="button">
+                        Read more about me
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="site-footer" class="site-footer">
+        <div class="container text-centered reveal">
+            <h2 class="footer-name">gina triplett</h2>
+            <p><strong>Let’s connect.</strong></p>
+
+            <ul class="footer-nav">
+                <li><a href="https://www.linkedin.com/in/gina-marie-triplett/">LinkedIn</a></li>
+                <li><a href="mailto:ginamarietriplett@gmail.com">Email</a></li>
+                <li><a href="#" aria-label="Resume">Resume</a></li>
+            </ul>
+
+            <small class="copyright">© <span id="year"></span> Gina Marie Triplett</small>
         </div>
     </footer>
 
