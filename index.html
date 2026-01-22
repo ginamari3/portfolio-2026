@@ -7,135 +7,118 @@
     <meta name="description" content="Gina Triplett's portfolio showcasing projects and resume." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Fonts (same as your example) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"
         rel="stylesheet" />
 
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <header id="top" class="site-header" data-navstate="closed">
+    <!-- HEADER -->
+    <header id="top" class="site-header">
         <div class="container header-inner">
-            <div class="site-id">
-                <a class="brand" href="#top" aria-label="Home">GT</a>
-            </div>
+            <a class="brand" href="#top" aria-label="Home">GT</a>
 
             <nav class="site-nav" aria-label="Primary">
-                <button class="menu-button" id="menuBtn" aria-expanded="false" aria-controls="menuList">
-                    Menu
-                </button>
-                <ul id="menuList">
-                    <li><a class="scroll" href="#work">projects</a></li>
-                    <li><a class="scroll" href="#about">about</a></li>
-                    <li><a class="scroll" href="#site-footer">contact</a></li>
-                </ul>
+                <a href="#work">projects</a>
+                <a href="#about">about</a>
+                <a href="#site-footer">contact</a>
             </nav>
         </div>
     </header>
 
     <main class="site-main">
-
         <!-- HERO -->
-        <section class="hero" aria-label="Intro">
+        <section class="hero">
             <div class="container hero-flex">
                 <div class="hero-image">
-                    <!-- swap to your real image path -->
                     <img src="img/1-profilepic.jpg" alt="Photo of Gina Triplett">
                 </div>
 
                 <div class="hero-text">
-                    <h1>Hi, I’m Gina Triplett, an <span class="nowrap">Interface Designer</span> based in Honolulu.</h1>
+                    <h1>Hi, I’m Gina Triplett, an Interface Designer based in Honolulu.</h1>
                     <p>Currently studying design and open to opportunities.</p>
                     <a href="#work" class="cta-link">↓ View my work</a>
                 </div>
             </div>
         </section>
 
-        <!-- WORK -->
+        <!-- PROJECTS -->
         <section id="work" class="section">
             <div class="container">
                 <h2 class="section-title">Projects</h2>
 
-                <div class="projects-grid-overlay">
-                    <!-- 1 -->
-                    <a href="projects/aether-website.html" class="project-tile reveal">
-                        <img src="img/thumbs/aether-web-thumb.jpg" alt="Aether Airlines Website">
+                <div class="projects-grid">
+                    <a class="project-tile" href="projects/aether-website.html">
+                        <img src="img/6-1-aetherairlines-logo.png" alt="Aether Airlines Website">
                         <div class="overlay">
                             <h3>Aether Airlines — Website</h3>
                             <p>Web • UI/UX</p>
                         </div>
                     </a>
 
-                    <!-- 2 -->
-                    <a href="projects/aether-app.html" class="project-tile reveal">
-                        <img src="img/thumbs/aether-app-thumb.jpg" alt="Aether Airlines Mobile App">
+                    <a class="project-tile" href="projects/aether-app.html">
+                        <img src="img/6-1-aetherairlines-logo.png" alt="Aether Airlines Mobile App">
                         <div class="overlay">
                             <h3>Aether Airlines — Mobile App</h3>
                             <p>Mobile • UI</p>
                         </div>
                     </a>
 
-                    <!-- 3 -->
-                    <a href="projects/aether-packaging.html" class="project-tile reveal">
-                        <img src="img/thumbs/aether-packaging-thumb.jpg" alt="Aether Airlines Packaging">
+                    <a class="project-tile" href="projects/aether-packaging.html">
+                        <img src="img/6-1-aetherairlines-logo.png" alt="Aether Airlines Packaging">
                         <div class="overlay">
                             <h3>Aether Airlines — Packaging</h3>
                             <p>Brand • Packaging</p>
                         </div>
                     </a>
 
-                    <!-- 4 -->
-                    <a href="projects/ll-animation.html" class="project-tile reveal">
-                        <img src="img/thumbs/ll-animation-thumb.jpg" alt="L&L Animation">
+                    <a class="project-tile" href="projects/ll-animation.html">
+                        <img src="img/1-animation-project-detail-2.png" alt="L&amp;L Animation">
                         <div class="overlay">
                             <h3>L&amp;L Animation</h3>
                             <p>Motion • Storyboard</p>
                         </div>
                     </a>
 
-                    <!-- 5 -->
-                    <a href="projects/booking-redesign.html" class="project-tile reveal">
-                        <img src="img/thumbs/booking-redesign-thumb.jpg" alt="Booking.com Redesign">
+                    <a class="project-tile" href="projects/booking-redesign.html">
+                        <img src="img/1-work-booking.png" alt="Booking.com Redesign">
                         <div class="overlay">
                             <h3>Booking.com Redesign</h3>
                             <p>UX • UI</p>
                         </div>
                     </a>
 
-                    <!-- 6 -->
-                    <a href="projects/corepower.html" class="project-tile reveal">
-                        <img src="img/thumbs/corepower-thumb.jpg" alt="CorePower Yoga Redesign">
+                    <a class="project-tile" href="projects/corepower.html">
+                        <img src="img/1-work-corepower2.png" alt="CorePower Redesign">
                         <div class="overlay">
                             <h3>CorePower Redesign</h3>
                             <p>Web • UI/UX</p>
                         </div>
                     </a>
 
-                    <!-- 7 -->
-                    <a href="projects/amsterdam-logo.html" class="project-tile reveal">
-                        <img src="img/thumbs/amsterdam-logo-thumb.jpg" alt="Amsterdam Logo">
+                    <a class="project-tile" href="projects/amsterdam-logo.html">
+                        <img src="img/1-work-tourismlogo.png" alt="Amsterdam Logo">
                         <div class="overlay">
                             <h3>Amsterdam Logo</h3>
                             <p>Identity • Logo</p>
                         </div>
                     </a>
 
-                    <!-- 8 -->
-                    <a href="projects/vaseline-logo.html" class="project-tile reveal">
-                        <img src="img/thumbs/vaseline-logo-thumb.jpg" alt="Vaseline Logo">
+                    <a class="project-tile" href="projects/vaseline-logo.html">
+                        <img src="img/1-work-vaselinelogo.png" alt="Vaseline Logo">
                         <div class="overlay">
                             <h3>Vaseline Logo</h3>
                             <p>Identity • Mockups</p>
                         </div>
                     </a>
 
-                    <!-- 9 -->
-                    <a href="projects/olympic-pictograms.html" class="project-tile reveal">
-                        <img src="img/thumbs/olympic-pictograms-thumb.jpg" alt="Olympic Pictograms">
+                    <a class="project-tile" href="projects/olympic-pictograms.html">
+                        <img src="img/1-work-olympic-logo.png" alt="Olympic Pictograms">
                         <div class="overlay">
                             <h3>Olympic Pictograms</h3>
                             <p>System • Icons</p>
@@ -148,47 +131,41 @@
         <!-- ABOUT -->
         <section id="about" class="section">
             <div class="container about-flex">
-                <div class="about-img reveal">
+                <div class="about-image">
                     <img src="img/1-profilepic-2.png" alt="Gina Triplett">
                 </div>
 
-                <div class="about-text reveal">
+                <div class="about-text">
                     <h2>About</h2>
-                    <p>I’m an interface designer based in Honolulu, focused on clean, engaging visual systems for
-                        digital experiences.</p>
-
-                    <div id="more-about" class="more-about" hidden>
-                        <p>I’m currently enrolled in a design program and enjoy combining UI principles with playful
-                            visual styles. I care about storytelling, web accessibility, and intuitive interactions.
-                            Outside of design, I enjoy running, baking, and gaming.</p>
-                    </div>
-
-                    <button class="button" id="toggleAboutBtn" type="button">
-                        Read more about me
-                    </button>
+                    <p>
+                        I’m an interface designer based in Honolulu, focused on clean, engaging visual systems for
+                        digital experiences.
+                    </p>
+                    <p>
+                        I enjoy combining UI principles with playful visual styles. I care about storytelling,
+                        accessibility, and intuitive interactions.
+                        Outside of design, I enjoy running, baking, and gaming.
+                    </p>
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- FOOTER -->
     <footer id="site-footer" class="site-footer">
-        <div class="container text-centered reveal">
+        <div class="container footer-inner">
             <h2 class="footer-name">gina triplett</h2>
             <p><strong>Let’s connect.</strong></p>
 
             <ul class="footer-nav">
                 <li><a href="https://www.linkedin.com/in/gina-marie-triplett/">LinkedIn</a></li>
                 <li><a href="mailto:ginamarietriplett@gmail.com">Email</a></li>
-                <li><a href="#" aria-label="Resume">Resume</a></li>
+                <li><a href="#">Resume</a></li>
             </ul>
 
-            <small class="copyright">© <span id="year"></span> Gina Marie Triplett</small>
+            <small class="copyright">© <span id="year">2026</span> Gina Marie Triplett</small>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
 
 </html>
