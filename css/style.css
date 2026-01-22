@@ -26,7 +26,10 @@ body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
+    overflow-x: hidden;
+    /* optional: prevents sideways page scroll */
 }
+
 
 a {
     color: inherit;
