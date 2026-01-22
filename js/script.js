@@ -2,77 +2,63 @@
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* 1) Parallax background */
+/* =========================
+   Parallax hero background
+   ========================= */
 const parallaxEls = document.querySelectorAll(".parallax");
-let latestScrollY = 0;
-let ticking = false;
-
-/* 2) Horizontal scroll driven by vertical scroll */
-const hscroll = document.querySelector(".hscroll");
-const track = document.getElementById("hscrollTrack");
-
-function setHScrollHeight() {
-    if (!hscroll || !track) return;
-
-    // total horizontal distance we need to travel
-    const maxX = Math.max(0, track.scrollWidth - window.innerWidth);
-
-    // section needs enough vertical height to "spend" turning into horizontal motion
-    hscroll.style.height = `${maxX + window.innerHeight}px`;
-}
 
 function updateParallax() {
+    const y = window.scrollY;
     parallaxEls.forEach(el => {
         const speed = parseFloat(el.dataset.speed || "0.3");
-        const y = -(latestScrollY * speed);
-        el.style.backgroundPosition = `center ${y}px`;
+        el.style.backgroundPosition = `center ${-(y * speed)}px`;
     });
 }
 
-function updateHScroll() {
-    if (!hscroll || !track) return;
+/* =========================
+   Horizontal scroll section
+   (based on your snippet)
+   ========================= */
+const section = document.getElementById("hParallax");
+const track = document.getElementById("hTrack");
 
-    const rect = hscroll.getBoundingClientRect();
-    const sectionTop = window.scrollY + rect.top;
+let maxTranslate = 0;
 
-    const maxY = Math.max(1, hscroll.offsetHeight - window.innerHeight);
-    const y = Math.min(Math.max(window.scrollY - sectionTop, 0), maxY);
-    const progress = y / maxY;
+function clamp(n, min, max) {
+    return Math.max(min, Math.min(n, max));
+}
 
-    const maxX = Math.max(0, track.scrollWidth - window.innerWidth);
-    const x = -maxX * progress;
+function setSectionHeight() {
+    if (!section || !track) return;
 
-    track.style.transform = `translate3d(${x}px, 0, 0)`;
+    maxTranslate = track.scrollWidth - window.innerWidth;
+    maxTranslate = Math.max(0, maxTranslate);
+
+    section.style.height = `${window.innerHeight + maxTranslate}px`;
 }
 
 function onScroll() {
-    latestScrollY = window.scrollY;
+    updateParallax();
 
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            updateParallax();
-            updateHScroll();
-            ticking = false;
-        });
-        ticking = true;
-    }
+    if (!section || !track) return;
+
+    const rect = section.getBoundingClientRect();
+    const progressPx = clamp(-rect.top, 0, maxTranslate);
+
+    track.style.transform = `translate3d(${-progressPx}px, 0, 0)`;
 }
 
-window.addEventListener("scroll", onScroll, { passive: true });
+// Run once (quick), then again after images load (important)
+setSectionHeight();
+onScroll();
 
+window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", () => {
-    setHScrollHeight();
-    updateHScroll();
+    setSectionHeight();
+    onScroll();
 }, { passive: true });
 
-// IMPORTANT: images load after JS, so recalc on load too
 window.addEventListener("load", () => {
-    setHScrollHeight();
-    updateParallax();
-    updateHScroll();
+    setSectionHeight();
+    onScroll();
 });
-
-// init
-setHScrollHeight();
-updateParallax();
-updateHScroll();
