@@ -1,24 +1,3 @@
-// Footer year
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* =========================
-   Parallax hero background
-   ========================= */
-const parallaxEls = document.querySelectorAll(".parallax");
-
-function updateParallax() {
-    const y = window.scrollY;
-    parallaxEls.forEach(el => {
-        const speed = parseFloat(el.dataset.speed || "0.3");
-        el.style.backgroundPosition = `center ${-(y * speed)}px`;
-    });
-}
-
-/* =========================
-   Horizontal scroll section
-   (based on your snippet)
-   ========================= */
 const section = document.getElementById("hParallax");
 const track = document.getElementById("hTrack");
 
@@ -29,26 +8,25 @@ function clamp(n, min, max) {
 }
 
 function setSectionHeight() {
-    if (!section || !track) return;
-
+    // Horizontal distance we need to travel
     maxTranslate = track.scrollWidth - window.innerWidth;
     maxTranslate = Math.max(0, maxTranslate);
 
+    // Give vertical space to "spend" on the horizontal travel
     section.style.height = `${window.innerHeight + maxTranslate}px`;
 }
 
 function onScroll() {
-    updateParallax();
-
-    if (!section || !track) return;
-
     const rect = section.getBoundingClientRect();
+
+    // progress through the section in pixels
     const progressPx = clamp(-rect.top, 0, maxTranslate);
 
+    // Move track left
     track.style.transform = `translate3d(${-progressPx}px, 0, 0)`;
 }
 
-// Run once (quick), then again after images load (important)
+// IMPORTANT: recalc after layout/images load too
 setSectionHeight();
 onScroll();
 
