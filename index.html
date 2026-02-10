@@ -1,171 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Gina Triplett</title>
-    <meta name="description" content="Gina Triplett's portfolio showcasing projects and resume." />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"
-        rel="stylesheet" />
-
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gina Marie Triplett — Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-    <!-- HEADER -->
-    <header id="top" class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="#top" aria-label="Home">GT</a>
+<body class="is-loading">
+    <!-- LOADER -->
+    <div class="loader" id="loader" aria-label="Loading screen" role="status">
+        <div class="loader-inner">
+            <div class="loader-row">
+                <span class="loader-brand">Gina Marie Triplett</span>
+                <span class="loader-pct" id="loaderPct">0%</span>
+            </div>
 
-            <nav class="site-nav" aria-label="Primary">
-                <a href="#work">projects</a>
+            <div class="loader-bar" aria-hidden="true">
+                <div class="loader-fill" id="loaderFill"></div>
+            </div>
+
+            <p class="loader-sub">Loading portfolio…</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="wrap nav">
+            <a class="brand" href="#top">Gina Marie Triplett</a>
+
+            <nav class="menu" aria-label="Primary">
+                <a href="#top" class="active">home</a>
+                <a href="#projects">projects</a>
                 <a href="#about">about</a>
-                <a href="#site-footer">contact</a>
+                <a href="#contact">contact</a>
             </nav>
+
+            <div class="progress" aria-hidden="true"><span id="progressFill"></span></div>
+
+            <div class="social" aria-label="Social links">
+                <a class="icon" href="#" aria-label="LinkedIn">in</a>
+            </div>
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="snap" id="snap">
         <!-- HERO -->
-        <section class="hero">
-            <div class="container hero-flex">
-                <div class="hero-image">
-                    <img src="img/1-profilepic.jpg" alt="Photo of Gina Triplett">
+        <section class="snap-sec hero" id="top" aria-label="Hero">
+            <!-- parallax layers -->
+            <div class="hero-parallax" aria-hidden="true">
+                <div class="layer l1"></div>
+                <div class="layer l2"></div>
+                <div class="layer l3"></div>
+                <div class="layer grain"></div>
+            </div>
+
+            <div class="wrap hero-grid">
+                <div class="hero-copy anim">
+                    <p class="eyebrow">INTERFACE DESIGNER</p>
+
+                    <h1>
+                        Hi I’m Gina, I’m an<br />
+                        Interface Designer<br />
+                        based in Honolulu, Hawaii
+                    </h1>
+
+                    <p class="rotator" aria-label="Rotating tagline">
+                        <span>I design</span>
+                        <span class="rotator-word" id="rotWord">interfaces</span>
+                        <span>that feel calm and clear.</span>
+                    </p>
+
+                    <p class="lead">Design + Packaging services<br />to grow your brand.</p>
                 </div>
 
-                <div class="hero-text">
-                    <h1>Hi, I’m Gina Triplett, an <br> Interface Designer based in Honolulu.</h1>
-                    <p>Currently studying design and open to opportunities.</p>
-                    <a href="#work" class="cta-link">↓ View my work</a>
+                <div class="hero-cta anim">
+                    <a class="btn btn-outline" href="#contact">Contact Me!</a>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECTS -->
-        <section id="work" class="section">
-            <div class="container">
-                <h2 class="section-title">Projects</h2>
+        <!-- STRIP -->
+        <section class="snap-sec strip">
+            <div class="wrap anim">
+                <p>Print + Digital. Branding. Packaging. Websites. Swag, too.</p>
+            </div>
+        </section>
 
-                <div class="projects-grid">
-                    <a class="project-tile" href="projects/aether-website.html">
-                        <img src="img/6-1-aetherairlines-logo.png" alt="Aether Airlines Website">
-                        <div class="overlay">
-                            <h3>Aether Airlines — Website</h3>
-                            <p>Web • UI/UX</p>
-                        </div>
-                    </a>
+        <!-- HORIZONTAL SCROLL PROJECTS -->
+        <section class="snap-sec hscroll" id="projects" aria-label="Projects horizontal scroll">
+            <div class="wrap hscroll-top">
+                <div class="anim">
+                    <p class="eyebrow">CREATIVE WORK</p>
+                    <h2 class="hscroll-title">The<br />Projects</h2>
+                    <p class="muted">Scroll down to browse — it moves sideways.</p>
+                </div>
+                <a class="btn btn-outline anim" href="#">View all</a>
+            </div>
 
-                    <a class="project-tile" href="projects/aether-app.html">
-                        <img src="img/6-1-aetherairlines-logo.png" alt="Aether Airlines Mobile App">
-                        <div class="overlay">
-                            <h3>Aether Airlines — Mobile App</h3>
-                            <p>Mobile • UI</p>
-                        </div>
-                    </a>
+            <div class="hscroll-spacer" id="hscrollSpacer">
+                <div class="hscroll-sticky">
+                    <div class="hscroll-rail" id="hscrollRail" aria-label="Horizontal project carousel">
+                        <!-- CARD -->
+                        <article class="hcard anim" data-tilt>
+                            <div class="hthumb ht1" role="img" aria-label="Volt preview"></div>
+                            <div class="hmeta">
+                                <h3>Volt Dashboard</h3>
+                                <p>Fitness intelligence UI</p>
+                            </div>
+                        </article>
 
-                    <a class="project-tile" href="projects/aether-packaging.html">
-                        <img src="img/6-1-aetherairlines-logo.png" alt="Aether Airlines Packaging">
-                        <div class="overlay">
-                            <h3>Aether Airlines — Packaging</h3>
-                            <p>Brand • Packaging</p>
-                        </div>
-                    </a>
+                        <article class="hcard anim" data-tilt>
+                            <div class="hthumb ht2" role="img" aria-label="Aether preview"></div>
+                            <div class="hmeta">
+                                <h3>Aether Airlines</h3>
+                                <p>Brand + product system</p>
+                            </div>
+                        </article>
 
-                    <a class="project-tile" href="projects/ll-animation.html">
-                        <img src="img/1-animation-project-detail-2.png" alt="L&amp;L Animation">
-                        <div class="overlay">
-                            <h3>L&amp;L Animation</h3>
-                            <p>Motion • Storyboard</p>
-                        </div>
-                    </a>
+                        <article class="hcard anim" data-tilt>
+                            <div class="hthumb ht3" role="img" aria-label="CorePower preview"></div>
+                            <div class="hmeta">
+                                <h3>CorePower Yoga</h3>
+                                <p>Website redesign</p>
+                            </div>
+                        </article>
 
-                    <a class="project-tile" href="projects/booking-redesign.html">
-                        <img src="img/1-work-booking.png" alt="Booking.com Redesign">
-                        <div class="overlay">
-                            <h3>Booking.com Redesign</h3>
-                            <p>UX • UI</p>
-                        </div>
-                    </a>
+                        <article class="hcard anim" data-tilt>
+                            <div class="hthumb ht4" role="img" aria-label="Tourism logo preview"></div>
+                            <div class="hmeta">
+                                <h3>Tourism Logo</h3>
+                                <p>Identity exploration</p>
+                            </div>
+                        </article>
 
-                    <a class="project-tile" href="projects/corepower.html">
-                        <img src="img/1-work-corepower2.png" alt="CorePower Redesign">
-                        <div class="overlay">
-                            <h3>CorePower Redesign</h3>
-                            <p>Web • UI/UX</p>
-                        </div>
-                    </a>
-
-                    <a class="project-tile" href="projects/amsterdam-logo.html">
-                        <img src="img/1-work-tourismlogo.png" alt="Amsterdam Logo">
-                        <div class="overlay">
-                            <h3>Amsterdam Logo</h3>
-                            <p>Identity • Logo</p>
-                        </div>
-                    </a>
-
-                    <a class="project-tile" href="projects/vaseline-logo.html">
-                        <img src="img/1-work-vaselinelogo.png" alt="Vaseline Logo">
-                        <div class="overlay">
-                            <h3>Vaseline Logo</h3>
-                            <p>Identity • Mockups</p>
-                        </div>
-                    </a>
-
-                    <a class="project-tile" href="projects/olympic-pictograms.html">
-                        <img src="img/1-work-olympic-logo.png" alt="Olympic Pictograms">
-                        <div class="overlay">
-                            <h3>Olympic Pictograms</h3>
-                            <p>System • Icons</p>
-                        </div>
-                    </a>
+                        <article class="hcard anim" data-tilt>
+                            <div class="hthumb ht5" role="img" aria-label="Packaging preview"></div>
+                            <div class="hmeta">
+                                <h3>Packaging Study</h3>
+                                <p>Label + dieline</p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ABOUT -->
-        <section id="about" class="section">
-            <div class="container about-flex">
-                <div class="about-image">
-                    <img src="img/1-profilepic-2.png" alt="Gina Triplett">
-                </div>
-
-                <div class="about-text">
-                    <h2>About</h2>
-                    <p>
-                        I’m an interface designer based in Honolulu, focused on clean, engaging visual systems for
-                        digital experiences.
-                    </p>
-                    <p>
-                        I enjoy combining UI principles with playful visual styles. I care about storytelling,
-                        accessibility, and intuitive interactions.
-                        Outside of design, I enjoy running, baking, and gaming.
-                    </p>
+        <section class="snap-sec about" id="about" aria-label="About">
+            <div class="wrap about-grid">
+                <div class="about-card anim">
+                    <div class="about-img" aria-hidden="true"></div>
+                    <div class="about-copy">
+                        <p class="eyebrow">THE CREATIVE</p>
+                        <h2>About Me</h2>
+                        <p class="muted">
+                            I’m an interface designer based in Honolulu, focused on building clean, structured visual
+                            systems for digital products.
+                            My work emphasizes clarity, consistency, and thoughtful interaction design — with a strong
+                            foundation in UI principles and accessibility.
+                        </p>
+                        <p class="muted">
+                            Outside of design, I’m usually at the beach, running, or training at the gym. I also love
+                            baking and decompressing with Nintendo Switch games.
+                        </p>
+                        <a class="btn btn-dark-outline" href="#">Read More</a>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- CONTACT -->
+        <section class="snap-sec contact" id="contact" aria-label="Contact">
+            <div class="wrap anim contact-wrap">
+                <p class="eyebrow">WORK TOGETHER</p>
+                <h2>Contact</h2>
+                <p class="muted">Impacting the world one design at a time.</p>
+
+                <div class="contact-actions">
+                    <a class="btn btn-outline" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a class="btn btn-outline" href="mailto:you@example.com">Email</a>
+                    <a class="btn btn-outline" href="#" target="_blank" rel="noreferrer">Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <section class="snap-sec footer-sec" aria-label="Footer">
+            <footer class="footer wrap anim">
+                <small>© <span id="year"></span> Gina Marie Triplett</small>
+            </footer>
+        </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer id="site-footer" class="site-footer">
-        <div class="container footer-inner">
-            <h2 class="footer-name">gina triplett</h2>
-            <p><strong>Let’s connect.</strong></p>
-
-            <ul class="footer-nav">
-                <li><a href="https://www.linkedin.com/in/gina-marie-triplett/">LinkedIn</a></li>
-                <li><a href="mailto:ginamarietriplett@gmail.com">Email</a></li>
-                <li><a href="#">Resume</a></li>
-            </ul>
-
-            <small class="copyright">© <span id="year">2026</span> Gina Marie Triplett</small>
-        </div>
-    </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
