@@ -410,15 +410,17 @@ h1 {
 }
 
 /* ===== Horizontal scroll section ===== */
+/* ===== Projects horizontal scroll ===== */
 .hscroll {
     background: #fff;
+    padding-top: 0;
 }
 
+/* matches the mock: header sits above the rail */
 .hscroll-top {
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 10px;
     padding-bottom: 18px;
 }
 
@@ -429,27 +431,14 @@ h1 {
     letter-spacing: -1.1px;
 }
 
-.muted {
-    margin: 12px 0 0;
-    color: var(--muted);
-    font-size: 13px;
-    max-width: 52ch;
-}
-
-/* The top (title + button) should always be visible */
-.hscroll-top {
-    padding-bottom: 18px;
-}
-
-/* spacer is the scroll area that drives the sideways motion */
+/* spacer = vertical distance you scroll */
 .hscroll-spacer {
     height: 160vh;
-    /* JS still overwrites, but this prevents "blank" before JS runs */
-    width: 100%;
+    /* JS overwrites */
     border-top: 1px solid var(--line);
 }
 
-/* Sticky region: leave a little top space so it doesn't feel like a blank panel */
+/* sticky viewport where the rail moves */
 .hscroll-sticky {
     position: sticky;
     top: 0;
@@ -460,12 +449,12 @@ h1 {
     background: #fff;
 }
 
-
+/* rail */
 .hscroll-rail {
     display: flex;
     gap: 18px;
-    will-change: transform;
     padding: 0 24px;
+    will-change: transform;
 }
 
 .hcard {
@@ -474,6 +463,7 @@ h1 {
     border-top: 1px solid var(--line);
     padding-top: 14px;
 }
+
 
 .hthumb {
     width: 100%;
@@ -663,5 +653,50 @@ h1 {
 
     .about-img {
         max-width: 420px;
+    }
+}
+
+/* ===== Yellow moving banner ===== */
+.strip {
+    background: #EFFF5A;
+    /* neon yellow */
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 0;
+    min-height: auto;
+    /* IMPORTANT */
+    scroll-snap-align: none;
+    /* IMPORTANT: not a snap "page" */
+}
+
+.strip-inner {
+    width: min(var(--wrap), calc(100% - 56px));
+    margin-inline: auto;
+    overflow: hidden;
+    padding: 14px 0;
+}
+
+.marquee {
+    display: flex;
+    gap: 48px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 16s linear infinite;
+    font-size: 12.5px;
+    letter-spacing: .2px;
+    opacity: .9;
+}
+
+.marquee span {
+    display: inline-block;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-33.333%);
     }
 }

@@ -51,27 +51,25 @@ function setSpacerHeight() {
     if (!spacer || !rail || !snap) return;
 
     // how far the rail needs to travel horizontally
-    const maxX = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const maxX = Math.max(0, rail.scrollWidth - snap.clientWidth);
 
-    // give enough vertical distance to complete that travel
-    // + one viewport so it doesn't feel abrupt
+    // enough vertical scroll distance to complete it
     spacer.style.height = `${maxX + snap.clientHeight}px`;
 }
 
 function updateHorizontal() {
     if (!spacer || !rail || !snap) return;
 
-    // rect.top is relative to viewport; since snap is the scroller,
-    // we measure progress using snap.scrollTop and spacer's offsetTop
-    const start = spacer.offsetTop; // where the spacer begins inside snap
+    const start = spacer.offsetTop;
     const end = start + spacer.offsetHeight - snap.clientHeight;
 
     const progress = (snap.scrollTop - start) / (end - start);
-    const clamped = Math.max(0, Math.min(progress, 1));
+    const t = Math.max(0, Math.min(progress, 1));
 
-    const maxX = Math.max(0, rail.scrollWidth - rail.clientWidth);
-    rail.style.transform = `translate3d(${-maxX * clamped}px, 0, 0)`;
+    const maxX = Math.max(0, rail.scrollWidth - snap.clientWidth);
+    rail.style.transform = `translate3d(${-maxX * t}px, 0, 0)`;
 }
+
 
 // safety: reveal anything already in view
 document.querySelectorAll(".anim").forEach(el => el.classList.add("in"));
