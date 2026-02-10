@@ -394,62 +394,90 @@ h1 {
 }
 
 /* ===== STRIP ===== */
+/* ===== Yellow moving banner ===== */
 .strip {
-    background: #fff;
-    align-items: stretch;
-    padding-block: 0;
+    background: #EFFF5A;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 0;
+    min-height: auto;
+    scroll-snap-align: none;
+
+    /* spacing so it isn't glued to Projects */
+    margin-bottom: 38px;
 }
 
-.strip p {
-    margin: 0;
+.strip-inner {
+    width: min(var(--wrap), calc(100% - 56px));
+    margin-inline: auto;
+    overflow: hidden;
     padding: 14px 0;
-    text-align: center;
+}
+
+.marquee {
+    display: flex;
+    gap: 48px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 16s linear infinite;
     font-size: 12.5px;
     letter-spacing: .2px;
-    opacity: .85;
+    opacity: .9;
 }
+
+.marquee span {
+    display: inline-block;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-33.333%);
+    }
+}
+
 
 /* ===== Horizontal scroll section ===== */
 /* ===== Projects horizontal scroll ===== */
+/* ===== PROJECTS (mid-fi layout) ===== */
 .hscroll {
     background: #fff;
-    padding-top: 0;
 }
 
-/* matches the mock: header sits above the rail */
-.hscroll-top {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding-bottom: 18px;
-}
-
-.hscroll-title {
-    margin: 0;
-    font-size: clamp(42px, 4.2vw, 64px);
-    line-height: .92;
-    letter-spacing: -1.1px;
-}
-
-/* spacer = vertical distance you scroll */
+/* spacer = vertical scroll distance */
 .hscroll-spacer {
-    height: 160vh;
+    height: 220vh;
     /* JS overwrites */
     border-top: 1px solid var(--line);
 }
 
-/* sticky viewport where the rail moves */
+/* sticky viewport */
 .hscroll-sticky {
     position: sticky;
     top: 0;
     height: calc(100vh - var(--headerH));
-    display: flex;
-    align-items: center;
     overflow: hidden;
     background: #fff;
+
+    /* mid-fi composition */
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    /* cards + left title */
+    gap: 24px;
+    align-items: end;
+    /* title sits bottom */
 }
 
-/* rail */
+/* cards side sits higher */
+.hscroll-right {
+    align-self: start;
+    padding-top: 18px;
+}
+
+/* rail moves sideways */
 .hscroll-rail {
     display: flex;
     gap: 18px;
@@ -457,34 +485,59 @@ h1 {
     will-change: transform;
 }
 
-.hcard {
-    width: min(520px, 82vw);
+/* card sizing matches mid-fi */
+.p-card {
+    width: min(320px, 72vw);
     flex: 0 0 auto;
-    border-top: 1px solid var(--line);
-    padding-top: 14px;
 }
 
-
-.hthumb {
+.p-thumb {
     width: 100%;
-    aspect-ratio: 16 / 10;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    margin-bottom: 10px;
-    background: #eee;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: #777;
+    /* base gray */
+    position: relative;
     overflow: hidden;
 }
 
-.hmeta h3 {
-    margin: 0;
+/* dark gray “circle” like your mid-fi */
+.p-thumb::after {
+    content: "";
+    position: absolute;
+    width: 68px;
+    height: 68px;
+    border-radius: 999px;
+    background: rgba(20, 20, 20, .55);
+    top: 12px;
+    left: 12px;
+}
+
+.p-meta h3 {
+    margin: 10px 0 0;
     font-size: 14px;
 }
 
-.hmeta p {
-    margin: 6px 0 0;
+.p-meta p {
+    margin: 4px 0 0;
     font-size: 12px;
     color: var(--muted);
 }
+
+/* LEFT bottom title block */
+.hscroll-left {
+    padding: 0 24px 46px;
+    /* bottom-left feel */
+    align-self: end;
+}
+
+.hscroll-title {
+    margin: 0;
+    font-size: clamp(44px, 4.4vw, 68px);
+    line-height: .92;
+    letter-spacing: -1.1px;
+}
+
 
 /* placeholder thumbs */
 .ht1 {
@@ -657,17 +710,7 @@ h1 {
 }
 
 /* ===== Yellow moving banner ===== */
-.strip {
-    background: #EFFF5A;
-    /* neon yellow */
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 0;
-    min-height: auto;
-    /* IMPORTANT */
-    scroll-snap-align: none;
-    /* IMPORTANT: not a snap "page" */
-}
+
 
 .strip-inner {
     width: min(var(--wrap), calc(100% - 56px));
