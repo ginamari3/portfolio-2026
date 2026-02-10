@@ -132,12 +132,13 @@ body.is-loading .snap {
 }
 
 .nav {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
     padding: 14px 0;
 }
+
 
 .brand {
     justify-self: start;
@@ -192,10 +193,9 @@ body.is-loading .snap {
 
 /* Progress bar (header) */
 .progress {
-    grid-column: 1 / -1;
     height: 2px;
     background: transparent;
-    margin-top: 6px;
+    border-top: 1px solid var(--line);
 }
 
 .progress span {
@@ -205,6 +205,7 @@ body.is-loading .snap {
     background: rgba(0, 0, 0, .8);
     transform-origin: left;
 }
+
 
 /* ===== Buttons ===== */
 .btn {
@@ -241,24 +242,51 @@ body.is-loading .snap {
 .snap {
     height: calc(100vh - var(--headerH));
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
+    /* TEMP: turn off snap to confirm layout */
+    scroll-snap-type: none;
     scroll-behavior: smooth;
     overscroll-behavior: contain;
 }
+
+.snap {
+    scroll-snap-type: y mandatory;
+}
+
+
 
 .snap-sec {
     scroll-snap-align: start;
     min-height: calc(100vh - var(--headerH));
     padding-block: clamp(56px, 7vh, 92px);
-    display: flex;
-    align-items: center;
     border-top: 1px solid var(--line);
     position: relative;
+
+    /* IMPORTANT: don't force center for every section */
+    display: block;
 }
+
 
 .snap-sec:first-child {
     border-top: 0;
 }
+
+
+
+/* -------ALIGNMENT------ */
+.hero,
+.contact,
+.footer-sec {
+    display: flex;
+    align-items: center;
+}
+
+.strip {
+    display: flex;
+    align-items: stretch;
+}
+
+
+
 
 /* ===== HERO + PARALLAX ===== */
 .hero {
@@ -408,14 +436,20 @@ h1 {
     max-width: 52ch;
 }
 
-/* spacer = vertical scroll length for horizontal travel */
+/* The top (title + button) should always be visible */
+.hscroll-top {
+    padding-bottom: 18px;
+}
+
+/* spacer is the scroll area that drives the sideways motion */
 .hscroll-spacer {
-    height: 200vh;
-    /* JS overwrites */
+    height: 160vh;
+    /* JS still overwrites, but this prevents "blank" before JS runs */
     width: 100%;
     border-top: 1px solid var(--line);
 }
 
+/* Sticky region: leave a little top space so it doesn't feel like a blank panel */
 .hscroll-sticky {
     position: sticky;
     top: 0;
@@ -425,6 +459,7 @@ h1 {
     overflow: hidden;
     background: #fff;
 }
+
 
 .hscroll-rail {
     display: flex;
