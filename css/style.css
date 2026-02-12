@@ -280,14 +280,6 @@ body.is-loading .snap {
     align-items: center;
 }
 
-.strip {
-    display: flex;
-    align-items: stretch;
-}
-
-
-
-
 /* ===== HERO + PARALLAX ===== */
 .hero {
     color: rgba(0, 0, 0, .92);
@@ -395,17 +387,19 @@ h1 {
 
 /* ===== STRIP ===== */
 /* ===== Yellow moving banner ===== */
+/* Strip inside Projects (sticky at top of the projects snap section) */
 .strip {
     background: #EFFF5A;
-    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    padding: 0;
-    min-height: auto;
-    scroll-snap-align: none;
-
-    /* spacing so it isn't glued to Projects */
-    margin-bottom: 38px;
 }
+
+.strip--sticky {
+    position: sticky;
+    top: 0;
+    /* inside hscroll sticky stack */
+    z-index: 20;
+}
+
 
 .strip-inner {
     width: min(var(--wrap), calc(100% - 56px));
@@ -451,10 +445,10 @@ h1 {
 .hscroll-spacer {
     height: 220vh;
     /* JS overwrites */
-    border-top: 1px solid var(--line);
+    border-top: 0;
 }
 
-/* sticky viewport */
+
 .hscroll-sticky {
     position: sticky;
     top: 0;
@@ -462,20 +456,29 @@ h1 {
     overflow: hidden;
     background: #fff;
 
-    /* mid-fi composition */
     display: grid;
-    grid-template-columns: 1fr 360px;
-    /* cards + left title */
+    grid-template-columns: 360px 1fr;
+    /* left head, right rail */
+    grid-template-rows: 1fr;
     gap: 24px;
-    align-items: end;
-    /* title sits bottom */
-}
 
-/* cards side sits higher */
-.hscroll-right {
-    align-self: start;
+    align-items: start;
+    /* important: stop bottom-alignment */
     padding-top: 18px;
 }
+
+/* Head sits TOP-LEFT */
+.hscroll-head {
+    padding: 24px 0 0 24px;
+    align-self: start;
+}
+
+/* Cards area can sit a bit lower if you want */
+.hscroll-right {
+    padding-top: 70px;
+    /* adjust this to taste */
+}
+
 
 /* rail moves sideways */
 .hscroll-rail {
@@ -742,4 +745,26 @@ h1 {
     to {
         transform: translateX(-33.333%);
     }
+}
+
+/* FOOTER */
+
+.footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+}
+
+.footer-links {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    opacity: .75;
+}
+
+.footer-links a:hover {
+    opacity: 1;
 }

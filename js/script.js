@@ -77,11 +77,24 @@ function initPortfolio() {
         prog.style.width = `${pct * 100}%`;
     }
 
-    // 3) Parallax: update CSS var based on snap scroll
+    const hero = document.querySelector(".hero");
+
     function updateParallax() {
-        if (!snap) return;
-        document.documentElement.style.setProperty("--py", `${snap.scrollTop}px`);
+        if (!snap || !hero) return;
+
+        // hero position relative to the snap scroller
+        const heroTop = hero.offsetTop;
+        const heroH = hero.offsetHeight;
+
+        // how far into the hero are we?
+        const y = snap.scrollTop - heroTop;
+
+        // clamp so it only affects while hero is in view
+        const clamped = Math.max(0, Math.min(y, heroH));
+
+        document.documentElement.style.setProperty("--py", `${clamped}px`);
     }
+
 
     // 4) Reveal animations (IntersectionObserver)
     const animEls = document.querySelectorAll(".anim");
@@ -137,15 +150,17 @@ function initPortfolio() {
     function updateHorizontal() {
         if (!snap || !spacer || !rail) return;
 
+        // compute spacer's top *inside the snap scroller*
         const start = spacer.offsetTop;
         const end = start + spacer.offsetHeight - snap.clientHeight;
 
-        const progress = (snap.scrollTop - start) / (end - start);
-        const t = Math.max(0, Math.min(progress, 1));
+        const raw = (snap.scrollTop - start) / (end - start);
+        const t = Math.max(0, Math.min(raw, 1));
 
         const maxX = Math.max(0, rail.scrollWidth - snap.clientWidth);
         rail.style.transform = `translate3d(${-maxX * t}px, 0, 0)`;
     }
+
 
     let ticking = false;
     function onSnapScroll() {

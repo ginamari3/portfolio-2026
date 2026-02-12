@@ -84,16 +84,41 @@
             </div>
         </section>
 
-        <!-- STRIP -->
-        <section class="strip" aria-label="Services strip">
-            <div class="strip-inner">
-                <div class="marquee" aria-hidden="true">
-                    <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
-                    <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
-                    <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
+        <section class="snap-sec hscroll" id="projects" aria-label="Projects horizontal scroll">
+
+            <!-- STRIP (moved inside projects snap section) -->
+            <div class="strip strip--sticky" aria-label="Services strip">
+                <div class="strip-inner">
+                    <div class="marquee" aria-hidden="true">
+                        <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
+                        <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
+                        <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hscroll-spacer" id="hscrollSpacer">
+                <div class="hscroll-sticky">
+
+                    <!-- NEW: Head/top-left -->
+                    <div class="hscroll-head anim">
+                        <p class="eyebrow">CREATIVE WORK</p>
+                        <h2 class="hscroll-title">The Projects</h2>
+                        <p class="muted">Scroll down to browse — it moves sideways.</p>
+                        <a class="btn btn-outline" href="#">View all</a>
+                    </div>
+
+                    <!-- Cards/right -->
+                    <div class="hscroll-right">
+                        <div class="hscroll-rail" id="hscrollRail" aria-label="Horizontal project carousel">
+                            <!-- your cards... -->
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
+
 
 
         <!-- HORIZONTAL SCROLL PROJECTS -->
@@ -194,9 +219,20 @@
         <!-- FOOTER -->
         <section class="snap-sec footer-sec" aria-label="Footer">
             <footer class="footer wrap anim">
-                <small>© <span id="year"></span> Gina Marie Triplett</small>
+                <div class="footer-row">
+                    <small>© <span id="year"></span> Gina Marie Triplett</small>
+                    <nav class="footer-links" aria-label="Footer links">
+                        <a href="#top">Home</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </div>
             </footer>
         </section>
+
+
+
     </main>
 
     <script src="./js/script.js"></script>
