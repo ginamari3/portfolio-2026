@@ -1,3 +1,6 @@
+/* =========================================================
+   01) TOKENS / ROOT
+========================================================= */
 :root {
     --bg: #ffffff;
     --ink: #0b0b0b;
@@ -7,9 +10,6 @@
     --pink: #f6cfd9;
     --purple: #b6a7ff;
 
-    --panel: #0b0b0b;
-    --panelLine: rgba(255, 255, 255, .14);
-
     --radius: 999px;
     --wrap: 1100px;
     --headerH: 56px;
@@ -18,194 +18,19 @@
     --tint: rgba(246, 207, 217, .35);
     --tint2: rgba(182, 167, 255, .25);
 
-
     /* fluid mouse */
     --mx: 50vw;
     --my: 50vh;
 
-    /* blob colors (JS swaps these per section) */
-    --c1: rgba(246, 207, 217, .35);
-    /* pink */
-    --c2: rgba(182, 167, 255, .30);
-    /* purple */
-    --c3: rgba(255, 255, 255, .18);
-    /* light */
+    /* blob colors (JS swaps) */
+    --c1: rgba(246, 207, 217, .50);
+    --c2: rgba(182, 167, 255, .42);
+    --c3: rgba(255, 255, 255, .14);
 }
 
-/* ===== Glass Panel (reusable bubble) ===== */
-.panel {
-    border-radius: 28px;
-    padding: clamp(22px, 4vw, 44px);
-    border: 1px solid rgba(255, 255, 255, .35);
-    background: rgba(255, 255, 255, .35);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 22px 70px rgba(0, 0, 0, .10);
-}
-
-.panel--glass {
-    position: relative;
-    overflow: hidden;
-}
-
-/* extra highlight + soft edge glow */
-.panel--glass::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    pointer-events: none;
-    background:
-        radial-gradient(900px 420px at 18% 12%, rgba(255, 255, 255, .55), transparent 55%),
-        radial-gradient(700px 360px at 82% 8%, rgba(255, 255, 255, .35), transparent 60%);
-    opacity: .55;
-}
-
-.panel--glass>* {
-    position: relative;
-    z-index: 1;
-}
-
-/* ===== Sections: let the global fluid background show through ===== */
-.projects,
-.about,
-.contact,
-.footer-sec {
-    background: transparent;
-    /* IMPORTANT */
-}
-
-/* Keep readable text colors */
-.projects {
-    color: var(--ink);
-}
-
-.about {
-    color: var(--ink);
-}
-
-/* change from white to ink since it's glass now */
-
-/* About muted text should be dark now */
-.about .muted {
-    color: rgba(11, 11, 11, .65);
-}
-
-
-/* ===== Project cards: glass style ===== */
-.card {
-    border: 1px solid rgba(255, 255, 255, .40);
-    border-radius: 18px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, .38);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 26px 70px rgba(0, 0, 0, .16);
-    border-color: rgba(255, 255, 255, .70);
-}
-
-.thumb {
-    position: relative;
-}
-
-.thumb::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(0, 0, 0, .08));
-}
-
-
-
-/* ===== Fluid Background (Global) ===== */
-.bg {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    background:
-        radial-gradient(1200px 900px at 30% 10%, rgba(255, 255, 255, .06), transparent 60%),
-        var(--bg);
-}
-
-/* blobs */
-.blob {
-    position: absolute;
-    left: var(--mx);
-    top: var(--my);
-    width: 58vmax;
-    height: 58vmax;
-    border-radius: 999px;
-    transform: translate(-50%, -50%);
-    filter: blur(44px);
-    opacity: .95;
-    will-change: left, top, transform;
-    mix-blend-mode: screen;
-}
-
-.blob--1 {
-    background: var(--c1);
-}
-
-.blob--2 {
-    background: var(--c2);
-    width: 50vmax;
-    height: 50vmax;
-    opacity: .80;
-}
-
-.blob--3 {
-    background: var(--c3);
-    width: 42vmax;
-    height: 42vmax;
-    opacity: .70;
-}
-
-/* subtle “fluid” shimmer + mouse highlight */
-.bg::after {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    background:
-        radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, .12), transparent 35%),
-        repeating-linear-gradient(120deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .03) 1px, transparent 1px, transparent 12px);
-    opacity: .28;
-}
-
-/* Make sure your snap content sits above */
-.snap,
-.site-header,
-.loader {
-    position: relative;
-    z-index: 1;
-}
-
-/* Reduce motion accessibility */
-@media (prefers-reduced-motion: reduce) {
-    .blob {
-        filter: blur(50px);
-    }
-
-    .bg::after {
-        display: none;
-    }
-}
-
-
-.hero-parallax .l1 {
-    background: var(--grad);
-    opacity: .75;
-    /* add this */
-}
-
-
-/* Base */
+/* =========================================================
+   02) BASE / RESET
+========================================================= */
 * {
     box-sizing: border-box;
 }
@@ -252,128 +77,155 @@ a {
     color: var(--muted);
 }
 
-/* Loader */
-body.is-loading {
-    overflow: hidden;
-}
-
-body.is-loading .snap {
-    pointer-events: none;
-}
-
+/* layer order */
+.snap,
+.site-header,
 .loader {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   03) GLOBAL FLUID BACKGROUND (behind everything)
+========================================================= */
+.bg {
     position: fixed;
     inset: 0;
-    z-index: 9999;
-    display: grid;
-    place-items: center;
+    z-index: -1;
     overflow: hidden;
-    transition: opacity .5s ease, visibility .5s ease;
-}
-
-.loader.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-parallax {
-    position: absolute;
-    inset: 0;
     pointer-events: none;
+    background:
+        radial-gradient(1200px 900px at 30% 10%, rgba(0, 0, 0, .03), transparent 60%),
+        var(--bg);
 }
 
-.loader-parallax .l1 {
+.blob {
     position: absolute;
-    inset: -10%;
-    background: var(--grad);
-    transform: translate3d(0, calc(var(--lpy, 0px) * 0.12), 0) scale(1.05);
+    left: var(--mx);
+    top: var(--my);
+    width: 58vmax;
+    height: 58vmax;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    filter: blur(44px);
+    opacity: .95;
+    will-change: left, top, transform;
+    /* KEY CHANGE: screen on white can look invisible */
+    mix-blend-mode: normal;
 }
 
-.loader-parallax .l2 {
+.blob--1 {
+    background: var(--c1);
+}
+
+.blob--2 {
+    background: var(--c2);
+    width: 50vmax;
+    height: 50vmax;
+    opacity: .85;
+}
+
+.blob--3 {
+    background: var(--c3);
+    width: 42vmax;
+    height: 42vmax;
+    opacity: .70;
+}
+
+.bg::after {
+    content: "";
     position: absolute;
     inset: -20%;
     background:
-        radial-gradient(circle at 18% 28%, rgba(255, 255, 255, .55), transparent 42%),
-        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, .35), transparent 46%),
-        radial-gradient(circle at 55% 78%, rgba(0, 0, 0, .10), transparent 44%);
-    transform: translate3d(0, calc(var(--lpy, 0px) * 0.22), 0);
-    filter: blur(2px);
-    opacity: .9;
-}
-
-.loader-parallax .l3 {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, .25), transparent 52%),
-        radial-gradient(circle at 50% 90%, rgba(0, 0, 0, .12), transparent 45%);
-    transform: translate3d(0, calc(var(--lpy, 0px) * 0.34), 0);
-    opacity: .9;
-}
-
-.loader-parallax .grain {
-    position: absolute;
-    inset: 0;
+        radial-gradient(circle at var(--mx) var(--my), rgba(0, 0, 0, .035), transparent 40%),
+        repeating-linear-gradient(120deg, rgba(0, 0, 0, .02), rgba(0, 0, 0, .02) 1px, transparent 1px, transparent 12px);
     opacity: .22;
-    background-image:
-        repeating-linear-gradient(0deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .06) 1px, transparent 1px, transparent 3px),
-        repeating-linear-gradient(90deg, rgba(0, 0, 0, .04), rgba(0, 0, 0, .04) 1px, transparent 1px, transparent 4px);
-    mix-blend-mode: soft-light;
 }
 
-.loader-inner {
+@media (prefers-reduced-motion: reduce) {
+    .blob {
+        filter: blur(50px);
+    }
+
+    .bg::after {
+        display: none;
+    }
+}
+
+/* =========================================================
+   04) SHARED COMPONENTS
+========================================================= */
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    letter-spacing: .2px;
+    white-space: nowrap;
+}
+
+.btn-outline {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .45);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.btn-outline:hover {
+    border-color: rgba(182, 167, 255, .65);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(182, 167, 255, .18);
+}
+
+/* Glass panel (outer bubble) */
+.panel {
+    border-radius: 28px;
+    padding: clamp(22px, 4vw, 44px);
+    border: 1px solid rgba(255, 255, 255, .40);
+    background: rgba(255, 255, 255, .35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .10);
+}
+
+.panel--glass {
+    position: relative;
+    overflow: hidden;
+}
+
+.panel--glass::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    background:
+        radial-gradient(900px 420px at 18% 12%, rgba(255, 255, 255, .55), transparent 55%),
+        radial-gradient(700px 360px at 82% 8%, rgba(255, 255, 255, .35), transparent 60%);
+    opacity: .55;
+}
+
+.panel--glass>* {
     position: relative;
     z-index: 1;
-    width: min(520px, calc(100% - 56px));
-    background: rgba(255, 255, 255, .55);
-    border: 1px solid rgba(0, 0, 0, .12);
-    border-radius: 22px;
-    padding: 18px;
-    backdrop-filter: blur(10px);
 }
 
-.loader-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 12px;
+/* Reveal */
+.anim {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
 }
 
-.loader-brand {
-    font-size: 14px;
-    letter-spacing: .2px;
-    opacity: .9;
+.anim.in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.loader-pct {
-    font-size: 12px;
-    opacity: .8;
-}
-
-.loader-bar {
-    height: 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, .16);
-    overflow: hidden;
-    background: rgba(255, 255, 255, .55);
-}
-
-.loader-fill {
-    height: 100%;
-    width: 0%;
-    background: rgba(0, 0, 0, .85);
-    border-radius: 999px;
-    transition: width .08s linear;
-}
-
-.loader-sub {
-    margin: 12px 0 0;
-    font-size: 12px;
-    color: rgba(0, 0, 0, .65);
-}
-
-/* Header */
+/* =========================================================
+   05) HEADER + SCROLLER
+========================================================= */
 .site-header {
     position: sticky;
     top: 0;
@@ -424,22 +276,6 @@ body.is-loading .snap {
     border-radius: 99px;
 }
 
-.social {
-    display: flex;
-    gap: 8px;
-}
-
-.icon {
-    width: 26px;
-    height: 26px;
-    display: grid;
-    place-items: center;
-    border-radius: 999px;
-    background: var(--ink);
-    color: #fff;
-    font-size: 11px;
-}
-
 .progress {
     height: 2px;
     background: transparent;
@@ -454,44 +290,6 @@ body.is-loading .snap {
     transform-origin: left;
 }
 
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 16px;
-    border-radius: var(--radius);
-    font-size: 12px;
-    letter-spacing: .2px;
-    white-space: nowrap;
-}
-
-.btn-outline {
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, .45);
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-.btn-outline:hover {
-    border-color: rgba(182, 167, 255, .65);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(182, 167, 255, .18);
-}
-
-.btn-dark-outline {
-    border: 1px solid var(--panelLine);
-    background: transparent;
-    color: white;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-
-.btn-dark-outline:hover {
-    border-color: rgba(255, 255, 255, .35);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, .25);
-}
-
-/* Snap container */
 .snap {
     height: calc(100vh - var(--headerH));
     overflow-y: auto;
@@ -513,7 +311,18 @@ body.is-loading .snap {
     border-top: 0;
 }
 
-/* Hero */
+/* IMPORTANT: sections should not paint white backgrounds */
+.hero,
+.projects,
+.about,
+.contact,
+.footer-sec {
+    background: transparent !important;
+}
+
+/* =========================================================
+   06) HERO
+========================================================= */
 .hero {
     display: flex;
     align-items: center;
@@ -528,11 +337,24 @@ body.is-loading .snap {
     pointer-events: none;
 }
 
+.hero>.wrap {
+    position: relative;
+    z-index: 1;
+}
+
+/* ✅ HERO FIX: let blobs show through the hero gradient */
 .hero-parallax .l1 {
     position: absolute;
     inset: -10%;
     background: var(--grad);
-    transform: translate3d(0, calc(var(--py, 0px) * 0.12), 0) scale(1.05);
+
+    /* was: opacity: .75; */
+    opacity: .28;
+    /* try 0.18–0.40 */
+    mix-blend-mode: multiply;
+    /* try: screen | overlay | soft-light */
+
+    transform: translate3d(0, calc(var(--py, 0px) * .12), 0) scale(1.05);
 }
 
 .hero-parallax .l2 {
@@ -542,7 +364,7 @@ body.is-loading .snap {
         radial-gradient(circle at 18% 28%, rgba(255, 255, 255, .55), transparent 42%),
         radial-gradient(circle at 80% 40%, rgba(255, 255, 255, .35), transparent 46%),
         radial-gradient(circle at 55% 78%, rgba(0, 0, 0, .10), transparent 44%);
-    transform: translate3d(0, calc(var(--py, 0px) * 0.22), 0);
+    transform: translate3d(0, calc(var(--py, 0px) * .22), 0);
     filter: blur(2px);
     opacity: .9;
 }
@@ -553,7 +375,7 @@ body.is-loading .snap {
     background:
         radial-gradient(circle at 50% 30%, rgba(255, 255, 255, .25), transparent 52%),
         radial-gradient(circle at 50% 90%, rgba(0, 0, 0, .12), transparent 45%);
-    transform: translate3d(0, calc(var(--py, 0px) * 0.34), 0);
+    transform: translate3d(0, calc(var(--py, 0px) * .34), 0);
     opacity: .9;
 }
 
@@ -565,11 +387,6 @@ body.is-loading .snap {
         repeating-linear-gradient(0deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .06) 1px, transparent 1px, transparent 3px),
         repeating-linear-gradient(90deg, rgba(0, 0, 0, .04), rgba(0, 0, 0, .04) 1px, transparent 1px, transparent 4px);
     mix-blend-mode: soft-light;
-}
-
-.hero>.wrap {
-    position: relative;
-    z-index: 1;
 }
 
 .hero-grid {
@@ -593,7 +410,6 @@ h1 {
     line-height: 1.4;
 }
 
-/* Optional text parallax hook (your JS sets --tpy) */
 .hero-parallax-text {
     transform: translate3d(0, calc(var(--tpy, 0px) * -0.10), 0);
     will-change: transform;
@@ -616,7 +432,6 @@ h1 {
     min-width: 12ch;
     text-align: center;
     transition: opacity .25s ease, transform .25s ease;
-    will-change: opacity, transform;
 }
 
 .rotator-word.fade {
@@ -624,23 +439,16 @@ h1 {
     transform: translateY(4px);
 }
 
-/* Projects (subtle consistent tint) */
-.projects {
-    background:
-        radial-gradient(circle at 16% 12%, var(--tint), transparent 55%),
-        radial-gradient(circle at 86% 6%, var(--tint2), transparent 58%),
-        #fff;
-}
-
+/* =========================================================
+   07) PROJECTS (cards + marquee)
+========================================================= */
 .section-head {
     margin: 0 0 18px;
 }
 
-/* Banner */
 .strip {
     margin: 10px 0 26px;
-    /* gap below hero + gap to title */
-    background: rgba(246, 255, 161, 0.99);
+    background: rgba(246, 255, 161, .99);
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(11, 11, 11, .12);
@@ -676,25 +484,28 @@ h1 {
     }
 }
 
-/* Grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 
+/* SINGLE source of truth for cards */
 .card {
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255, 255, 255, .42);
     border-radius: 18px;
     overflow: hidden;
-    background: rgba(255, 255, 255, .92);
+    background: rgba(255, 255, 255, .42);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, .10);
-    border-color: rgba(182, 167, 255, .45);
+    transform: translateY(-6px);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, .16);
+    border-color: rgba(255, 255, 255, .75);
 }
 
 .thumb {
@@ -702,6 +513,14 @@ h1 {
     aspect-ratio: 16/10;
     background-size: cover;
     background-position: center;
+    position: relative;
+}
+
+.thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(0, 0, 0, .08));
 }
 
 .meta {
@@ -720,16 +539,14 @@ h1 {
     color: var(--muted);
 }
 
-/* About */
+/* =========================================================
+   08) ABOUT
+========================================================= */
 .about {
-    color: white;
-    background:
-        radial-gradient(circle at 18% 24%, rgba(246, 207, 217, .18), transparent 55%),
-        radial-gradient(circle at 78% 14%, rgba(182, 167, 255, .18), transparent 60%),
-        #5a5a5a;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--ink);
 }
 
 .about-card {
@@ -738,84 +555,84 @@ h1 {
     grid-template-columns: 380px 1fr;
     gap: 60px;
     align-items: center;
+
+    border-radius: 32px;
+    padding: 60px;
+
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .4);
 }
 
 .about-img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
     border-radius: 22px;
     background: linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(230, 230, 230, .95));
     border: 1px solid rgba(255, 255, 255, .22);
 }
 
 .about-copy {
-    text-align: left;
-}
-
-.about-copy h2 {
-    margin: 0 0 16px;
-    font-size: clamp(38px, 4vw, 52px);
-    letter-spacing: -1px;
+    color: var(--ink);
 }
 
 .about .muted {
-    color: rgba(255, 255, 255, .85);
+    color: rgba(11, 11, 11, .65);
 }
 
-/* Contact */
+/* =========================================================
+   09) CONTACT
+========================================================= */
 .contact {
-    background:
-        radial-gradient(circle at 20% 20%, var(--tint), transparent 60%),
-        radial-gradient(circle at 80% 10%, var(--tint2), transparent 60%),
-        var(--pink);
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
-.contact-wrap {
-    max-width: 760px;
-    background: rgba(255, 255, 255, .35);
-    padding: clamp(28px, 5vw, 60px);
-    border-radius: 28px;
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(0, 0, 0, .10);
+.contact-card {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: center;
+
+    border-radius: 32px;
+    padding: clamp(28px, 4.5vw, 60px);
+
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .4);
 }
 
-.contact-wrap h2 {
-    margin: 0 0 16px;
-    font-size: clamp(48px, 5vw, 64px);
-    letter-spacing: -1.2px;
-}
-
-.contact .muted {
-    max-width: 540px;
-    margin: 0 auto;
+.contact-copy {
+    color: var(--ink);
+    text-align: left;
 }
 
 .contact-actions {
     display: flex;
-    justify-content: center;
-    gap: 18px;
+    gap: 14px;
     flex-wrap: wrap;
-    margin-top: 34px;
+    margin-top: 26px;
 }
 
-.contact-actions .btn {
-    min-width: 140px;
+.contact-side {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, .55);
+    background:
+        radial-gradient(circle at 30% 30%, rgba(246, 207, 217, .65), transparent 60%),
+        radial-gradient(circle at 70% 40%, rgba(182, 167, 255, .55), transparent 60%),
+        rgba(255, 255, 255, .30);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
 }
 
-.contact-actions .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
-}
-
-/* Footer */
+/* =========================================================
+   10) FOOTER
+========================================================= */
 .footer-sec {
     display: flex;
     align-items: center;
-    background: #fff;
 }
 
 .footer-row {
@@ -838,19 +655,9 @@ h1 {
     opacity: 1;
 }
 
-/* Reveal */
-.anim {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity .6s ease, transform .6s ease;
-}
-
-.anim.in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive */
+/* =========================================================
+   11) RESPONSIVE
+========================================================= */
 @media (max-width: 900px) {
     .menu {
         display: none;
@@ -867,6 +674,7 @@ h1 {
     .about-card {
         grid-template-columns: 1fr;
         gap: 32px;
+        padding: 44px;
     }
 
     .about-copy {
@@ -875,6 +683,23 @@ h1 {
 
     .about-img {
         max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .contact-card {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-copy {
+        text-align: center;
+    }
+
+    .contact-actions {
+        justify-content: center;
+    }
+
+    .contact-side {
+        max-width: 360px;
         margin: 0 auto;
     }
 }

@@ -224,3 +224,36 @@ function initPortfolio() {
 
     sections.forEach(s => io.observe(s));
 })();
+
+// ----- NAV ACTIVE LINK (scrollspy for #snap) -----
+(function initNavActive() {
+    const snap = document.getElementById("snap");
+    const sections = Array.from(document.querySelectorAll(".snap-sec[id]"));
+    const links = Array.from(document.querySelectorAll(".menu a[href^='#']"));
+
+    if (!snap || !sections.length || !links.length) return;
+
+    const setActive = (id) => {
+        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
+    };
+
+    // Update active on click (instant feedback)
+    links.forEach(a => {
+        a.addEventListener("click", () => {
+            const id = a.getAttribute("href").slice(1);
+            setActive(id);
+        });
+    });
+
+    // Update active on scroll (correct state as you scroll-snap)
+    const io = new IntersectionObserver((entries) => {
+        // pick the most visible section
+        const visible = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) setActive(visible.target.id);
+    }, { root: snap, threshold: [0.35, 0.55, 0.75] });
+
+    sections.forEach(sec => io.observe(sec));
+})();
