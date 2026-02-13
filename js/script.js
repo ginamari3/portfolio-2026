@@ -144,30 +144,6 @@ function initPortfolio() {
 }
 
 
-// Parallax
-
-function updateParallax() {
-    const snap = document.getElementById("snap");
-    const hero = document.querySelector(".hero");
-    if (!snap || !hero) return;
-
-    const heroTop = hero.offsetTop;
-    const heroH = hero.offsetHeight;
-
-    // how far we’ve scrolled into the hero (inside the snap container)
-    const y = snap.scrollTop - heroTop;
-    const clamped = Math.max(0, Math.min(y, heroH));
-
-    // background parallax
-    document.documentElement.style.setProperty("--py", `${clamped}px`);
-
-    // text parallax (slightly different feel)
-    document.documentElement.style.setProperty("--tpy", `${clamped}px`);
-}
-
-snap.addEventListener("scroll", () => {
-    updateParallax();
-}, { passive: true });
 
 // ---------- FLUID BACKGROUND (mouse follow + section theme) ----------
 (function initFluidBG() {

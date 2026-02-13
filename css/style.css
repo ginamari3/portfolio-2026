@@ -32,6 +32,96 @@
     /* light */
 }
 
+/* ===== Glass Panel (reusable bubble) ===== */
+.panel {
+    border-radius: 28px;
+    padding: clamp(22px, 4vw, 44px);
+    border: 1px solid rgba(255, 255, 255, .35);
+    background: rgba(255, 255, 255, .35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .10);
+}
+
+.panel--glass {
+    position: relative;
+    overflow: hidden;
+}
+
+/* extra highlight + soft edge glow */
+.panel--glass::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    background:
+        radial-gradient(900px 420px at 18% 12%, rgba(255, 255, 255, .55), transparent 55%),
+        radial-gradient(700px 360px at 82% 8%, rgba(255, 255, 255, .35), transparent 60%);
+    opacity: .55;
+}
+
+.panel--glass>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Sections: let the global fluid background show through ===== */
+.projects,
+.about,
+.contact,
+.footer-sec {
+    background: transparent;
+    /* IMPORTANT */
+}
+
+/* Keep readable text colors */
+.projects {
+    color: var(--ink);
+}
+
+.about {
+    color: var(--ink);
+}
+
+/* change from white to ink since it's glass now */
+
+/* About muted text should be dark now */
+.about .muted {
+    color: rgba(11, 11, 11, .65);
+}
+
+
+/* ===== Project cards: glass style ===== */
+.card {
+    border: 1px solid rgba(255, 255, 255, .40);
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .38);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, .16);
+    border-color: rgba(255, 255, 255, .70);
+}
+
+.thumb {
+    position: relative;
+}
+
+.thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(0, 0, 0, .08));
+}
+
+
+
 /* ===== Fluid Background (Global) ===== */
 .bg {
     position: fixed;
