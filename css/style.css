@@ -377,12 +377,24 @@ h1 {
     border: 1px solid rgba(11, 11, 11, .18);
     background: rgba(255, 255, 255, .45);
     margin: 0 6px;
+
+    /* ✅ smooth in AND out */
+    transition: opacity .25s ease, transform .25s ease;
+    will-change: opacity, transform;
+
+
 }
+
+.rotator-word {
+    min-width: 110px;
+    /* tweak until it fits your longest word */
+    text-align: center;
+}
+
 
 .rotator-word.fade {
     opacity: 0;
     transform: translateY(4px);
-    transition: .25s ease;
 }
 
 /* ===== STRIP ===== */

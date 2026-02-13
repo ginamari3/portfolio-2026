@@ -1,3 +1,14 @@
+let didStart = false;
+
+function startSite() {
+    if (didStart) return;     // ✅ prevents double init
+    didStart = true;
+
+    hideLoader();
+    initPortfolio();
+}
+
+
 // =======================
 // LOADER (failsafe)
 // =======================
@@ -56,17 +67,31 @@ function initPortfolio() {
     // 1) Rotating hero word
     const words = ["interfaces", "dashboards", "brands", "systems", "experiences"];
     const rot = document.getElementById("rotWord");
-    if (rot) {
-        let i = 0;
-        setInterval(() => {
+
+    let i = 0;
+    let rotatorTimer = null;
+
+    function startRotator() {
+        if (!rot) return;
+
+        // ✅ prevent multiple intervals
+        if (rotatorTimer) clearInterval(rotatorTimer);
+
+        rotatorTimer = setInterval(() => {
             rot.classList.add("fade");
+
+            // swap while hidden, then fade back in
             setTimeout(() => {
                 i = (i + 1) % words.length;
                 rot.textContent = words[i];
                 rot.classList.remove("fade");
-            }, 250);
+            }, 220); // match your CSS transition duration
         }, 1800);
     }
+
+    startRotator();
+
+
 
     // 2) Progress bar for snap scroll
     const prog = document.getElementById("progressFill");
