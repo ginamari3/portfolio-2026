@@ -477,49 +477,54 @@ body.is-loading .snap {
     z-index: 1;
 }
 
-/* ✅ HERO FIX: let blobs show through the hero gradient */
+/* HERO BACKGROUND ONLY — no typography changes */
+
 .hero-parallax .l1 {
     position: absolute;
-    inset: -10%;
-    background: var(--grad);
-
-    /* was: opacity: .75; */
-    opacity: .28;
-    /* try 0.18–0.40 */
-    mix-blend-mode: multiply;
-    /* try: screen | overlay | soft-light */
-
-    transform: translate3d(0, calc(var(--py, 0px) * .12), 0) scale(1.05);
+    inset: -12%;
+    background:
+        radial-gradient(900px 520px at 18% 22%, rgba(246, 207, 217, .55), transparent 60%),
+        radial-gradient(820px 520px at 82% 30%, rgba(182, 167, 255, .45), transparent 62%),
+        linear-gradient(135deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, .55));
+    opacity: .9;
+    transform: translate3d(0, calc(var(--py, 0px) * .10), 0) scale(1.04);
 }
 
 .hero-parallax .l2 {
     position: absolute;
-    inset: -20%;
-    background: radial-gradient(circle at 18% 28%, rgba(255, 255, 255, .55), transparent 42%),
-        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, .35), transparent 46%),
-        radial-gradient(circle at 55% 78%, rgba(0, 0, 0, .10), transparent 44%);
-    transform: translate3d(0, calc(var(--py, 0px) * .22), 0);
-    filter: blur(2px);
-    opacity: .9;
+    inset: -10%;
+    background:
+        radial-gradient(circle at var(--mx) var(--my),
+            rgba(255, 255, 255, .40),
+            rgba(255, 255, 255, .10) 38%,
+            transparent 62%);
+    opacity: .8;
+    transform: translate3d(0, calc(var(--py, 0px) * .16), 0);
 }
 
 .hero-parallax .l3 {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, .25), transparent 52%),
-        radial-gradient(circle at 50% 90%, rgba(0, 0, 0, .12), transparent 45%);
-    transform: translate3d(0, calc(var(--py, 0px) * .34), 0);
-    opacity: .9;
+    inset: -18%;
+    background:
+        radial-gradient(720px 520px at var(--mx) var(--my),
+            rgba(246, 207, 217, .30), transparent 62%),
+        radial-gradient(760px 520px at var(--mx) var(--my),
+            rgba(182, 167, 255, .24), transparent 64%);
+    opacity: .7;
+    filter: blur(2px);
+    transform: translate3d(0, calc(var(--py, 0px) * .24), 0);
 }
 
 .hero-parallax .grain {
     position: absolute;
     inset: 0;
-    opacity: .22;
-    background-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .06) 1px, transparent 1px, transparent 3px),
-        repeating-linear-gradient(90deg, rgba(0, 0, 0, .04), rgba(0, 0, 0, .04) 1px, transparent 1px, transparent 4px);
+    opacity: .14;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, .05), rgba(0, 0, 0, .05) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, .035), rgba(0, 0, 0, .035) 1px, transparent 1px, transparent 4px);
     mix-blend-mode: soft-light;
 }
+
 
 .hero-grid {
     display: grid;
@@ -570,6 +575,77 @@ h1 {
     opacity: 0;
     transform: translateY(4px);
 }
+
+
+/* ===== Circular Banner ===== */
+/* Rotating circular text */
+.circle-banner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: spin 18s linear infinite;
+    opacity: .8;
+}
+
+
+.cta-circle-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: grid;
+    place-items: center;
+}
+
+/* Keep button on top */
+.cta-btn {
+    position: relative;
+    z-index: 2;
+}
+
+/* Rotation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.circle-svg {
+    width: 100%;
+    height: 100%;
+    animation: spin 18s linear infinite;
+}
+
+.circle-svg text {
+    fill: rgba(0, 0, 0, .85);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* subtle glass center */
+.circle-banner::after {
+    content: "";
+    position: absolute;
+    inset: 25%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .45);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* =========================================================
    07) PROJECTS (cards + marquee)
