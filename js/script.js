@@ -1,17 +1,8 @@
-let didStart = false;
+// ---------- ONE-TIME INIT GUARD (prevents double timers) ----------
+let didInit = false;
+let rotatorInterval = null;
 
-function startSite() {
-    if (didStart) return;     // ✅ prevents double init
-    didStart = true;
-
-    hideLoader();
-    initPortfolio();
-}
-
-
-// =======================
-// LOADER (failsafe)
-// =======================
+// ---------- LOADER ----------
 document.body.classList.add("is-loading");
 
 const loader = document.getElementById("loader");
@@ -24,15 +15,18 @@ function hideLoader() {
     document.body.classList.remove("is-loading");
 }
 
-function startSite() {
+function startApp() {
+    if (didInit) return;     // ✅ the whole site initializes once
+    didInit = true;
+
     hideLoader();
     initPortfolio();
 }
 
-// FAILSAFE: never get stuck
-setTimeout(startSite, 1400);
+// fail-safe in case anything weird happens
+setTimeout(startApp, 1500);
 
-// Normal “fake progress”
+// animate loader progress once
 (function runLoader() {
     if (!loaderPct || !loaderFill) return;
 
@@ -48,80 +42,26 @@ setTimeout(startSite, 1400);
         loaderPct.textContent = `${p}%`;
         loaderFill.style.width = `${p}%`;
 
+        // tiny parallax wobble while loading
+        document.documentElement.style.setProperty("--lpy", `${eased * 80}px`);
+
         if (t < 1) requestAnimationFrame(tick);
-        else setTimeout(startSite, 200);
+        else setTimeout(startApp, 120);
     }
 
     requestAnimationFrame(tick);
 })();
 
 
-// =======================
-// SITE INIT
-// =======================
+// ---------- SITE ----------
 function initPortfolio() {
     const snap = document.getElementById("snap");
     const yearEl = document.getElementById("year");
+    const prog = document.getElementById("progressFill");
+
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // 1) Rotating hero word
-    const words = ["interfaces", "dashboards", "brands", "systems", "experiences"];
-    const rot = document.getElementById("rotWord");
-
-    let i = 0;
-    let rotatorTimer = null;
-
-    function startRotator() {
-        if (!rot) return;
-
-        // ✅ prevent multiple intervals
-        if (rotatorTimer) clearInterval(rotatorTimer);
-
-        rotatorTimer = setInterval(() => {
-            rot.classList.add("fade");
-
-            // swap while hidden, then fade back in
-            setTimeout(() => {
-                i = (i + 1) % words.length;
-                rot.textContent = words[i];
-                rot.classList.remove("fade");
-            }, 220); // match your CSS transition duration
-        }, 1800);
-    }
-
-    startRotator();
-
-
-
-    // 2) Progress bar for snap scroll
-    const prog = document.getElementById("progressFill");
-    function updateProgress() {
-        if (!snap || !prog) return;
-        const max = snap.scrollHeight - snap.clientHeight;
-        const pct = max > 0 ? (snap.scrollTop / max) : 0;
-        prog.style.width = `${pct * 100}%`;
-    }
-
-    const hero = document.querySelector(".hero");
-
-    function updateParallax() {
-        if (!snap || !hero) return;
-
-        // hero position relative to the snap scroller
-        const heroTop = hero.offsetTop;
-        const heroH = hero.offsetHeight;
-
-        // how far into the hero are we?
-        const y = snap.scrollTop - heroTop;
-
-        // clamp so it only affects while hero is in view
-        const clamped = Math.max(0, Math.min(y, heroH));
-
-        document.documentElement.style.setProperty("--py", `${clamped}px`);
-    }
-
-
-    // 4) Reveal animations (IntersectionObserver)
+    // Reveal (inside snap scroller)
     const animEls = document.querySelectorAll(".anim");
     if (snap) {
         const io = new IntersectionObserver((entries) => {
@@ -129,76 +69,64 @@ function initPortfolio() {
                 if (entry.isIntersecting) entry.target.classList.add("in");
             });
         }, { root: snap, threshold: 0.12 });
-
         animEls.forEach(el => io.observe(el));
     }
-    // Always reveal hero immediately
-    document.querySelectorAll(".hero .anim").forEach(el => el.classList.add("in"));
 
-    // 5) Tilt
-    document.querySelectorAll("[data-tilt]").forEach((el) => {
-        const strength = 10;
-        const scale = 1.02;
+    // ---- ROTATOR (single interval, never duplicates) ----
+    const words = ["interfaces", "dashboards", "brands", "systems", "experiences"];
+    const rot = document.getElementById("rotWord");
+    let i = 0;
 
-        function onMove(e) {
-            const r = el.getBoundingClientRect();
-            const px = (e.clientX - r.left) / r.width;
-            const py = (e.clientY - r.top) / r.height;
+    if (rotatorInterval) clearInterval(rotatorInterval);
 
-            el.style.setProperty("--mx", `${px * 100}%`);
-            el.style.setProperty("--my", `${py * 100}%`);
+    if (rot) {
+        rotatorInterval = setInterval(() => {
+            rot.classList.add("fade");
 
-            const rx = (py - 0.5) * -strength;
-            const ry = (px - 0.5) * strength;
-
-            el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${scale})`;
-        }
-
-        function onLeave() {
-            el.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)`;
-        }
-
-        el.addEventListener("mousemove", onMove);
-        el.addEventListener("mouseleave", onLeave);
-    });
-
-    // 6) Horizontal scroll (inside snap container)
-    const spacer = document.getElementById("hscrollSpacer");
-    const rail = document.getElementById("hscrollRail");
-
-    function setSpacerHeight() {
-        if (!snap || !spacer || !rail) return;
-        const maxX = Math.max(0, rail.scrollWidth - snap.clientWidth);
-        spacer.style.height = `${maxX + snap.clientHeight}px`;
+            setTimeout(() => {
+                i = (i + 1) % words.length;
+                rot.textContent = words[i];
+                rot.classList.remove("fade");
+            }, 220);
+        }, 1800);
     }
 
-    function updateHorizontal() {
-        if (!snap || !spacer || !rail) return;
+    // ---- Micro interactions: progress + hero parallax (bg + text) ----
+    const hero = document.querySelector(".hero");
 
-        // compute spacer's top *inside the snap scroller*
-        const start = spacer.offsetTop;
-        const end = start + spacer.offsetHeight - snap.clientHeight;
-
-        const raw = (snap.scrollTop - start) / (end - start);
-        const t = Math.max(0, Math.min(raw, 1));
-
-        const maxX = Math.max(0, rail.scrollWidth - snap.clientWidth);
-        rail.style.transform = `translate3d(${-maxX * t}px, 0, 0)`;
+    function updateProgress() {
+        if (!snap || !prog) return;
+        const max = snap.scrollHeight - snap.clientHeight;
+        const pct = max > 0 ? (snap.scrollTop / max) : 0;
+        prog.style.width = `${pct * 100}%`;
     }
 
+    function updateParallax() {
+        if (!snap || !hero) return;
+
+        const heroTop = hero.offsetTop;
+        const heroH = hero.offsetHeight;
+
+        // y into the hero section (0..heroH)
+        const y = snap.scrollTop - heroTop;
+        const clamped = Math.max(0, Math.min(y, heroH));
+
+        // background layers use --py, text uses --tpy
+        document.documentElement.style.setProperty("--py", `${clamped}px`);
+        document.documentElement.style.setProperty("--tpy", `${clamped}px`);
+    }
 
     let ticking = false;
     function onSnapScroll() {
         if (!snap) return;
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                updateProgress();
-                updateParallax();
-                updateHorizontal();
-                ticking = false;
-            });
-            ticking = true;
-        }
+        if (ticking) return;
+
+        ticking = true;
+        requestAnimationFrame(() => {
+            updateProgress();
+            updateParallax();
+            ticking = false;
+        });
     }
 
     if (snap) {
@@ -206,12 +134,117 @@ function initPortfolio() {
     }
 
     window.addEventListener("resize", () => {
-        setSpacerHeight();
-        updateHorizontal();
+        updateProgress();
+        updateParallax();
     });
 
-    setSpacerHeight();
+    // initial paint
     updateProgress();
     updateParallax();
-    updateHorizontal();
 }
+
+
+// Parallax
+
+function updateParallax() {
+    const snap = document.getElementById("snap");
+    const hero = document.querySelector(".hero");
+    if (!snap || !hero) return;
+
+    const heroTop = hero.offsetTop;
+    const heroH = hero.offsetHeight;
+
+    // how far we’ve scrolled into the hero (inside the snap container)
+    const y = snap.scrollTop - heroTop;
+    const clamped = Math.max(0, Math.min(y, heroH));
+
+    // background parallax
+    document.documentElement.style.setProperty("--py", `${clamped}px`);
+
+    // text parallax (slightly different feel)
+    document.documentElement.style.setProperty("--tpy", `${clamped}px`);
+}
+
+snap.addEventListener("scroll", () => {
+    updateParallax();
+}, { passive: true });
+
+// ---------- FLUID BACKGROUND (mouse follow + section theme) ----------
+(function initFluidBG() {
+    const snap = document.getElementById("snap");
+    const root = document.documentElement;
+
+    const blob1 = document.querySelector(".blob--1");
+    const blob2 = document.querySelector(".blob--2");
+    const blob3 = document.querySelector(".blob--3");
+    if (!blob1 || !blob2 || !blob3) return;
+
+    // Start centered
+    let targetX = window.innerWidth * 0.5;
+    let targetY = window.innerHeight * 0.5;
+
+    let x1 = targetX, y1 = targetY;
+    let x2 = targetX, y2 = targetY;
+    let x3 = targetX, y3 = targetY;
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    // Mouse tracking (viewport coords)
+    window.addEventListener("mousemove", (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        root.style.setProperty("--mx", `${targetX}px`);
+        root.style.setProperty("--my", `${targetY}px`);
+    }, { passive: true });
+
+    // Fluid animation loop
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+        function tick() {
+            x1 = lerp(x1, targetX, 0.09);
+            y1 = lerp(y1, targetY, 0.09);
+
+            x2 = lerp(x2, targetX, 0.06);
+            y2 = lerp(y2, targetY, 0.06);
+
+            x3 = lerp(x3, targetX, 0.045);
+            y3 = lerp(y3, targetY, 0.045);
+
+            blob1.style.left = x1 + "px";
+            blob1.style.top = y1 + "px";
+
+            blob2.style.left = (x2 + 90) + "px";
+            blob2.style.top = (y2 - 70) + "px";
+
+            blob3.style.left = (x3 - 120) + "px";
+            blob3.style.top = (y3 + 95) + "px";
+
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    // Theme palettes (keep these in your brand range)
+    const themes = {
+        hero: ["rgba(246,207,217,.42)", "rgba(182,167,255,.34)", "rgba(255,255,255,.16)"],
+        projects: ["rgba(182,167,255,.34)", "rgba(246,207,217,.30)", "rgba(255,255,255,.14)"],
+        about: ["rgba(246,207,217,.30)", "rgba(182,167,255,.28)", "rgba(255,255,255,.14)"],
+        contact: ["rgba(246,207,217,.36)", "rgba(182,167,255,.30)", "rgba(255,255,255,.18)"],
+        footer: ["rgba(182,167,255,.26)", "rgba(246,207,217,.22)", "rgba(255,255,255,.12)"],
+    };
+
+    // IMPORTANT: your site scrolls in #snap, so observer root must be snap
+    const sections = document.querySelectorAll(".snap-sec[data-theme]");
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const key = entry.target.dataset.theme;
+            const [c1, c2, c3] = themes[key] || themes.hero;
+            root.style.setProperty("--c1", c1);
+            root.style.setProperty("--c2", c2);
+            root.style.setProperty("--c3", c3);
+        });
+    }, { root: snap || null, threshold: 0.55 });
+
+    sections.forEach(s => io.observe(s));
+})();

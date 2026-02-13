@@ -5,12 +5,30 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Gina Marie Triplett — Portfolio</title>
+
+    <!-- CONNECT CSS -->
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body class="is-loading">
+
+    <!-- FLUID BACKGROUND (GLOBAL) -->
+    <div class="bg" aria-hidden="true">
+        <div class="blob blob--1"></div>
+        <div class="blob blob--2"></div>
+        <div class="blob blob--3"></div>
+    </div>
+
+
     <!-- LOADER -->
     <div class="loader" id="loader" aria-label="Loading screen" role="status">
+        <div class="loader-parallax" aria-hidden="true">
+            <div class="layer l1"></div>
+            <div class="layer l2"></div>
+            <div class="layer l3"></div>
+            <div class="layer grain"></div>
+        </div>
+
         <div class="loader-inner">
             <div class="loader-row">
                 <span class="loader-brand">Gina Marie Triplett</span>
@@ -25,6 +43,7 @@
         </div>
     </div>
 
+    <!-- HEADER -->
     <header class="site-header">
         <div class="wrap nav">
             <a class="brand" href="#top">Gina Marie Triplett</a>
@@ -41,17 +60,15 @@
             </div>
         </div>
 
-        <!-- progress bar is BELOW the nav -->
         <div class="progress" aria-hidden="true">
             <span id="progressFill"></span>
         </div>
     </header>
 
-
+    <!-- SNAP SCROLL -->
     <main class="snap" id="snap">
         <!-- HERO -->
-        <section class="snap-sec hero" id="top" aria-label="Hero">
-            <!-- parallax layers -->
+        <section class="snap-sec hero" id="top" aria-label="Hero" data-theme="hero">
             <div class="hero-parallax" aria-hidden="true">
                 <div class="layer l1"></div>
                 <div class="layer l2"></div>
@@ -59,8 +76,12 @@
                 <div class="layer grain"></div>
             </div>
 
+
+
+
+
             <div class="wrap hero-grid">
-                <div class="hero-copy anim">
+                <div class="hero-copy anim hero-parallax-text">
                     <p class="eyebrow">INTERFACE DESIGNER</p>
 
                     <h1>
@@ -78,131 +99,170 @@
                     <p class="lead">Design + Packaging services to grow your brand.</p>
                 </div>
 
-                <div class="hero-cta anim">
+                <div class="hero-cta anim hero-parallax-text">
                     <a class="btn btn-outline" href="#contact">Contact Me!</a>
                 </div>
             </div>
         </section>
 
-        <section class="snap-sec hscroll" id="projects" aria-label="Projects horizontal scroll">
+        <!-- PROJECTS -->
+        <section class="snap-sec projects" id="projects" aria-label="Projects" data-theme="projects">
+            <div class="wrap">
+                <!-- Banner sits inside wrap so it aligns with your grid -->
+                <div class="strip" aria-label="Skills banner">
+                    <div class="strip-inner">
+                        <div class="marquee" aria-hidden="true">
+                            <span>Interface Design</span><span class="dot">•</span>
+                            <span>Design Systems</span><span class="dot">•</span>
+                            <span>Logo Design</span><span class="dot">•</span>
+                            <span>Brand Identity</span><span class="dot">•</span>
+                            <span>Packaging Strategy</span><span class="dot">•</span>
+                            <span>Scroll-Trigger Transitions</span><span class="dot">•</span>
+                            <span>Motion &amp; Animation</span><span class="dot">•</span>
+                            <span>Interactive Prototypes</span><span class="dot">•</span>
+                            <span>Responsive Web Design</span><span class="dot">•</span>
+                            <span>UI Architecture</span><span class="dot">•</span>
+                            <span>Thoughtful Micro-Interactions</span><span class="dot">•</span>
+                            <span>Calm, Clear UX</span><span class="dot">•</span>
+                            <span>Designed in Honolulu</span><span class="dot">•</span>
 
-            <!-- STRIP (moved inside projects snap section) -->
-            <div class="strip strip--sticky" aria-label="Services strip">
-                <div class="strip-inner">
-                    <div class="marquee" aria-hidden="true">
-                        <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
-                        <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
-                        <span>Print + Digital. Branding. Packaging. Websites. Swag, too.</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hscroll-spacer" id="hscrollSpacer">
-                <div class="hscroll-sticky">
-
-                    <!-- NEW: Head/top-left -->
-                    <div class="hscroll-head anim">
-                        <p class="eyebrow">CREATIVE WORK</p>
-                        <h2 class="hscroll-title">The Projects</h2>
-                        <p class="muted">Scroll down to browse — it moves sideways.</p>
-                        <a class="btn btn-outline" href="#">View all</a>
-                    </div>
-
-                    <!-- Cards/right -->
-                    <div class="hscroll-right">
-                        <div class="hscroll-rail" id="hscrollRail" aria-label="Horizontal project carousel">
-                            <!-- your cards... -->
+                            <!-- duplicate for seamless loop -->
+                            <span>Interface Design</span><span class="dot">•</span>
+                            <span>Design Systems</span><span class="dot">•</span>
+                            <span>Logo Design</span><span class="dot">•</span>
+                            <span>Brand Identity</span><span class="dot">•</span>
+                            <span>Packaging Strategy</span><span class="dot">•</span>
+                            <span>Scroll-Trigger Transitions</span><span class="dot">•</span>
+                            <span>Motion &amp; Animation</span><span class="dot">•</span>
+                            <span>Interactive Prototypes</span><span class="dot">•</span>
+                            <span>Responsive Web Design</span><span class="dot">•</span>
+                            <span>UI Architecture</span><span class="dot">•</span>
+                            <span>Thoughtful Micro-Interactions</span><span class="dot">•</span>
+                            <span>Calm, Clear UX</span><span class="dot">•</span>
+                            <span>Designed in Honolulu</span><span class="dot">•</span>
                         </div>
                     </div>
+                </div>
 
+                <div class="section-head anim">
+                    <p class="eyebrow">SELECTED WORK</p>
+                    <h2 class="h2">Projects</h2>
+                    <p class="muted">A few highlights from UI, branding, and web builds.</p>
+                </div>
+
+                <div class="grid anim" aria-label="Project grid">
+                    <!-- 9 cards -->
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=31')">
+                        </div>
+                        <div class="meta">
+                            <h3>Volt</h3>
+                            <p>Dashboard + brand system</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=32')">
+                        </div>
+                        <div class="meta">
+                            <h3>Aether Airlines</h3>
+                            <p>Brand identity</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=33')">
+                        </div>
+                        <div class="meta">
+                            <h3>CorePower</h3>
+                            <p>Responsive redesign</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=34')">
+                        </div>
+                        <div class="meta">
+                            <h3>Packaging Study</h3>
+                            <p>Dielines + mockups</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=35')">
+                        </div>
+                        <div class="meta">
+                            <h3>Web Prototype</h3>
+                            <p>Interaction + motion</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=36')">
+                        </div>
+                        <div class="meta">
+                            <h3>Design Asylum</h3>
+                            <p>Client work</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=37')">
+                        </div>
+                        <div class="meta">
+                            <h3>UI Kit</h3>
+                            <p>Components + tokens</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=38')">
+                        </div>
+                        <div class="meta">
+                            <h3>Landing Page</h3>
+                            <p>Typography + layout</p>
+                        </div>
+                    </a>
+
+                    <a class="card" href="#">
+                        <div class="thumb" style="background-image:url('https://picsum.photos/1200/800?random=39')">
+                        </div>
+                        <div class="meta">
+                            <h3>Brand System</h3>
+                            <p>Logo + guidelines</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
-
-
-
-        <!-- HORIZONTAL SCROLL PROJECTS -->
-        <!-- PROJECTS (mid-fi layout + scroll down drives sideways) -->
-        <section class="snap-sec hscroll" id="projects" aria-label="Projects horizontal scroll">
-            <div class="hscroll-spacer" id="hscrollSpacer">
-                <div class="hscroll-sticky">
-
-                    <!-- Cards (right side / higher) -->
-                    <div class="hscroll-right">
-                        <div class="hscroll-rail" id="hscrollRail" aria-label="Horizontal project carousel">
-                            <article class="p-card anim" data-tilt>
-                                <div class="p-thumb"></div>
-                                <div class="p-meta">
-                                    <h3>Aether Airlines</h3>
-                                    <p>Brand Identity</p>
-                                </div>
-                            </article>
-
-                            <article class="p-card anim" data-tilt>
-                                <div class="p-thumb"></div>
-                                <div class="p-meta">
-                                    <h3>Aether Airlines</h3>
-                                    <p>Website</p>
-                                </div>
-                            </article>
-
-                            <article class="p-card anim" data-tilt>
-                                <div class="p-thumb"></div>
-                                <div class="p-meta">
-                                    <h3>Aether Airlines</h3>
-                                    <p>Mobile App</p>
-                                </div>
-                            </article>
-
-                            <article class="p-card anim" data-tilt>
-                                <div class="p-thumb"></div>
-                                <div class="p-meta">
-                                    <h3>Tourism Logo</h3>
-                                    <p>Brand Identity</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-
-                    <!-- Title block (bottom-left like mid-fi) -->
-                    <div class="hscroll-left anim">
-                        <p class="eyebrow">CREATIVE WORK</p>
-                        <h2 class="hscroll-title">The<br />Projects</h2>
-                        <p class="muted">Scroll down to browse — it moves sideways.</p>
-                        <a class="btn btn-outline" href="#">View all</a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
 
         <!-- ABOUT -->
-        <section class="snap-sec about" id="about" aria-label="About">
-            <div class="wrap about-grid">
-                <div class="about-card anim">
-                    <div class="about-img" aria-hidden="true"></div>
-                    <div class="about-copy">
-                        <p class="eyebrow">THE CREATIVE</p>
-                        <h2>About Me</h2>
-                        <p class="muted">
-                            I’m an interface designer based in Honolulu, focused on building clean, structured visual
-                            systems for digital products.
-                            My work emphasizes clarity, consistency, and thoughtful interaction design — with a strong
-                            foundation in UI principles and accessibility.
-                        </p>
-                        <p class="muted">
-                            Outside of design, I’m usually at the beach, running, or training at the gym. I also love
-                            baking and decompressing with Nintendo Switch games.
-                        </p>
-                        <a class="btn btn-dark-outline" href="#">Read More</a>
-                    </div>
+        <section class="snap-sec about" id="about" aria-label="About" data-theme="about">
+            <div class="wrap about-card anim">
+                <div class="about-img" aria-hidden="true"></div>
+
+                <div class="about-copy">
+                    <p class="eyebrow">THE CREATIVE</p>
+                    <h2>About Me</h2>
+
+                    <p class="muted">
+                        I’m an interface designer based in Honolulu, focused on building clean, structured visual
+                        systems for digital products. My work emphasizes clarity, consistency, and thoughtful
+                        interaction design.
+                    </p>
+
+                    <p class="muted">
+                        Outside of design, I’m usually at the beach, running, or training at the gym.
+                        I also love baking and decompressing with Nintendo Switch games.
+                    </p>
+
+                    <a class="btn btn-dark-outline" href="#">Read More</a>
                 </div>
             </div>
         </section>
 
         <!-- CONTACT -->
-        <section class="snap-sec contact" id="contact" aria-label="Contact">
+        <section class="snap-sec contact" id="contact" aria-label="Contact" data-theme="contact">
             <div class="wrap anim contact-wrap">
                 <p class="eyebrow">WORK TOGETHER</p>
                 <h2>Contact</h2>
@@ -217,7 +277,7 @@
         </section>
 
         <!-- FOOTER -->
-        <section class="snap-sec footer-sec" aria-label="Footer">
+        <section class="snap-sec footer-sec" aria-label="Footer" data-theme="footer">
             <footer class="footer wrap anim">
                 <div class="footer-row">
                     <small>© <span id="year"></span> Gina Marie Triplett</small>
@@ -230,11 +290,9 @@
                 </div>
             </footer>
         </section>
-
-
-
     </main>
 
+    <!-- CONNECT JS -->
     <script src="./js/script.js"></script>
 </body>
 
