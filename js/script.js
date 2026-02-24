@@ -1,4 +1,12 @@
-// ---------- ONE-TIME INIT GUARD (prevents double timers) ----------
+// =========================================================
+// PORTFOLIO SCRIPT (HOME + CASE STUDY SAFE) — COPY/PASTE
+// - Loader always hides (load event + fallback)
+// - Works on snap-scroll home (#snap) OR normal-scroll case pages (#caseMain)
+// - No duplicate rotator timers
+// - Progress bar works on both pages
+// =========================================================
+
+// ---------- ONE-TIME INIT GUARD ----------
 let didInit = false;
 let rotatorInterval = null;
 
@@ -10,34 +18,43 @@ const loaderPct = document.getElementById("loaderPct");
 const loaderFill = document.getElementById("loaderFill");
 
 function hideLoader() {
-    if (!loader) return;
+    if (!loader) {
+        document.body.classList.remove("is-loading");
+        return;
+    }
+
     loader.classList.add("is-hidden");
     document.body.classList.remove("is-loading");
+
+    // hard remove after fade so it can't block clicks
+    setTimeout(() => {
+        try { loader.remove(); } catch (_) { }
+    }, 700);
 }
 
 function startApp() {
-    if (didInit) return;     // ✅ the whole site initializes once
+    if (didInit) return;
     didInit = true;
 
     hideLoader();
     initPortfolio();
 }
 
-// fail-safe in case anything weird happens
-setTimeout(startApp, 1500);
+// Start when fully loaded + a backup fail-safe
+window.addEventListener("load", startApp);
+setTimeout(startApp, 2500);
 
 // animate loader progress once
 (function runLoader() {
     if (!loaderPct || !loaderFill) return;
 
-    let p = 0;
     const duration = 900;
     const start = performance.now();
 
     function tick(now) {
         const t = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - t, 3);
-        p = Math.round(eased * 100);
+        const p = Math.round(eased * 100);
 
         loaderPct.textContent = `${p}%`;
         loaderFill.style.width = `${p}%`;
@@ -52,37 +69,34 @@ setTimeout(startApp, 1500);
     requestAnimationFrame(tick);
 })();
 
-
 // ---------- SITE ----------
 function initPortfolio() {
-    const snap = document.getElementById("snap");
+    const snap = document.getElementById("snap");         // home scroller
+    const caseMain = document.getElementById("caseMain"); // case page container (optional)
     const yearEl = document.getElementById("year");
     const prog = document.getElementById("progressFill");
+    const hero = document.querySelector(".hero");
 
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Reveal (inside snap scroller)
+    // ---- Reveal animations ----
     const animEls = document.querySelectorAll(".anim");
-    if (snap) {
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) entry.target.classList.add("in");
-            });
-        }, { root: snap, threshold: 0.12 });
-        animEls.forEach(el => io.observe(el));
-    }
+    const revealRoot = snap || null; // if snap exists, observe within it; else viewport
+    const revealIO = new IntersectionObserver(
+        (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
+        { root: revealRoot, threshold: 0.12 }
+    );
+    animEls.forEach((el) => revealIO.observe(el));
 
-    // ---- ROTATOR (single interval, never duplicates) ----
+    // ---- Rotator (single interval, never duplicates) ----
     const words = ["interfaces", "dashboards", "brands", "systems", "experiences"];
     const rot = document.getElementById("rotWord");
     let i = 0;
 
     if (rotatorInterval) clearInterval(rotatorInterval);
-
     if (rot) {
         rotatorInterval = setInterval(() => {
             rot.classList.add("fade");
-
             setTimeout(() => {
                 i = (i + 1) % words.length;
                 rot.textContent = words[i];
@@ -91,36 +105,42 @@ function initPortfolio() {
         }, 1800);
     }
 
-    // ---- Micro interactions: progress + hero parallax (bg + text) ----
-    const hero = document.querySelector(".hero");
-
+    // ---- Progress (HOME via #snap, CASE via window scroll) ----
     function updateProgress() {
-        if (!snap || !prog) return;
-        const max = snap.scrollHeight - snap.clientHeight;
-        const pct = max > 0 ? (snap.scrollTop / max) : 0;
+        if (!prog) return;
+
+        // home: snap scroller
+        if (snap) {
+            const max = snap.scrollHeight - snap.clientHeight;
+            const pct = max > 0 ? snap.scrollTop / max : 0;
+            prog.style.width = `${pct * 100}%`;
+            return;
+        }
+
+        // case: document scroll
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        const pct = max > 0 ? doc.scrollTop / max : 0;
         prog.style.width = `${pct * 100}%`;
     }
 
+    // ---- Hero parallax (only relevant on HOME where .hero + #snap exist) ----
     function updateParallax() {
         if (!snap || !hero) return;
 
         const heroTop = hero.offsetTop;
         const heroH = hero.offsetHeight;
 
-        // y into the hero section (0..heroH)
         const y = snap.scrollTop - heroTop;
         const clamped = Math.max(0, Math.min(y, heroH));
 
-        // background layers use --py, text uses --tpy
         document.documentElement.style.setProperty("--py", `${clamped}px`);
         document.documentElement.style.setProperty("--tpy", `${clamped}px`);
     }
 
     let ticking = false;
-    function onSnapScroll() {
-        if (!snap) return;
+    function onScrollAny() {
         if (ticking) return;
-
         ticking = true;
         requestAnimationFrame(() => {
             updateProgress();
@@ -129,21 +149,14 @@ function initPortfolio() {
         });
     }
 
-    if (snap) {
-        snap.addEventListener("scroll", onSnapScroll, { passive: true });
-    }
-
-    window.addEventListener("resize", () => {
-        updateProgress();
-        updateParallax();
-    });
+    if (snap) snap.addEventListener("scroll", onScrollAny, { passive: true });
+    window.addEventListener("scroll", onScrollAny, { passive: true }); // supports case pages
+    window.addEventListener("resize", onScrollAny);
 
     // initial paint
     updateProgress();
     updateParallax();
 }
-
-
 
 // ---------- FLUID BACKGROUND (mouse follow + section theme) ----------
 (function initFluidBG() {
@@ -165,13 +178,17 @@ function initPortfolio() {
 
     const lerp = (a, b, t) => a + (b - a) * t;
 
-    // Mouse tracking (viewport coords)
-    window.addEventListener("mousemove", (e) => {
-        targetX = e.clientX;
-        targetY = e.clientY;
-        root.style.setProperty("--mx", `${targetX}px`);
-        root.style.setProperty("--my", `${targetY}px`);
-    }, { passive: true });
+    // Mouse tracking
+    window.addEventListener(
+        "mousemove",
+        (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            root.style.setProperty("--mx", `${targetX}px`);
+            root.style.setProperty("--my", `${targetY}px`);
+        },
+        { passive: true }
+    );
 
     // Fluid animation loop
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -189,40 +206,52 @@ function initPortfolio() {
             blob1.style.left = x1 + "px";
             blob1.style.top = y1 + "px";
 
-            blob2.style.left = (x2 + 90) + "px";
-            blob2.style.top = (y2 - 70) + "px";
+            blob2.style.left = x2 + 90 + "px";
+            blob2.style.top = y2 - 70 + "px";
 
-            blob3.style.left = (x3 - 120) + "px";
-            blob3.style.top = (y3 + 95) + "px";
+            blob3.style.left = x3 - 120 + "px";
+            blob3.style.top = y3 + 95 + "px";
 
             requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
     }
 
-    // Theme palettes (keep these in your brand range)
+    // Theme palettes
     const themes = {
         hero: ["rgba(246,207,217,.42)", "rgba(182,167,255,.34)", "rgba(255,255,255,.16)"],
         projects: ["rgba(182,167,255,.34)", "rgba(246,207,217,.30)", "rgba(255,255,255,.14)"],
         about: ["rgba(246,207,217,.30)", "rgba(182,167,255,.28)", "rgba(255,255,255,.14)"],
         contact: ["rgba(246,207,217,.36)", "rgba(182,167,255,.30)", "rgba(255,255,255,.18)"],
         footer: ["rgba(182,167,255,.26)", "rgba(246,207,217,.22)", "rgba(255,255,255,.12)"],
+        case: ["rgba(182,167,255,.28)", "rgba(246,207,217,.22)", "rgba(255,255,255,.12)"],
     };
 
-    // IMPORTANT: your site scrolls in #snap, so observer root must be snap
+    // HOME: observe sections in snap scroller
     const sections = document.querySelectorAll(".snap-sec[data-theme]");
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const key = entry.target.dataset.theme;
-            const [c1, c2, c3] = themes[key] || themes.hero;
-            root.style.setProperty("--c1", c1);
-            root.style.setProperty("--c2", c2);
-            root.style.setProperty("--c3", c3);
-        });
-    }, { root: snap || null, threshold: 0.55 });
+    if (sections.length) {
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const key = entry.target.dataset.theme;
+                    const [c1, c2, c3] = themes[key] || themes.hero;
+                    root.style.setProperty("--c1", c1);
+                    root.style.setProperty("--c2", c2);
+                    root.style.setProperty("--c3", c3);
+                });
+            },
+            { root: snap || null, threshold: 0.55 }
+        );
 
-    sections.forEach(s => io.observe(s));
+        sections.forEach((s) => io.observe(s));
+    } else {
+        // CASE pages: set a stable palette
+        const [c1, c2, c3] = themes.case;
+        root.style.setProperty("--c1", c1);
+        root.style.setProperty("--c2", c2);
+        root.style.setProperty("--c3", c3);
+    }
 })();
 
 // ----- NAV ACTIVE LINK (scrollspy for #snap) -----
@@ -231,47 +260,32 @@ function initPortfolio() {
     const sections = Array.from(document.querySelectorAll(".snap-sec[id]"));
     const links = Array.from(document.querySelectorAll(".menu a[href^='#']"));
 
+    // Only run on HOME where #snap exists
     if (!snap || !sections.length || !links.length) return;
 
     const setActive = (id) => {
-        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
+        links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
     };
 
-    // Update active on click (instant feedback)
-    links.forEach(a => {
+    // Update active on click
+    links.forEach((a) => {
         a.addEventListener("click", () => {
             const id = a.getAttribute("href").slice(1);
             setActive(id);
         });
     });
 
-    // Update active on scroll (correct state as you scroll-snap)
-    const io = new IntersectionObserver((entries) => {
-        // pick the most visible section
-        const visible = entries
-            .filter(e => e.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    // Update active on scroll
+    const io = new IntersectionObserver(
+        (entries) => {
+            const visible = entries
+                .filter((e) => e.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-        if (visible) setActive(visible.target.id);
-    }, { root: snap, threshold: [0.35, 0.55, 0.75] });
+            if (visible) setActive(visible.target.id);
+        },
+        { root: snap, threshold: [0.35, 0.55, 0.75] }
+    );
 
-    sections.forEach(sec => io.observe(sec));
+    sections.forEach((sec) => io.observe(sec));
 })();
-
-
-function updateProgress() {
-    if (!prog) return;
-
-    if (snap) {
-        const max = snap.scrollHeight - snap.clientHeight;
-        const pct = max > 0 ? (snap.scrollTop / max) : 0;
-        prog.style.width = `${pct * 100}%`;
-        return;
-    }
-
-    // case page: document scroll
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    const pct = max > 0 ? (doc.scrollTop / max) : 0;
-    prog.style.width = `${pct * 100}%`;
-}
