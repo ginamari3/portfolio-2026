@@ -257,3 +257,21 @@ function initPortfolio() {
 
     sections.forEach(sec => io.observe(sec));
 })();
+
+
+function updateProgress() {
+    if (!prog) return;
+
+    if (snap) {
+        const max = snap.scrollHeight - snap.clientHeight;
+        const pct = max > 0 ? (snap.scrollTop / max) : 0;
+        prog.style.width = `${pct * 100}%`;
+        return;
+    }
+
+    // case page: document scroll
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    const pct = max > 0 ? (doc.scrollTop / max) : 0;
+    prog.style.width = `${pct * 100}%`;
+}

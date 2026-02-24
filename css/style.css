@@ -863,3 +863,244 @@ h1 {
         margin: 0 auto;
     }
 }
+
+
+/* =========================================================
+   CASE STUDY PAGE
+========================================================= */
+body.case {
+    overflow: auto;
+    /* home uses overflow hidden + #snap scroller */
+}
+
+body.case .snap {
+    display: none;
+}
+
+/* safety if you ever reuse layout */
+
+.case-main {
+    min-height: calc(100vh - var(--headerH));
+    padding-bottom: 80px;
+}
+
+/* Tone down the “liquid” on case pages (teacher-friendly) */
+body.case .blob {
+    filter: blur(56px);
+    opacity: .55;
+}
+
+body.case .bg::after {
+    opacity: .12;
+}
+
+/* Hero */
+.case-hero {
+    padding-block: clamp(56px, 7vh, 92px);
+    border-top: 0;
+}
+
+.case-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 28px;
+    align-items: center;
+}
+
+.case-title {
+    margin: 0;
+    font-size: clamp(42px, 5vw, 74px);
+    line-height: .95;
+    letter-spacing: -1.2px;
+}
+
+.case-subtitle {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.case-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.case-hero-media .case-cover {
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, .4);
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .6), transparent 45%),
+        linear-gradient(135deg, rgba(246, 207, 217, .45), rgba(182, 167, 255, .35));
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .10);
+}
+
+/* Sections */
+.case-sec {
+    padding-block: 18px;
+}
+
+.case-split {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.case-bullets {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    color: rgba(11, 11, 11, .72);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.case-overview {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 22px;
+    align-items: start;
+}
+
+.facts-grid {
+    margin: 18px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+}
+
+.fact dt {
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .7;
+}
+
+.fact dd {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: rgba(11, 11, 11, .78);
+}
+
+.case-nav {
+    position: sticky;
+    top: calc(var(--headerH) + 14px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, .10);
+    background: rgba(255, 255, 255, .50);
+    backdrop-filter: blur(10px);
+}
+
+.case-nav a {
+    font-size: 13px;
+    opacity: .78;
+}
+
+.case-nav a:hover {
+    opacity: 1;
+}
+
+.case-media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.case-media {
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, .40);
+    background: rgba(255, 255, 255, .42);
+    aspect-ratio: 4/3;
+}
+
+.steps {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.step {
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, .10);
+    background: rgba(255, 255, 255, .45);
+    padding: 14px;
+}
+
+.step h3 {
+    margin: 0 0 8px;
+    font-size: 13px;
+}
+
+.system-grid,
+.mock-grid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.system-card {
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, .10);
+    background: rgba(255, 255, 255, .45);
+    padding: 14px;
+}
+
+.system-card h3 {
+    margin: 0 0 8px;
+    font-size: 13px;
+}
+
+.mock {
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, .40);
+    background: rgba(255, 255, 255, .42);
+    aspect-ratio: 16/10;
+}
+
+.case-footer-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+    .case-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .case-split {
+        grid-template-columns: 1fr;
+    }
+
+    .case-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .case-nav {
+        position: relative;
+        top: 0;
+    }
+
+    .facts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps,
+    .system-grid,
+    .mock-grid,
+    .case-media-grid {
+        grid-template-columns: 1fr;
+    }
+}
