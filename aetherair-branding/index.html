@@ -9,6 +9,31 @@
 
     <!-- CASE STUDY (flat / white like your screenshot) -->
     <style>
+        /* --- Sticky header fix (force it on this page) --- */
+        body.case-flat .site-header {
+            position: fixed !important;
+            /* more reliable than sticky across layouts */
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 9999;
+            /* stay above hero/content */
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* make room for the fixed header (your header is ~56px tall) */
+        body.case-flat main {
+            padding-top: 56px;
+        }
+
+        /* optional: keep the progress bar visible */
+        body.case-flat .progress {
+            background: transparent;
+        }
+
         /* page base */
         body.case-flat {
             background: #fff;
@@ -346,7 +371,7 @@
         <section class="cs-hero">
             <div class="cs-hero-media">
                 <!-- REPLACE with your hero image -->
-                <img src="../" alt="Aether Airlines hero image">
+                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Aether Airlines hero image">
 
                 <div class="cs-hero-overlay">
                     <div class="cs-hero-copy">
@@ -373,15 +398,15 @@
                 <div class="cs-wrap cs-triptych-grid">
                     <figure class="cs-shot">
                         <!-- REPLACE -->
-                        <img src="../aetherair-branding/img/mock-boarding-pass.jpg" alt="Brand display mockup">
+                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Brand display mockup">
                     </figure>
                     <figure class="cs-shot">
                         <!-- REPLACE -->
-                        <img src="../aetherair-branding/img/photo-airport-checkin.jpg" alt="Airport check-in photo">
+                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Airport check-in photo">
                     </figure>
                     <figure class="cs-shot">
                         <!-- REPLACE -->
-                        <img src="../aetherair-branding/img/overview-card.jpg" alt="Project overview card">
+                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Project overview card">
                     </figure>
                 </div>
             </div>
@@ -410,7 +435,7 @@
         <section class="cs-sec">
             <div class="cs-wrap cs-center">
                 <!-- REPLACE -->
-                <img src="../aetherair-branding/img/logo-full.png" alt="Aether Airlines logo">
+                <img src="../aetherair-branding/img/gina-placeholder1x1.jpgg" alt="Aether Airlines logo">
             </div>
         </section>
 
@@ -418,7 +443,7 @@
         <section class="cs-sec">
             <div class="cs-wrap cs-center">
                 <!-- REPLACE -->
-                <img class="cs-tall" src="../aetherair-branding/img/ticket-mock.png" alt="Ticket mockup">
+                <img class="cs-tall" src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Ticket mockup">
             </div>
         </section>
 
@@ -436,10 +461,10 @@
             <div class="cs-wrap cs-split-visual">
                 <div class="cs-shot">
                     <!-- REPLACE -->
-                    <img src="../aetherair-branding/img/logo-breakdown.png" alt="Logo breakdown">
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Logo breakdown">
                 </div>
 
-                <div class="cs-typeblock">
+                <!-- <div class="cs-typeblock">
                     <div style="height: 10px;"></div>
                     <div><strong>Nexa Rusty Grotesk Display Pro</strong></div>
                     <div class="mono">75 Thin</div>
@@ -454,7 +479,7 @@
                     <div class="mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
                     <div class="mono">abcdefghijklmnopqrstuvwxyz</div>
                     <div class="mono">1234567890</div>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -491,21 +516,21 @@
             <!-- palette image -->
             <div class="cs-wrap cs-palette">
                 <!-- REPLACE -->
-                <img src="../aetherair-branding/img/palette.png" alt="Color palette">
+                <img src="../aetherair-branding/img/8-colors-aa.png" alt="Color palette">
             </div>
 
             <!-- packaging row -->
             <div class="cs-wrap cs-pack-row">
                 <!-- REPLACE -->
-                <img src="../aetherair-branding/img/pack-cup-1.png" alt="Cup mockup 1">
-                <img src="../aetherair-branding/img/pack-cup-2.png" alt="Cup mockup 2">
-                <img src="../aetherair-branding/img/pack-bag.png" alt="Bag mockup">
+                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 1">
+                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 2">
+                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Bag mockup">
             </div>
 
             <!-- box -->
             <div class="cs-wrap cs-box">
                 <!-- REPLACE -->
-                <img src="../aetherair-branding/img/pack-box.png" alt="Box mockup">
+                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Box mockup">
             </div>
         </section>
 

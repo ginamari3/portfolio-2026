@@ -429,9 +429,15 @@ body.is-loading .snap {
 .snap {
     height: calc(100vh - var(--headerH));
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
+
+    /* smoother / less aggressive snap */
+    scroll-snap-type: y proximity;
+
     scroll-behavior: smooth;
     overscroll-behavior: contain;
+
+    /* helps mobile feel smoother */
+    -webkit-overflow-scrolling: touch;
 }
 
 .snap-sec {
@@ -441,6 +447,20 @@ body.is-loading .snap {
     border-top: 1px solid var(--line);
     position: relative;
     display: block;
+}
+
+.snap {
+    height: calc(100vh - var(--headerH));
+    overflow-y: auto;
+
+    /* smoother / less aggressive snap */
+    scroll-snap-type: y proximity;
+
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+
+    /* helps mobile feel smoother */
+    -webkit-overflow-scrolling: touch;
 }
 
 .snap-sec:first-child {
@@ -562,7 +582,8 @@ h1 {
 
 .rotator-word {
     display: inline-block;
-    padding: 2px 8px;
+    padding: 4px 8px 6px 8px;
+    /* top right bottom left (teacher request) */
     border-radius: 999px;
     border: 1px solid rgba(11, 11, 11, .18);
     background: rgba(255, 255, 255, .45);
@@ -570,6 +591,8 @@ h1 {
     min-width: 12ch;
     text-align: center;
     transition: opacity .25s ease, transform .25s ease;
+    line-height: 1.1;
+    /* helps the pill feel vertically centered */
 }
 
 .rotator-word.fade {
@@ -610,10 +633,11 @@ h1 {
 
 .strip {
     margin: 10px 0 26px;
-    background: rgba(246, 255, 161, .99);
+    background: #242424;
+    /* black */
     border-radius: 14px;
     overflow: hidden;
-    border: 1px solid rgba(11, 11, 11, .12);
+    border: 1px solid rgba(255, 255, 255, .15);
 }
 
 .strip-inner {
@@ -630,6 +654,14 @@ h1 {
     font-size: 13px;
     letter-spacing: .35px;
     font-weight: 550;
+}
+
+.marquee {
+    color: #ffffff;
+}
+
+.marquee .dot {
+    color: rgba(255, 255, 255, .7);
 }
 
 .marquee .dot {
@@ -820,8 +852,22 @@ h1 {
    11) RESPONSIVE
 ========================================================= */
 @media (max-width: 900px) {
+
+    /* keep the menu visible on mobile */
     .menu {
+        display: flex;
+        gap: 14px;
+        font-size: 13px;
+    }
+
+    /* hide the "home" link on mobile only */
+    .menu a[href="#top"] {
         display: none;
+    }
+
+    /* optional: tighten header spacing on mobile */
+    .nav {
+        padding: 12px 0;
     }
 
     .hero-grid {
