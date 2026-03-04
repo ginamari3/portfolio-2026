@@ -680,8 +680,45 @@ h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    /* makes spanning feel consistent */
     gap: 16px;
+}
+
+/* Featured first project */
+.card--featured {
+    grid-column: 1 / span 2;
+    grid-row: span 2;
+}
+
+/* Give the featured card a taller image */
+.card--featured .thumb {
+    aspect-ratio: 16 / 11;
+    /* taller than 16/10 */
+    min-height: 360px;
+    /* ensures it feels “big” */
+}
+
+/* Optional: make the featured title pop slightly */
+.card--featured .meta h3 {
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card--featured {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .card--featured .thumb {
+        min-height: 240px;
+    }
 }
 
 /* SINGLE source of truth for cards */
