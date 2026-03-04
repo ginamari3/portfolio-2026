@@ -1,9 +1,9 @@
 // =========================================================
-// PORTFOLIO SCRIPT (HOME + CASE STUDY SAFE) — COPY/PASTE
-// - Loader always hides (load event + fallback)
-// - Works on snap-scroll home (#snap) OR normal-scroll case pages (#caseMain)
-// - No duplicate rotator timers
-// - Progress bar works on both pages
+// PORTFOLIO SCRIPT (HOME SAFE) — COPY/PASTE
+// - Loader works + always hides (load + fallback)
+// - Cursor-follow disabled on <=680px or touch devices
+// - Snap feels smoother (native snap + eased anchor scroll)
+// - Reveal animations, rotator, progress bar, nav active
 // =========================================================
 
 // ---------- ONE-TIME INIT GUARD ----------
@@ -26,7 +26,6 @@ function hideLoader() {
     loader.classList.add("is-hidden");
     document.body.classList.remove("is-loading");
 
-    // hard remove after fade so it can't block clicks
     setTimeout(() => {
         try { loader.remove(); } catch (_) { }
     }, 700);
@@ -38,9 +37,11 @@ function startApp() {
 
     hideLoader();
     initPortfolio();
+    initFluidBG();
+    initNavActive();
 }
 
-// Start when fully loaded + a backup fail-safe
+// Start when fully loaded + backup
 window.addEventListener("load", startApp);
 setTimeout(startApp, 2500);
 
@@ -59,7 +60,6 @@ setTimeout(startApp, 2500);
         loaderPct.textContent = `${p}%`;
         loaderFill.style.width = `${p}%`;
 
-        // tiny parallax wobble while loading
         document.documentElement.style.setProperty("--lpy", `${eased * 80}px`);
 
         if (t < 1) requestAnimationFrame(tick);
@@ -71,24 +71,22 @@ setTimeout(startApp, 2500);
 
 // ---------- SITE ----------
 function initPortfolio() {
-    const snap = document.getElementById("snap");         // home scroller
-    const caseMain = document.getElementById("caseMain"); // case page container (optional)
+    const snap = document.getElementById("snap");
     const yearEl = document.getElementById("year");
     const prog = document.getElementById("progressFill");
     const hero = document.querySelector(".hero");
 
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // ---- Reveal animations ----
+    // Reveal animations
     const animEls = document.querySelectorAll(".anim");
-    const revealRoot = snap || null; // if snap exists, observe within it; else viewport
     const revealIO = new IntersectionObserver(
         (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
-        { root: revealRoot, threshold: 0.12 }
+        { root: snap || null, threshold: 0.12 }
     );
     animEls.forEach((el) => revealIO.observe(el));
 
-    // ---- Rotator (single interval, never duplicates) ----
+    // Rotator
     const words = ["interfaces", "dashboards", "brands", "systems", "experiences"];
     const rot = document.getElementById("rotWord");
     let i = 0;
@@ -105,26 +103,15 @@ function initPortfolio() {
         }, 1800);
     }
 
-    // ---- Progress (HOME via #snap, CASE via window scroll) ----
+    // Progress bar
     function updateProgress() {
-        if (!prog) return;
-
-        // home: snap scroller
-        if (snap) {
-            const max = snap.scrollHeight - snap.clientHeight;
-            const pct = max > 0 ? snap.scrollTop / max : 0;
-            prog.style.width = `${pct * 100}%`;
-            return;
-        }
-
-        // case: document scroll
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - doc.clientHeight;
-        const pct = max > 0 ? doc.scrollTop / max : 0;
+        if (!prog || !snap) return;
+        const max = snap.scrollHeight - snap.clientHeight;
+        const pct = max > 0 ? snap.scrollTop / max : 0;
         prog.style.width = `${pct * 100}%`;
     }
 
-    // ---- Hero parallax (only relevant on HOME where .hero + #snap exist) ----
+    // Hero parallax
     function updateParallax() {
         if (!snap || !hero) return;
 
@@ -139,7 +126,7 @@ function initPortfolio() {
     }
 
     let ticking = false;
-    function onScrollAny() {
+    function onScroll() {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(() => {
@@ -149,17 +136,57 @@ function initPortfolio() {
         });
     }
 
-    if (snap) snap.addEventListener("scroll", onScrollAny, { passive: true });
-    window.addEventListener("scroll", onScrollAny, { passive: true }); // supports case pages
-    window.addEventListener("resize", onScrollAny);
+    if (snap) snap.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
-    // initial paint
     updateProgress();
     updateParallax();
+
+    // Smooth anchor clicks inside #snap
+    initSmoothAnchors(snap);
 }
 
-// ---------- FLUID BACKGROUND (mouse follow + section theme) ----------
-(function initFluidBG() {
+// Smooth anchor scrolling with easing
+function initSmoothAnchors(snap) {
+    if (!snap) return;
+
+    const links = Array.from(document.querySelectorAll("a[href^='#']"));
+    links.forEach((a) => {
+        a.addEventListener("click", (e) => {
+            const href = a.getAttribute("href");
+            if (!href || href === "#" || href.length < 2) return;
+
+            const id = href.slice(1);
+            const target = document.getElementById(id);
+            if (!target) return;
+
+            e.preventDefault();
+            easeScrollTo(snap, target.offsetTop, 520);
+        });
+    });
+}
+
+function easeScrollTo(container, to, duration = 520) {
+    const start = container.scrollTop;
+    const change = to - start;
+    const startTime = performance.now();
+
+    const easeInOutCubic = (t) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    function animate(now) {
+        const elapsed = now - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        const eased = easeInOutCubic(t);
+        container.scrollTop = start + change * eased;
+        if (t < 1) requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// ---------- FLUID BACKGROUND ----------
+function initFluidBG() {
     const snap = document.getElementById("snap");
     const root = document.documentElement;
 
@@ -168,7 +195,9 @@ function initPortfolio() {
     const blob3 = document.querySelector(".blob--3");
     if (!blob1 || !blob2 || !blob3) return;
 
-    // Start centered
+    const disableFollow = window.matchMedia("(max-width: 680px), (pointer: coarse)").matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     let targetX = window.innerWidth * 0.5;
     let targetY = window.innerHeight * 0.5;
 
@@ -178,114 +207,90 @@ function initPortfolio() {
 
     const lerp = (a, b, t) => a + (b - a) * t;
 
-    // Mouse tracking
-    window.addEventListener(
-        "mousemove",
-        (e) => {
+    if (!disableFollow) {
+        window.addEventListener("mousemove", (e) => {
             targetX = e.clientX;
             targetY = e.clientY;
             root.style.setProperty("--mx", `${targetX}px`);
             root.style.setProperty("--my", `${targetY}px`);
-        },
-        { passive: true }
-    );
+        }, { passive: true });
+    } else {
+        root.style.setProperty("--mx", `${targetX}px`);
+        root.style.setProperty("--my", `${targetY}px`);
+    }
 
-    // Fluid animation loop
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce) {
         function tick() {
-            x1 = lerp(x1, targetX, 0.09);
-            y1 = lerp(y1, targetY, 0.09);
+            const t1 = disableFollow ? 0.02 : 0.09;
+            const t2 = disableFollow ? 0.015 : 0.06;
+            const t3 = disableFollow ? 0.012 : 0.045;
 
-            x2 = lerp(x2, targetX, 0.06);
-            y2 = lerp(y2, targetY, 0.06);
+            x1 = lerp(x1, targetX, t1);
+            y1 = lerp(y1, targetY, t1);
 
-            x3 = lerp(x3, targetX, 0.045);
-            y3 = lerp(y3, targetY, 0.045);
+            x2 = lerp(x2, targetX, t2);
+            y2 = lerp(y2, targetY, t2);
+
+            x3 = lerp(x3, targetX, t3);
+            y3 = lerp(y3, targetY, t3);
 
             blob1.style.left = x1 + "px";
             blob1.style.top = y1 + "px";
 
-            blob2.style.left = x2 + 90 + "px";
-            blob2.style.top = y2 - 70 + "px";
+            blob2.style.left = (x2 + 90) + "px";
+            blob2.style.top = (y2 - 70) + "px";
 
-            blob3.style.left = x3 - 120 + "px";
-            blob3.style.top = y3 + 95 + "px";
+            blob3.style.left = (x3 - 120) + "px";
+            blob3.style.top = (y3 + 95) + "px";
 
             requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
     }
 
-    // Theme palettes
     const themes = {
         hero: ["rgba(246,207,217,.42)", "rgba(182,167,255,.34)", "rgba(255,255,255,.16)"],
         projects: ["rgba(182,167,255,.34)", "rgba(246,207,217,.30)", "rgba(255,255,255,.14)"],
         about: ["rgba(246,207,217,.30)", "rgba(182,167,255,.28)", "rgba(255,255,255,.14)"],
         contact: ["rgba(246,207,217,.36)", "rgba(182,167,255,.30)", "rgba(255,255,255,.18)"],
         footer: ["rgba(182,167,255,.26)", "rgba(246,207,217,.22)", "rgba(255,255,255,.12)"],
-        case: ["rgba(182,167,255,.28)", "rgba(246,207,217,.22)", "rgba(255,255,255,.12)"],
     };
 
-    // HOME: observe sections in snap scroller
     const sections = document.querySelectorAll(".snap-sec[data-theme]");
     if (sections.length) {
-        const io = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    const key = entry.target.dataset.theme;
-                    const [c1, c2, c3] = themes[key] || themes.hero;
-                    root.style.setProperty("--c1", c1);
-                    root.style.setProperty("--c2", c2);
-                    root.style.setProperty("--c3", c3);
-                });
-            },
-            { root: snap || null, threshold: 0.55 }
-        );
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const key = entry.target.dataset.theme;
+                const [c1, c2, c3] = themes[key] || themes.hero;
+                root.style.setProperty("--c1", c1);
+                root.style.setProperty("--c2", c2);
+                root.style.setProperty("--c3", c3);
+            });
+        }, { root: snap || null, threshold: 0.55 });
 
         sections.forEach((s) => io.observe(s));
-    } else {
-        // CASE pages: set a stable palette
-        const [c1, c2, c3] = themes.case;
-        root.style.setProperty("--c1", c1);
-        root.style.setProperty("--c2", c2);
-        root.style.setProperty("--c3", c3);
     }
-})();
+}
 
-// ----- NAV ACTIVE LINK (scrollspy for #snap) -----
-(function initNavActive() {
+// ---------- NAV ACTIVE LINK ----------
+function initNavActive() {
     const snap = document.getElementById("snap");
     const sections = Array.from(document.querySelectorAll(".snap-sec[id]"));
     const links = Array.from(document.querySelectorAll(".menu a[href^='#']"));
-
-    // Only run on HOME where #snap exists
     if (!snap || !sections.length || !links.length) return;
 
     const setActive = (id) => {
         links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
     };
 
-    // Update active on click
-    links.forEach((a) => {
-        a.addEventListener("click", () => {
-            const id = a.getAttribute("href").slice(1);
-            setActive(id);
-        });
-    });
+    const io = new IntersectionObserver((entries) => {
+        const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-    // Update active on scroll
-    const io = new IntersectionObserver(
-        (entries) => {
-            const visible = entries
-                .filter((e) => e.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-            if (visible) setActive(visible.target.id);
-        },
-        { root: snap, threshold: [0.35, 0.55, 0.75] }
-    );
+        if (visible) setActive(visible.target.id);
+    }, { root: snap, threshold: [0.35, 0.55, 0.75] });
 
     sections.forEach((sec) => io.observe(sec));
-})();
+}
