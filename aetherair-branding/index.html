@@ -198,26 +198,46 @@
             line-height: 1.55;
         }
 
-        /* pill nav like screenshot */
+        /* pill nav (inside hero, under text) */
         .cs-pillnav {
             display: flex;
             gap: 10px;
-            justify-content: center;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(11, 11, 11, .12);
+            justify-content: flex-start;
+            align-items: center;
+
+            padding: 14px 0 0;
+            /* space above pills */
+            border-bottom: 0;
+            /* remove the bar look */
         }
 
         .cs-pillnav a {
             font-size: 12px;
             padding: 8px 14px;
             border-radius: 999px;
-            border: 1px solid rgba(11, 11, 11, .18);
-            background: rgba(255, 255, 255, .75);
-            opacity: .85;
+
+            border: 1px solid rgba(255, 255, 255, .38);
+            background: rgba(255, 255, 255, .18);
+            color: rgba(255, 255, 255, .92);
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            opacity: .95;
+            text-decoration: none;
         }
 
         .cs-pillnav a:hover {
             opacity: 1;
+            background: rgba(255, 255, 255, .26);
+        }
+
+        /* mobile: center them */
+        @media (max-width: 900px) {
+            .cs-pillnav {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
         }
 
         /* three-up image row under hero */
@@ -583,9 +603,17 @@
                         <p class="eyebrow">AETHER AIRLINES</p>
                         <h1>Intentional travel,<br />elevated</h1>
                         <p>
-                            Aether Airlines is a conceptual airline brand built to communicate calm, clarity, and
-                            premium intention across digital + physical touchpoints.
+                            Aether Airlines is a luxury airline concept around intentional travel – where comfort,
+                            design, and well-being meet. Aether focuses on elevating the experience for modern travelers
+                            during flight delays and long layovers.
                         </p>
+
+                        <!-- PILL NAV -->
+                        <nav class="cs-pillnav" aria-label="Case study quick nav">
+                            <a href="#challenge">The Challenge</a>
+                            <a href="#solution">The Solution</a>
+                            <a href="#approach">My Approach</a>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -618,12 +646,7 @@
                 </div>
             </div>
 
-            <!-- PILL NAV -->
-            <nav class="cs-pillnav" aria-label="Case study quick nav">
-                <a href="#challenge">The Challenge</a>
-                <a href="#solution">The Solution</a>
-                <a href="#approach">My Approach</a>
-            </nav>
+
 
 
 
@@ -687,13 +710,7 @@
             </div>
         </section> -->
 
-            <!-- BIG LOGO CENTER -->
-            <section class="cs-sec">
-                <div class="cs-wrap cs-center">
-                    <!-- REPLACE -->
-                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Aether Airlines logo">
-                </div>
-            </section>
+
 
             <!-- THE CHALLENGE -->
             <section class="cs-sec" id="challenge">
@@ -701,16 +718,13 @@
                     <h2 class="cs-h">The Challenge</h2>
                     <div>
                         <p class="cs-body">
-                            Travelers are overloaded by noisy, stressful experiences. The challenge was to design a
-                            brand
-                            system that
-                            feels premium but not cold—calm, intentional, and easy to recognize across touchpoints.
+                            Airlines all kind of look the same. Most of them focus on speed, efficiency, and bold
+                            branding — but not many focus on how travel actually feels.
+                            For Aether Airlines, I wanted to create a brand that felt calm, trustworthy, and quietly
+                            luxurious. The challenge was finding a balance between premium and approachable. I didn’t
+                            want it to feel flashy or exclusive — just refined, intentional, and easy to move through.
                         </p>
-                        <ul class="case-bullets">
-                            <li>Create a modern airline identity with warmth + clarity</li>
-                            <li>Build a flexible visual system for web + packaging</li>
-                            <li>Communicate “elevated travel” without being sterile</li>
-                        </ul>
+
                     </div>
                 </div>
             </section>
@@ -736,10 +750,10 @@
                 <div class="cs-wrap cs-two">
                     <h2 class="cs-h">The Solution</h2>
                     <p class="cs-body">
-                        Aether’s system combines a minimal mark, deep blues, and star-like accents to create a calm
-                        premium
-                        tone.
-                        The result is a consistent brand language that works from ticketing screens to packaging.
+                        I built a brand system centered around softness and clarity. From the logo to the color palette,
+                        every detail was designed to make the experience feel lighter and less overwhelming.
+                        The visual language leans into subtle contrast, clean typography, and atmospheric tones to
+                        create a sense of ease. Instead of loud luxury, Aether focuses on quiet confidence.
                     </p>
                 </div>
 
@@ -780,20 +794,25 @@
                         <!-- your same process copy (from your original case study) -->
                         <div class="steps" style="margin-top: 0;">
                             <div class="step">
-                                <h3>01 — Research + Inspiration</h3>
-                                <p class="muted">Benchmarked premium travel brands and identified “calm clarity” as the
-                                    North Star.</p>
+                                <h3>Designing for Emotion First</h3>
+                                <p class="muted">Before designing anything, I thought about how travelers want to feel —
+                                    especially in airports, which can be chaotic. I kept coming back to calm, grounded,
+                                    and taken care of. That mindset guided decisions around spacing, typography, and
+                                    color.</p>
                             </div>
                             <div class="step">
-                                <h3>02 — Visual Direction</h3>
-                                <p class="muted">Defined moodboards, type direction, and icon/star motif to support the
-                                    concept.</p>
+                                <h3>Luxury Without Being Loud</h3>
+                                <p class="muted">Rather than using obvious luxury signals, I focused on restraint. Soft
+                                    contrast, generous spacing, and simple layouts create a premium feel without
+                                    overcomplicating the design. The goal was to make it feel elevated, not
+                                    intimidating.</p>
                             </div>
                             <div class="step">
-                                <h3>03 — System + Mockups</h3>
-                                <p class="muted">Built a cohesive set of colors, type rules, and applications across
-                                    print +
-                                    digital.</p>
+                                <h3>Creating a Flexible System</h3>
+                                <p class="muted">I designed the identity to work across multiple touchpoints — from
+                                    boarding passes to mobile screens to in-flight materials. The system stays
+                                    consistent, but it’s flexible enough to grow. That was important to me because
+                                    brands don’t live in one place.</p>
                             </div>
                         </div>
                     </div>
@@ -825,10 +844,12 @@
                 <div class="cs-wrap cs-two">
                     <h2 class="cs-h">In Conclusion</h2>
                     <p class="cs-body">
-                        This project strengthened my ability to design a consistent brand system and apply it across
-                        touchpoints.
-                        Next, I’d expand the UI into a full booking flow and refine the packaging suite for additional
-                        product lines.
+                        Aether Airlines reflects how I approach branding — not just as visuals, but as an experience.
+                        I’m interested in how design shapes emotion and behavior, especially in high-stress environments
+                        like travel.
+                        This project shows how I translate abstract ideas into a clear, usable system. If expanded
+                        further, Aether could naturally extend into digital booking, environmental graphics, and
+                        in-flight experiences.
                     </p>
                 </div>
             </section>
