@@ -73,28 +73,98 @@
             border-top: 0;
         }
 
+        .cs-pronounce {
+            position: absolute;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            font-size: 13px;
+            letter-spacing: .05em;
+            color: rgba(255, 255, 255, .85);
+
+            text-align: center;
+            white-space: nowrap;
+        }
+
         .cs-hero-media {
             position: relative;
             width: 100%;
-            min-height: clamp(166px, 29vh, 296px);
-            /* 20% shorter */
+            min-height: clamp(468px, 82vh, 831px);
             border-bottom: 1px solid rgba(11, 11, 11, .12);
             overflow: hidden;
             background: #e9eef4;
             transform: none;
         }
 
-        .cs-hero-media img {
+        /* Shared image rules */
+        .cs-hero-img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transform: scale(1.02);
         }
 
+        .cs-hero-media {
+            position: relative;
+            width: 100%;
+            min-height: clamp(468px, 82vh, 831px);
+            border-bottom: 1px solid rgba(11, 11, 11, .12);
+            overflow: hidden;
+
+            /* PARALLAX BACKGROUND */
+            background-image: url("../aetherair-branding/img/1-hero-airplane-3.jpg");
+            background-size: cover;
+            background-position: center 60%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            /* fallback color while image loads */
+            background-color: #e9eef4;
+        }
+
+        /* Stars: mid-right, 40% opacity */
+        .cs-hero-stars {
+            z-index: 2;
+            opacity: 0.4;
+
+            /* move it mid-right */
+            inset: auto;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+
+            /* control its size */
+            width: min(38vw, 340px);
+            height: auto;
+
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        /* Bird: bottom-left, 30% opacity */
+        .cs-hero-bird {
+            z-index: 2;
+            opacity: 0.3;
+
+            inset: auto;
+            left: 5%;
+            bottom: 8%;
+
+            width: min(16vw, 140px);
+            height: auto;
+
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        /* Text overlay above everything */
         .cs-hero-overlay {
             position: absolute;
             inset: 0;
+            z-index: 3;
             display: grid;
             place-items: center;
             padding: 40px 0;
@@ -345,6 +415,129 @@
                 text-align: center;
             }
         }
+
+        /* ===== Yellow banner + image/credits split ===== */
+        .cs-credits-sec {
+            padding: 0;
+            /* we’ll control padding inside */
+            border-top: 1px solid rgba(11, 11, 11, .12);
+        }
+
+        /* ===== Rotating (marquee) yellow bar ===== */
+        .cs-yellowbar {
+            background: #e7f34a;
+            border-bottom: 1px solid rgba(11, 11, 11, .12);
+            overflow: hidden;
+        }
+
+        .cs-yellowbar-inner {
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .cs-yellowbar-marquee {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            white-space: nowrap;
+            width: max-content;
+            animation: csMarquee 45s linear infinite;
+            font-size: 12px;
+            font-weight: 600;
+            /* letter-spacing: .08em; */
+            /* text-transform: uppercase; */
+            letter-spacing: .05em;
+            color: rgba(11, 11, 11, .85);
+        }
+
+        .cs-yellowbar-marquee .dot {
+            margin: 0 8px;
+        }
+
+        /* same idea as your portfolio: move left by half because we duplicated content */
+        @keyframes csMarquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* optional: respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .cs-yellowbar-marquee {
+                animation: none;
+            }
+        }
+
+        .cs-credits-body {
+            padding: 44px 0 64px;
+        }
+
+        .cs-credits-grid {
+            display: grid;
+            grid-template-columns: 55% 45%;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .cs-credits-img {
+            border: 1px solid rgba(11, 11, 11, .12);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .cs-credits-img {
+            width: 100%;
+            max-height: 420px;
+            /* controls size */
+            overflow: hidden;
+        }
+
+        .cs-credits-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+        }
+
+        .cs-credits {
+            padding: 60px 50px;
+            padding-right: 30px;
+        }
+
+        .cs-dl {
+            margin: 0;
+            display: grid;
+            gap: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: rgba(11, 11, 11, .72);
+        }
+
+        .cs-dl div {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 12px;
+        }
+
+        .cs-dl dt {
+            font-weight: 700;
+            color: rgba(11, 11, 11, .88);
+        }
+
+        .cs-dl dd {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .cs-credits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -369,104 +562,194 @@
 
     <main id="caseMain">
 
-        <!-- HERO (image + overlay text) -->
+        <!-- HERO -->
         <section class="cs-hero">
             <div class="cs-hero-media">
-                <!-- REPLACE with your hero image -->
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Aether Airlines hero image">
+                <!-- Base/background image -->
 
+
+                <!-- Stars (mid-right, 40% opacity) -->
+                <img class="cs-hero-img cs-hero-stars" src="../aetherair-branding/img/1-hero-stars.png" alt=""
+                    aria-hidden="true" />
+
+                <!-- Bird (bottom-left, 30% opacity) -->
+                <img class="cs-hero-img cs-hero-bird" src="../aetherair-branding/img/1-hero-white-bird.png" alt=""
+                    aria-hidden="true" />
+
+                <!-- Overlay -->
                 <div class="cs-hero-overlay">
+                    <p class="cs-pronounce">/ˈiːθər/ (pronounced “Ay-thur”)</p>
                     <div class="cs-hero-copy">
-                        <p class="eyebrow">BRAND IDENTITY • PACKAGING • UI CONCEPT</p>
-                        <h1>Intentional travel,<br>elevated</h1>
+                        <p class="eyebrow">AETHER AIRLINES</p>
+                        <h1>Intentional travel,<br />elevated</h1>
                         <p>
                             Aether Airlines is a conceptual airline brand built to communicate calm, clarity, and
-                            premium intention
-                            across digital + physical touchpoints.
+                            premium intention across digital + physical touchpoints.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- little pill nav like your screenshot -->
+            <!-- YELLOW MARQUEE BANNER (ABOVE PILLS) -->
+            <div class="cs-yellowbar" aria-label="Aether tagline banner">
+                <div class="cs-yellowbar-inner">
+                    <div class="cs-yellowbar-marquee" aria-hidden="true">
+                        <span>Every Detail, Elevated.</span><span class="dot">•</span>
+                        <span>A Taste of Altitude.</span><span class="dot">•</span>
+                        <span>Where Air Meets Art.</span><span class="dot">•</span>
+                        <span>The World Awaits, Effortlessly.</span><span class="dot">•</span>
+
+                        <!-- duplicate for seamless loop -->
+                        <span>Intentional Travel, Thoughtfully Designed.</span><span class="dot">•</span>
+                        <span>Clarity at 30,000 Feet.</span><span class="dot">•</span>
+                        <span>Where Design Meets the Sky.</span><span class="dot">•</span>
+                        <span>Elevating the Modern Journey.</span><span class="dot">•</span>
+
+                        <!-- duplicate for seamless loop -->
+                        <span>Every Detail, Elevated.</span><span class="dot">•</span>
+                        <span>A Taste of Altitude.</span><span class="dot">•</span>
+                        <span>Where Air Meets Art.</span><span class="dot">•</span>
+                        <span>The World Awaits, Effortlessly.</span><span class="dot">•</span>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- PILL NAV -->
             <nav class="cs-pillnav" aria-label="Case study quick nav">
                 <a href="#challenge">The Challenge</a>
                 <a href="#solution">The Solution</a>
                 <a href="#approach">My Approach</a>
             </nav>
 
-            <!-- 3 images row under hero -->
+
+
+            <!-- CREDITS (IMAGE LEFT / TEXT RIGHT) -->
+            <section class="cs-sec cs-credits-sec" id="credits">
+                <div class="cs-credits-body">
+                    <div class="cs-credits-grid">
+                        <figure class="cs-credits-img">
+                            <img src="../aetherair-branding/img/1-branding-airline-gate-aa.png"
+                                alt="Aether Airlines mockup">
+                        </figure>
+
+                        <aside class="cs-credits">
+                            <h2 class="cs-h">CREDITS</h2>
+
+                            <dl class="cs-dl">
+                                <div>
+                                    <dt>Client:</dt>
+                                    <dd>Concept Project</dd>
+                                </div>
+                                <div>
+                                    <dt>Role:</dt>
+                                    <dd>Brand Identity Designer</dd>
+                                </div>
+                                <div>
+                                    <dt>Timeline:</dt>
+                                    <dd>14 Weeks</dd>
+                                </div>
+                                <div>
+                                    <dt>Tools:</dt>
+                                    <dd>Illustrator</dd>
+                                </div>
+                                <div>
+                                    <dt>Deliverable:</dt>
+                                    <dd>Logo System, Branding, Visual Identity</dd>
+                                </div>
+                                <div>
+                                    <dt>Tags:</dt>
+                                    <dd>Brand Strategy, Visual Identity, Logo Design, Packaging</dd>
+                                </div>
+                            </dl>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- TRIPTYCH
             <div class="cs-triptych">
                 <div class="cs-wrap cs-triptych-grid">
                     <figure class="cs-shot">
-                        <!-- REPLACE -->
                         <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Brand display mockup">
                     </figure>
                     <figure class="cs-shot">
-                        <!-- REPLACE -->
                         <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Airport check-in photo">
                     </figure>
                     <figure class="cs-shot">
-                        <!-- REPLACE -->
                         <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Project overview card">
                     </figure>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <!-- THE CHALLENGE -->
-        <section class="cs-sec" id="challenge">
-            <div class="cs-wrap cs-two">
-                <h2 class="cs-h">The Challenge</h2>
-                <div>
-                    <p class="cs-body">
-                        Travelers are overloaded by noisy, stressful experiences. The challenge was to design a brand
-                        system that
-                        feels premium but not cold—calm, intentional, and easy to recognize across touchpoints.
-                    </p>
-                    <ul class="case-bullets">
-                        <li>Create a modern airline identity with warmth + clarity</li>
-                        <li>Build a flexible visual system for web + packaging</li>
-                        <li>Communicate “elevated travel” without being sterile</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- BIG LOGO CENTER -->
-        <section class="cs-sec">
-            <div class="cs-wrap cs-center">
-                <!-- REPLACE -->
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpgg" alt="Aether Airlines logo">
-            </div>
-        </section>
-
-        <!-- TICKET MOCKUP CENTER -->
-        <section class="cs-sec">
-            <div class="cs-wrap cs-center">
-                <!-- REPLACE -->
-                <img class="cs-tall" src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Ticket mockup">
-            </div>
-        </section>
-
-        <!-- THE SOLUTION -->
-        <section class="cs-sec" id="solution">
-            <div class="cs-wrap cs-two">
-                <h2 class="cs-h">The Solution</h2>
-                <p class="cs-body">
-                    Aether’s system combines a minimal mark, deep blues, and star-like accents to create a calm premium
-                    tone.
-                    The result is a consistent brand language that works from ticketing screens to packaging.
-                </p>
-            </div>
-
-            <div class="cs-wrap cs-split-visual">
-                <div class="cs-shot">
+            <!-- BIG LOGO CENTER -->
+            <section class="cs-sec">
+                <div class="cs-wrap cs-center">
                     <!-- REPLACE -->
-                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Logo breakdown">
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Aether Airlines logo">
+                </div>
+            </section>
+
+            <!-- THE CHALLENGE -->
+            <section class="cs-sec" id="challenge">
+                <div class="cs-wrap cs-two">
+                    <h2 class="cs-h">The Challenge</h2>
+                    <div>
+                        <p class="cs-body">
+                            Travelers are overloaded by noisy, stressful experiences. The challenge was to design a
+                            brand
+                            system that
+                            feels premium but not cold—calm, intentional, and easy to recognize across touchpoints.
+                        </p>
+                        <ul class="case-bullets">
+                            <li>Create a modern airline identity with warmth + clarity</li>
+                            <li>Build a flexible visual system for web + packaging</li>
+                            <li>Communicate “elevated travel” without being sterile</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BIG LOGO CENTER -->
+            <section class="cs-sec">
+                <div class="cs-wrap cs-center">
+                    <!-- REPLACE -->
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Aether Airlines logo">
+                </div>
+            </section>
+
+            <!-- TICKET MOCKUP CENTER -->
+            <section class="cs-sec">
+                <div class="cs-wrap cs-center">
+                    <!-- REPLACE -->
+                    <img class="cs-tall" src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Ticket mockup">
+                </div>
+            </section>
+
+            <!-- THE SOLUTION -->
+            <section class="cs-sec" id="solution">
+                <div class="cs-wrap cs-two">
+                    <h2 class="cs-h">The Solution</h2>
+                    <p class="cs-body">
+                        Aether’s system combines a minimal mark, deep blues, and star-like accents to create a calm
+                        premium
+                        tone.
+                        The result is a consistent brand language that works from ticketing screens to packaging.
+                    </p>
                 </div>
 
-                <!-- <div class="cs-typeblock">
+                <div class="cs-wrap cs-split-visual">
+                    <div class="cs-shot">
+                        <!-- REPLACE -->
+                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Logo breakdown">
+                    </div>
+
+                    <!-- <div class="cs-typeblock">
                     <div style="height: 10px;"></div>
                     <div><strong>Nexa Rusty Grotesk Display Pro</strong></div>
                     <div class="mono">75 Thin</div>
@@ -482,87 +765,88 @@
                     <div class="mono">abcdefghijklmnopqrstuvwxyz</div>
                     <div class="mono">1234567890</div>
                 </div> -->
-            </div>
-        </section>
+                </div>
+            </section>
 
-        <!-- MY APPROACH -->
-        <section class="cs-sec" id="approach">
-            <div class="cs-wrap cs-two">
-                <h2 class="cs-h">My Approach</h2>
-                <div>
-                    <p class="cs-body" style="margin-bottom: 12px;">
-                        Built around a “calm clarity” North Star—modern, premium, and warm.
-                    </p>
+            <!-- MY APPROACH -->
+            <section class="cs-sec" id="approach">
+                <div class="cs-wrap cs-two">
+                    <h2 class="cs-h">My Approach</h2>
+                    <div>
+                        <p class="cs-body" style="margin-bottom: 12px;">
+                            Built around a “calm clarity” North Star—modern, premium, and warm.
+                        </p>
 
-                    <!-- your same process copy (from your original case study) -->
-                    <div class="steps" style="margin-top: 0;">
-                        <div class="step">
-                            <h3>01 — Research + Inspiration</h3>
-                            <p class="muted">Benchmarked premium travel brands and identified “calm clarity” as the
-                                North Star.</p>
-                        </div>
-                        <div class="step">
-                            <h3>02 — Visual Direction</h3>
-                            <p class="muted">Defined moodboards, type direction, and icon/star motif to support the
-                                concept.</p>
-                        </div>
-                        <div class="step">
-                            <h3>03 — System + Mockups</h3>
-                            <p class="muted">Built a cohesive set of colors, type rules, and applications across print +
-                                digital.</p>
+                        <!-- your same process copy (from your original case study) -->
+                        <div class="steps" style="margin-top: 0;">
+                            <div class="step">
+                                <h3>01 — Research + Inspiration</h3>
+                                <p class="muted">Benchmarked premium travel brands and identified “calm clarity” as the
+                                    North Star.</p>
+                            </div>
+                            <div class="step">
+                                <h3>02 — Visual Direction</h3>
+                                <p class="muted">Defined moodboards, type direction, and icon/star motif to support the
+                                    concept.</p>
+                            </div>
+                            <div class="step">
+                                <h3>03 — System + Mockups</h3>
+                                <p class="muted">Built a cohesive set of colors, type rules, and applications across
+                                    print +
+                                    digital.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- palette image -->
-            <div class="cs-wrap cs-palette">
-                <!-- REPLACE -->
-                <img src="../aetherair-branding/img/8-colors-aa.png" alt="Color palette">
-            </div>
-
-            <!-- packaging row -->
-            <div class="cs-wrap cs-pack-row">
-                <!-- REPLACE -->
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 1">
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 2">
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Bag mockup">
-            </div>
-
-            <!-- box -->
-            <div class="cs-wrap cs-box">
-                <!-- REPLACE -->
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Box mockup">
-            </div>
-        </section>
-
-        <!-- CONCLUSION -->
-        <section class="cs-sec" id="conclusion">
-            <div class="cs-wrap cs-two">
-                <h2 class="cs-h">In Conclusion</h2>
-                <p class="cs-body">
-                    This project strengthened my ability to design a consistent brand system and apply it across
-                    touchpoints.
-                    Next, I’d expand the UI into a full booking flow and refine the packaging suite for additional
-                    product lines.
-                </p>
-            </div>
-        </section>
-
-        <!-- BOTTOM NAV like screenshot -->
-        <section class="cs-bottom">
-            <div class="cs-bottom-bar">
-                <div class="cs-wrap cs-bottom-grid">
-                    <a href="tourism.html">Tourism Logo</a>
-                    <a href="volt.html" style="text-align:right;">Volt - Fitness App</a>
+                <!-- palette image -->
+                <div class="cs-wrap cs-palette">
+                    <!-- REPLACE -->
+                    <img src="../aetherair-branding/img/8-colors-aa.png" alt="Color palette">
                 </div>
-            </div>
 
-            <div class="cs-wrap cs-bottom-under">
-                <a href="../index.html#projects">Back to Projects</a>
-                <a href="volt.html" style="text-align:right;">Next</a>
-            </div>
-        </section>
+                <!-- packaging row -->
+                <div class="cs-wrap cs-pack-row">
+                    <!-- REPLACE -->
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 1">
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 2">
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Bag mockup">
+                </div>
+
+                <!-- box -->
+                <div class="cs-wrap cs-box">
+                    <!-- REPLACE -->
+                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Box mockup">
+                </div>
+            </section>
+
+            <!-- CONCLUSION -->
+            <section class="cs-sec" id="conclusion">
+                <div class="cs-wrap cs-two">
+                    <h2 class="cs-h">In Conclusion</h2>
+                    <p class="cs-body">
+                        This project strengthened my ability to design a consistent brand system and apply it across
+                        touchpoints.
+                        Next, I’d expand the UI into a full booking flow and refine the packaging suite for additional
+                        product lines.
+                    </p>
+                </div>
+            </section>
+
+            <!-- BOTTOM NAV like screenshot -->
+            <section class="cs-bottom">
+                <div class="cs-bottom-bar">
+                    <div class="cs-wrap cs-bottom-grid">
+                        <a href="tourism.html">Tourism Logo</a>
+                        <a href="volt.html" style="text-align:right;">Volt - Fitness App</a>
+                    </div>
+                </div>
+
+                <div class="cs-wrap cs-bottom-under">
+                    <a href="../index.html#projects">Back to Projects</a>
+                    <a href="volt.html" style="text-align:right;">Next</a>
+                </div>
+            </section>
 
     </main>
 
