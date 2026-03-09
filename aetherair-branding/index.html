@@ -56,9 +56,33 @@
             margin: 0 auto;
         }
 
+        /* ----- Case Study Sections ----- */
+
+        /* 2 column row */
+        .cs-row-2 {
+            margin-top: 34px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+
+            max-width: 700px;
+            /* controls how big the images get */
+            margin-left: auto;
+            margin-right: auto;
+            /* centers the row */
+        }
+
+        /* images */
+        .cs-row-2 img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
         /* section rhythm */
         .cs-sec {
-            padding: 64px 0;
+            padding: 50px 0;
             border-top: 1px solid rgba(11, 11, 11, .12);
             background: transparent;
         }
@@ -295,11 +319,24 @@
             padding: 18px 0 0;
         }
 
+        .cs-center {
+            display: grid;
+            place-items: center;
+            padding: 18px 0 0;
+        }
+
         .cs-center img {
-            max-width: 520px;
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        .cs-large-image {
+            width: 850px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .cs-center .cs-tall {
@@ -337,6 +374,9 @@
             max-width: 520px;
             width: 100%;
             height: auto;
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .cs-pack-row {
@@ -351,6 +391,7 @@
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 12px;
         }
 
         .cs-box {
@@ -558,6 +599,29 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ----- Case Study Images ----- */
+
+        /* extra spacing under the challenge section */
+        .cs-challenge {
+            padding-bottom: 90px;
+        }
+
+        /* section rhythm */
+        .cs-sec {
+            padding: 50px 0;
+            border-top: 1px solid rgba(11, 11, 11, .12);
+            background: transparent;
+        }
+
+        .cs-sec:first-of-type {
+            border-top: 0;
+        }
+
+        /* extra spacing under the challenge section */
+        .cs-challenge {
+            padding-bottom: 90px;
+        }
     </style>
 </head>
 
@@ -694,26 +758,15 @@
             </section>
 
 
-            <!-- TRIPTYCH
-            <div class="cs-triptych">
-                <div class="cs-wrap cs-triptych-grid">
-                    <figure class="cs-shot">
-                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Brand display mockup">
-                    </figure>
-                    <figure class="cs-shot">
-                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Airport check-in photo">
-                    </figure>
-                    <figure class="cs-shot">
-                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Project overview card">
-                    </figure>
+            <section class="cs-sec">
+                <div class="cs-wrap cs-center">
+                    <img src="../aetherair-branding/img/2-boardingpasses-mockups-collage-aa.png"
+                        alt="Aether Airlines boarding passes and mock ups" class="cs-large-image">
                 </div>
-            </div>
-        </section> -->
-
-
+            </section>
 
             <!-- THE CHALLENGE -->
-            <section class="cs-sec" id="challenge">
+            <section class="cs-sec cs-challenge" id="challenge">
                 <div class="cs-wrap cs-two">
                     <h2 class="cs-h">The Challenge</h2>
                     <div>
@@ -727,22 +780,15 @@
 
                     </div>
                 </div>
-            </section>
 
-            <!-- BIG LOGO CENTER -->
-            <section class="cs-sec">
-                <div class="cs-wrap cs-center">
-                    <!-- REPLACE -->
-                    <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Aether Airlines logo">
-                </div>
-            </section>
 
-            <!-- TICKET MOCKUP CENTER -->
-            <section class="cs-sec">
-                <div class="cs-wrap cs-center">
-                    <!-- REPLACE -->
-                    <img class="cs-tall" src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Ticket mockup">
+                <!-- ------ sketches ----- -->
+                <div class="cs-wrap cs-row-2">
+                    <img src="../aetherair-branding/img/sketches.png" alt="Sketch exploration">
+                    <img src="../aetherair-branding/img/bird-logo-sketch.png" alt="Bird logo sketch">
                 </div>
+
+
             </section>
 
             <!-- THE SOLUTION -->
@@ -757,28 +803,22 @@
                     </p>
                 </div>
 
-                <div class="cs-wrap cs-split-visual">
-                    <div class="cs-shot">
-                        <!-- REPLACE -->
-                        <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Logo breakdown">
-                    </div>
 
-                    <!-- <div class="cs-typeblock">
-                    <div style="height: 10px;"></div>
-                    <div><strong>Nexa Rusty Grotesk Display Pro</strong></div>
-                    <div class="mono">75 Thin</div>
-                    <div class="mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
-                    <div class="mono">abcdefghijklmnopqrstuvwxyz</div>
-                    <div class="mono">1234567890</div>
+                <!-- Logo -->
+                <div class="cs-wrap cs-pack-row">
+                    <!-- REPLACE -->
+                    <img src="../aetherair-branding/img/5-white-logo-title-aa-blue-bg.png" alt="Logovar 3">
+                    <img src="../aetherair-branding/img/5-color-logo-title-aa.png" alt="Logo var 2">
+                    <img src="../aetherair-branding/img/5-white-logo-title-aa.png" alt="Logo var 3">
+                </div>
 
-                    <div style="height: 14px;"></div>
+                <!-- palette image -->
+                <div class="cs-wrap cs-palette">
+                    <!-- REPLACE -->
+                    <img src="../aetherair-branding/img/8-colors-aa.png" alt="Color palette">
+                </div>
 
-                    <div><strong>Nexa Rusty Grotesk Display Pro</strong></div>
-                    <div class="mono">95 Black</div>
-                    <div class="mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
-                    <div class="mono">abcdefghijklmnopqrstuvwxyz</div>
-                    <div class="mono">1234567890</div>
-                </div> -->
+
                 </div>
             </section>
 
@@ -787,9 +827,9 @@
                 <div class="cs-wrap cs-two">
                     <h2 class="cs-h">My Approach</h2>
                     <div>
-                        <p class="cs-body" style="margin-bottom: 12px;">
+                        <!-- <p class="cs-body" style="margin-bottom: 12px;">
                             Built around a “calm clarity” North Star—modern, premium, and warm.
-                        </p>
+                        </p> -->
 
                         <!-- your same process copy (from your original case study) -->
                         <div class="steps" style="margin-top: 0;">
@@ -818,11 +858,7 @@
                     </div>
                 </div>
 
-                <!-- palette image -->
-                <div class="cs-wrap cs-palette">
-                    <!-- REPLACE -->
-                    <img src="../aetherair-branding/img/8-colors-aa.png" alt="Color palette">
-                </div>
+
 
                 <!-- packaging row -->
                 <div class="cs-wrap cs-pack-row">
