@@ -66,6 +66,39 @@
             padding-bottom: 90px;
         }
 
+        /* ----- type system ----- */
+        .cs-h {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+            color: rgba(11, 11, 11, 0.92);
+        }
+
+        .cs-text {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(11, 11, 11, 0.72);
+        }
+
+        .cs-meta {
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(11, 11, 11, 0.72);
+        }
+
+        .step h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            line-height: 1.3;
+            font-weight: 600;
+            color: rgba(11, 11, 11, 0.92);
+        }
+
+        .step+.step {
+            margin-top: 24px;
+        }
+
         /* ----- hero ----- */
         .cs-hero {
             padding: 0;
@@ -151,8 +184,11 @@
         }
 
         .cs-hero-copy .eyebrow {
+            margin: 0;
             color: rgba(255, 255, 255, .86);
             opacity: 1;
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .cs-hero-copy h1 {
@@ -162,7 +198,7 @@
             letter-spacing: -.02em;
         }
 
-        .cs-hero-copy p {
+        .cs-hero-text {
             margin: 12px 0 0;
             max-width: 62ch;
             color: rgba(255, 255, 255, .9);
@@ -236,7 +272,6 @@
         }
 
         /* ----- credits ----- */
-
         .cs-credits h2 {
             margin-bottom: 28px;
             font-size: 18px;
@@ -298,24 +333,9 @@
 
         .cs-dl div {
             display: grid;
-            grid-template-columns: 110px 1fr;
-            gap: 14px;
-            align-items: start;
-        }
-
-        .cs-dl dt {
-            font-weight: 700;
-            color: rgba(11, 11, 11, .88);
-        }
-
-        .cs-dl dd {
-            margin: 0;
-        }
-
-        .cs-dl div {
-            display: grid;
             grid-template-columns: 90px 1fr;
             gap: 12px;
+            align-items: start;
         }
 
         .cs-dl dt {
@@ -333,19 +353,6 @@
             grid-template-columns: 1fr 1.2fr;
             gap: 28px;
             align-items: start;
-        }
-
-        .cs-h {
-            /* margin: 0; */
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .cs-body {
-            margin: 0;
-            color: rgba(11, 11, 11, .7);
-            font-size: 13px;
-            line-height: 1.7;
         }
 
         /* ----- centered visuals ----- */
@@ -411,23 +418,7 @@
             color: rgba(11, 11, 11, .85);
         }
 
-        /* ----- palette ----- */
-        .cs-palette {
-            display: grid;
-            place-items: center;
-            margin: 26px auto 0;
-            max-width: 520px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .cs-palette img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* ------ typeface ----- */
+        /* ----- assets ----- */
         .cs-asset {
             display: grid;
             place-items: center;
@@ -449,7 +440,6 @@
 
         .cs-asset--typeface {
             max-width: 940px;
-            /* adjust to 560px or 600px if needed */
         }
 
         /* ----- 3 column row ----- */
@@ -620,8 +610,8 @@
                     <div class="cs-hero-copy">
                         <p class="eyebrow">AETHER AIRLINES</p>
                         <h1>Intentional travel,<br />elevated</h1>
-                        <p>
-                            Aether Airlines is a luxury airline concept around intentional travel – where comfort,
+                        <p class="cs-hero-text">
+                            Aether Airlines is a luxury airline concept around intentional travel — where comfort,
                             design, and well-being meet. Aether focuses on elevating the experience for modern travelers
                             during flight delays and long layovers.
                         </p>
@@ -666,7 +656,6 @@
                     </figure>
 
                     <aside class="cs-credits">
-
                         <h2 class="cs-h cs-credits-heading">Credits</h2>
 
                         <dl class="cs-dl">
@@ -700,18 +689,9 @@
                                 <dd>Brand Strategy, Visual Identity, Logo Design, Packaging</dd>
                             </div>
                         </dl>
-
                     </aside>
 
                 </div>
-            </div>
-        </section>
-
-        <!-- COLLAGE -->
-        <section class="cs-sec">
-            <div class="cs-wrap cs-center">
-                <img src="../aetherair-branding/img/2-boardingpasses-mockups-collage-aa.png"
-                    alt="Aether Airlines boarding passes and mock ups" class="cs-large-image">
             </div>
         </section>
 
@@ -720,12 +700,12 @@
             <div class="cs-wrap cs-two">
                 <h2 class="cs-h">The Challenge</h2>
                 <div>
-                    <p class="cs-body">
+                    <p class="cs-text">
                         Airlines all kind of look the same. Most of them focus on speed, efficiency, and bold
-                        branding — but not many focus on how travel actually feels.
-                        For Aether Airlines, I wanted to create a brand that felt calm, trustworthy, and quietly
-                        luxurious. The challenge was finding a balance between premium and approachable. I didn’t
-                        want it to feel flashy or exclusive — just refined, intentional, and easy to move through.
+                        branding — but not many focus on how travel actually feels. For Aether Airlines, I wanted
+                        to create a brand that felt calm, trustworthy, and quietly luxurious. The challenge was
+                        finding a balance between premium and approachable. I didn’t want it to feel flashy or
+                        exclusive — just refined, intentional, and easy to move through.
                     </p>
                 </div>
             </div>
@@ -740,11 +720,11 @@
         <section class="cs-sec" id="solution">
             <div class="cs-wrap cs-two">
                 <h2 class="cs-h">The Solution</h2>
-                <p class="cs-body">
+                <p class="cs-text">
                     I built a brand system centered around softness and clarity. From the logo to the color palette,
-                    every detail was designed to make the experience feel lighter and less overwhelming.
-                    The visual language leans into subtle contrast, clean typography, and atmospheric tones to
-                    create a sense of ease. Instead of loud luxury, Aether focuses on quiet confidence.
+                    every detail was designed to make the experience feel lighter and less overwhelming. The visual
+                    language leans into subtle contrast, clean typography, and atmospheric tones to create a sense of
+                    ease. Instead of loud luxury, Aether focuses on quiet confidence.
                 </p>
             </div>
 
@@ -763,32 +743,35 @@
         <section class="cs-sec" id="approach">
             <div class="cs-wrap cs-two">
                 <h2 class="cs-h">My Approach</h2>
+
                 <div class="steps" style="margin-top: 0;">
                     <div class="step">
                         <h3>Designing for Emotion First</h3>
-                        <p class="muted">
-                            Before designing anything, I thought about how travelers want to feel —
-                            especially in airports, which can be chaotic. I kept coming back to calm, grounded,
-                            and taken care of. That mindset guided decisions around spacing, typography, and color.
+                        <p class="cs-text">
+                            Before developing the visual identity, I focused on the emotional experience of travel.
+                            Airports and flights can often feel rushed and overwhelming, so I wanted the brand to
+                            communicate calm, clarity, and confidence. This mindset guided the tone of the identity —
+                            creating a brand that feels composed, refined, and quietly luxurious.
                         </p>
                     </div>
 
                     <div class="step">
-                        <h3>Luxury Without Being Loud</h3>
-                        <p class="muted">
-                            Rather than using obvious luxury signals, I focused on restraint. Soft
-                            contrast, generous spacing, and simple layouts create a premium feel without
-                            overcomplicating the design. The goal was to make it feel elevated, not intimidating.
+                        <h3>Crafting a Sleek Logo Identity</h3>
+                        <p class="cs-text">
+                            The logo was designed to feel lightweight and elevated, reflecting the idea of effortless
+                            travel. I explored forms that suggested motion, lift, and precision while maintaining a
+                            minimal and sophisticated silhouette. The final mark balances simplicity with detail,
+                            creating a symbol that feels both modern and timeless.
                         </p>
                     </div>
 
                     <div class="step">
-                        <h3>Creating a Flexible System</h3>
-                        <p class="muted">
-                            I designed the identity to work across multiple touchpoints — from
-                            boarding passes to mobile screens to in-flight materials. The system stays
-                            consistent, but it’s flexible enough to grow. That was important to me because
-                            brands don’t live in one place.
+                        <h3>A Calm and Confident Visual Language</h3>
+                        <p class="cs-text">
+                            The color palette and typography were selected to reinforce a sense of quiet luxury.
+                            Soft atmospheric tones and clean typography create a visual system that feels calm,
+                            polished, and intentional. Together, these elements form a brand identity that enhances
+                            the travel experience by feeling thoughtful, composed, and elevated.
                         </p>
                     </div>
                 </div>
@@ -797,30 +780,24 @@
             <div class="cs-wrap cs-asset cs-asset--typeface">
                 <img src="../aetherair-branding/img/8-typeface-aa.png" alt="Typeface system">
             </div>
-
-            <div class="cs-wrap cs-pack-row">
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 1">
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Cup mockup 2">
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Bag mockup">
-            </div>
-
-            <div class="cs-wrap cs-box">
-                <img src="../aetherair-branding/img/gina-placeholder1x1.jpg" alt="Box mockup">
-            </div>
         </section>
 
         <!-- CONCLUSION -->
         <section class="cs-sec" id="conclusion">
             <div class="cs-wrap cs-two">
                 <h2 class="cs-h">In Conclusion</h2>
-                <p class="cs-body">
+                <p class="cs-text">
                     Aether Airlines reflects how I approach branding — not just as visuals, but as an experience.
                     I’m interested in how design shapes emotion and behavior, especially in high-stress environments
-                    like travel.
-                    This project shows how I translate abstract ideas into a clear, usable system. If expanded
-                    further, Aether could naturally extend into digital booking, environmental graphics, and
-                    in-flight experiences.
+                    like travel. This project shows how I translate abstract ideas into a clear, usable system. If
+                    expanded further, Aether could naturally extend into digital booking, environmental graphics,
+                    and in-flight experiences.
                 </p>
+            </div>
+
+            <div class="cs-wrap cs-center">
+                <img src="../aetherair-branding/img/2-boardingpasses-mockups-collage-aa.png"
+                    alt="Aether Airlines boarding passes and mock ups" class="cs-large-image">
             </div>
         </section>
 
