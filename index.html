@@ -7,19 +7,22 @@
     <title>Gina Marie Triplett — Portfolio</title>
 
     <!-- CONNECT CSS -->
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="is-loading">
+<body>
 
     <!-- FLUID BACKGROUND (GLOBAL) -->
+    <link rel="stylesheet" href="css/fluidbackground.css" />
     <div class="bg" aria-hidden="true">
         <div class="blob blob--1"></div>
         <div class="blob blob--2"></div>
         <div class="blob blob--3"></div>
     </div>
+    <script src="js/fluidbackground.js"></script>
 
     <!-- LOADER -->
+    <link rel="stylesheet" href="css/loader.css" />
     <div class="loader" id="loader" aria-label="Loading screen" role="status">
         <div class="loader-parallax" aria-hidden="true">
             <div class="layer l1"></div>
@@ -41,6 +44,7 @@
             <p class="loader-sub">Loading portfolio…</p>
         </div>
     </div>
+    <script src="js/loader.js"></script>
 
     <!-- HEADER -->
     <header class="site-header">
@@ -58,10 +62,11 @@
         <div class="progress" aria-hidden="true">
             <span id="progressFill"></span>
         </div>
+
     </header>
 
-    <!-- SNAP SCROLL -->
-    <main class="snap" id="snap">
+    <!-- SCROLL TRACKING -->
+    <main class="scroll-parent" id="scroll-parent">
 
         <!-- HERO -->
         <section class="snap-sec hero" id="top" aria-label="Hero" data-theme="hero">
@@ -82,11 +87,14 @@
                         based in Honolulu, Hawaii
                     </h1>
 
+                    <!-- ENABLE ROTATOR -->
+                    <link rel="stylesheet" href="css/rotator.css">
                     <p class="rotator" aria-label="Rotating tagline">
                         <span>I design</span>
                         <span class="rotator-word" id="rotWord">interfaces</span>
                         <span>that feel calm and clear.</span>
                     </p>
+                    <script src="js/rotator.js"></script>
 
                     <p class="lead">Design + Packaging services to grow your brand.</p>
                 </div>
@@ -143,8 +151,11 @@
 
                 <div class="grid anim" aria-label="Project grid">
                     <a class="card card--featured" href="aetherair-branding/index.html">
-                        <div class="thumb"
-                            style="background-image:url('aetherair-branding/img/1-branding-airline-gate-aa.png')"></div>
+                        <div class="thumb">
+                            <img src="aetherair-branding/img/1-branding-airline-gate-aa.png"
+                                alt="Aether Airlines branding shown on an airport gate sign" class="sr-only" width=""
+                                height="" />
+                        </div>
                         <div class="meta">
                             <h3>Aether Airlines - Branding</h3>
                             <p>Logo Design, Brand Identity</p>
@@ -152,7 +163,9 @@
                     </a>
 
                     <a class="card" href="#">
-                        <div class="thumb" style="background-image:url('img/1-aetherair-website.png')">
+                        <div class="thumb">
+                            <img src="img/1-aetherair-website.png" alt="Aether Airlines website design" class="sr-only"
+                                width="" height="" />
                         </div>
                         <div class="meta">
                             <h3>Aether Airlines - Website</h3>
@@ -262,8 +275,13 @@
 
     </main>
 
-    <!-- CONNECT JS -->
-    <script src="./js/script.js"></script>
+    <!-- ENABLE ON SCROLL TRIGGER EVENTS -->
+    <link rel="stylesheet" href="css/scrolltriggers.css">
+    <script src="js/scrolltriggers.js"></script>
+
+
+
+
 </body>
 
 </html>
