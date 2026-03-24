@@ -36,12 +36,17 @@ body {
     height: 100%;
 }
 
+/* ENABLE SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     color: var(--ink);
     background: var(--bg);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 a {
@@ -80,189 +85,15 @@ a {
     z-index: 1;
 }
 
-/* =========================================================
-   02.5) LOADER
-========================================================= */
-body.is-loading {
-    overflow: hidden;
+/* ENABLE RESPONSIVE IMAGES */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-body.is-loading .snap {
-    pointer-events: none;
-}
 
-.loader {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background: transparent;
-    transition: opacity .5s ease, visibility .5s ease;
-}
 
-.loader.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.loader-parallax {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.loader-parallax .layer.l1 {
-    position: absolute;
-    inset: -10%;
-    background: var(--grad);
-    opacity: .85;
-    transform: translate3d(0, calc(var(--lpy, 0px) * 0.12), 0) scale(1.05);
-}
-
-.loader-parallax .layer.l2 {
-    position: absolute;
-    inset: -20%;
-    background:
-        radial-gradient(circle at 18% 28%, rgba(255, 255, 255, .55), transparent 42%),
-        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, .35), transparent 46%),
-        radial-gradient(circle at 55% 78%, rgba(0, 0, 0, .10), transparent 44%);
-    transform: translate3d(0, calc(var(--lpy, 0px) * 0.22), 0);
-    filter: blur(2px);
-    opacity: .92;
-}
-
-.loader-parallax .layer.l3 {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 50% 30%, rgba(255, 255, 255, .25), transparent 52%),
-        radial-gradient(circle at 50% 90%, rgba(0, 0, 0, .12), transparent 45%);
-    transform: translate3d(0, calc(var(--lpy, 0px) * 0.34), 0);
-    opacity: .9;
-}
-
-.loader-parallax .layer.grain {
-    position: absolute;
-    inset: 0;
-    opacity: .22;
-    background-image:
-        repeating-linear-gradient(0deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .06) 1px, transparent 1px, transparent 3px),
-        repeating-linear-gradient(90deg, rgba(0, 0, 0, .04), rgba(0, 0, 0, .04) 1px, transparent 1px, transparent 4px);
-    mix-blend-mode: soft-light;
-}
-
-.loader-inner {
-    position: relative;
-    z-index: 1;
-    width: min(520px, calc(100% - 56px));
-    background: rgba(255, 255, 255, .62);
-    border: 1px solid rgba(0, 0, 0, .12);
-    border-radius: 22px;
-    padding: 18px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 22px 70px rgba(0, 0, 0, .12);
-}
-
-.loader-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 12px;
-}
-
-.loader-brand {
-    font-size: 14px;
-    letter-spacing: .2px;
-    opacity: .9;
-}
-
-.loader-pct {
-    font-size: 12px;
-    opacity: .8;
-}
-
-.loader-bar {
-    height: 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, .16);
-    overflow: hidden;
-    background: rgba(255, 255, 255, .60);
-}
-
-.loader-fill {
-    height: 100%;
-    width: 0%;
-    background: rgba(0, 0, 0, .85);
-    border-radius: 999px;
-    transition: width .08s linear;
-}
-
-.loader-sub {
-    margin: 12px 0 0;
-    font-size: 12px;
-    color: rgba(0, 0, 0, .65);
-}
-
-/* =========================================================
-   03) GLOBAL FLUID BACKGROUND
-========================================================= */
-.bg {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    background:
-        radial-gradient(1200px 900px at 30% 10%, rgba(0, 0, 0, .03), transparent 60%),
-        var(--bg);
-}
-
-.blob {
-    position: absolute;
-    left: var(--mx);
-    top: var(--my);
-    width: 58vmax;
-    height: 58vmax;
-    border-radius: 999px;
-    transform: translate(-50%, -50%);
-    filter: blur(44px);
-    opacity: .95;
-    will-change: left, top, transform;
-    mix-blend-mode: normal;
-}
-
-.blob--1 {
-    background: var(--c1);
-}
-
-.blob--2 {
-    background: var(--c2);
-    width: 50vmax;
-    height: 50vmax;
-    opacity: .85;
-}
-
-.blob--3 {
-    background: var(--c3);
-    width: 42vmax;
-    height: 42vmax;
-    opacity: .70;
-}
-
-.bg::after {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    background:
-        radial-gradient(circle at var(--mx) var(--my), rgba(0, 0, 0, .035), transparent 40%),
-        repeating-linear-gradient(120deg, rgba(0, 0, 0, .02), rgba(0, 0, 0, .02) 1px, transparent 1px, transparent 12px);
-    opacity: .22;
-}
 
 /* =========================================================
    04) SHARED COMPONENTS
@@ -321,17 +152,6 @@ body.is-loading .snap {
     z-index: 1;
 }
 
-.anim {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity .6s ease, transform .6s ease;
-}
-
-.anim.in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* =========================================================
    05) HEADER + SCROLLER
 ========================================================= */
@@ -386,44 +206,16 @@ body.is-loading .snap {
     border-radius: 99px;
 }
 
-.progress {
-    height: 2px;
-    background: transparent;
-    border-top: 1px solid var(--line);
+
+/* ADD SPACE BETWEEN SECTIONS */
+section {
+    padding: 2em 0;
 }
 
-.progress span {
-    display: block;
-    height: 100%;
-    width: 0%;
-    background: rgba(0, 0, 0, .8);
-    transform-origin: left;
-}
+.hero {
+    /* padding-block-start: calc(4em + var(--headerH)); */
 
-/* ✅ SINGLE, CLEAN SNAP CONFIG (this fixes “squished”) */
-.snap {
-    height: calc(100vh - var(--headerH));
-    overflow-y: auto;
-    scroll-snap-type: y proximity;
-    /* smooth snap */
-    scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--headerH) + 18px);
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-}
-
-.snap-sec {
-    scroll-snap-align: start;
     min-height: calc(100vh - var(--headerH));
-    padding-block: clamp(56px, 7vh, 92px);
-    border-top: 1px solid var(--line);
-    position: relative;
-    display: block;
-    scroll-margin-top: calc(var(--headerH) + 18px);
-}
-
-.snap-sec:first-child {
-    border-top: 0;
 }
 
 .hero,
@@ -440,7 +232,7 @@ body.is-loading .snap {
 .hero {
     display: flex;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     color: rgba(0, 0, 0, .92);
 }
 
@@ -449,6 +241,7 @@ body.is-loading .snap {
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .hero>.wrap {
@@ -549,29 +342,6 @@ h1 {
     will-change: transform;
 }
 
-.rotator {
-    margin: 18px 0 0;
-    font-size: 14px;
-    color: rgba(11, 11, 11, .7);
-}
-
-.rotator-word {
-    display: inline-block;
-    padding: 4px 8px 6px 8px;
-    border-radius: 999px;
-    border: 1px solid rgba(11, 11, 11, .18);
-    background: rgba(255, 255, 255, .45);
-    margin: 0 6px;
-    min-width: 12ch;
-    text-align: center;
-    transition: opacity .25s ease, transform .25s ease;
-    line-height: 1.1;
-}
-
-.rotator-word.fade {
-    opacity: 0;
-    transform: translateY(4px);
-}
 
 /* =========================================================
    07) PROJECTS
@@ -686,6 +456,13 @@ h1 {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(0, 0, 0, .08));
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .meta {

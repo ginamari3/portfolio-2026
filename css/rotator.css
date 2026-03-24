@@ -1,0 +1,23 @@
+.rotator {
+    margin: 18px 0 0;
+    font-size: 14px;
+    color: rgba(11, 11, 11, .7);
+}
+
+.rotator-word {
+    display: inline-block;
+    padding: 4px 8px 6px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(11, 11, 11, .18);
+    background: rgba(255, 255, 255, .45);
+    margin: 0 6px;
+    min-width: 12ch;
+    text-align: center;
+    transition: opacity .25s ease, transform .25s ease;
+    line-height: 1.1;
+}
+
+.rotator-word.fade {
+    opacity: 0;
+    transform: translateY(4px);
+}

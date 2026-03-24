@@ -1,0 +1,55 @@
+/* =========================================================
+   03) GLOBAL FLUID BACKGROUND
+========================================================= */
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(1200px 900px at 30% 10%, rgba(0, 0, 0, .03), transparent 60%),
+        var(--bg);
+}
+
+.blob {
+    position: absolute;
+    left: var(--mx);
+    top: var(--my);
+    width: 58vmax;
+    height: 58vmax;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    filter: blur(44px);
+    opacity: .95;
+    will-change: left, top, transform;
+    mix-blend-mode: normal;
+}
+
+.blob--1 {
+    background: var(--c1);
+}
+
+.blob--2 {
+    background: var(--c2);
+    width: 50vmax;
+    height: 50vmax;
+    opacity: .85;
+}
+
+.blob--3 {
+    background: var(--c3);
+    width: 42vmax;
+    height: 42vmax;
+    opacity: .70;
+}
+
+.bg::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(0, 0, 0, .035), transparent 40%),
+        repeating-linear-gradient(120deg, rgba(0, 0, 0, .02), rgba(0, 0, 0, .02) 1px, transparent 1px, transparent 12px);
+    opacity: .22;
+}
