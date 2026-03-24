@@ -610,3 +610,50 @@ h1 {
         justify-content: center;
     }
 }
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+body.is-loading {
+    overflow: hidden;
+}
+
+body.is-loading .snap {
+    pointer-events: none;
+}
+
+/* full screen overlay */
+.loader {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: transparent;
+    transition: opacity .5s ease, visibility .5s ease;
+}
+
+.loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* background layers */
+.loader-parallax {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.loader-parallax .layer.l1 {
+    position: absolute;
+    inset: -10%;
+}
+
+/* center card */
+.loader-inner {
+    position: relative;
+    z-index: 1;
+}
