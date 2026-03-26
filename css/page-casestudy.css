@@ -57,16 +57,28 @@ body.case-flat .site-header {
 }
 
 /* ----- type system ----- */
-.cs-h {
+/* .cs-h {
     font-size: 14px;
     font-weight: 600;
     margin: 0;
     color: rgba(11, 11, 11, 0.92);
+} */
+
+/* .cs-h {
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+} */
+
+.cs-h {
+    font-size: clamp(24px, 2.4vw, 32px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .cs-text {
     margin: 0;
-    font-size: 14px;
+    /* font-size: 14px; */
     line-height: 1.7;
     color: rgba(11, 11, 11, 0.72);
 }
@@ -192,7 +204,7 @@ body.case-flat .site-header {
     margin: 12px 0 0;
     max-width: 62ch;
     color: rgba(255, 255, 255, .9);
-    font-size: 14px;
+    /* font-size: 14px; */
     line-height: 1.55;
 }
 
@@ -262,10 +274,22 @@ body.case-flat .site-header {
 }
 
 /* ----- credits ----- */
-.cs-credits h2 {
+/* .cs-credits h2 {
     margin-bottom: 28px;
     font-size: 18px;
     font-weight: 600;
+} */
+
+.cs-text,
+.cs-hero-text,
+.cs-dl {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.cs-credits h2 {
+    margin-bottom: 28px;
+    font-size: clamp(20px, 2vw, 26px);
 }
 
 .cs-credits-sec {
@@ -316,7 +340,7 @@ body.case-flat .site-header {
     margin: 0;
     display: grid;
     gap: 14px;
-    font-size: 13px;
+    /* font-size: 13px; */
     line-height: 1.6;
     color: rgba(11, 11, 11, .72);
 }
@@ -404,7 +428,7 @@ body.case-flat .site-header {
 }
 
 .cs-typeblock .mono {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgba(11, 11, 11, .85);
 }
 
