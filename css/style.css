@@ -76,6 +76,8 @@ a {
 .muted {
     margin: 0;
     color: var(--muted);
+    line-height: 1.7;
+    /* increase from default */
 }
 
 .snap,
@@ -512,6 +514,8 @@ h1 {
     object-fit: cover;
     display: block;
 }
+
+
 
 /* =========================================================
    09) CONTACT
