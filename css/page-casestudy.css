@@ -130,7 +130,7 @@ body.case-flat .site-header {
 }
 
 .case-aetherair-website .cs-hero-media {
-    background-image: url("../aetherair-website/img/gina-placeholder1x1.jpg");
+    background-image: url("../aetherair-website/img/AA-website-3.jpg");
 }
 
 .case-ll-animation .cs-hero-media {
@@ -434,6 +434,13 @@ body.case-flat .site-header {
     height: auto;
     display: block;
     border-radius: 12px;
+}
+
+.case-aetherair-website .cs-sitemap-large {
+    width: 150%;
+    max-width: none;
+    display: block;
+    margin: 0 auto;
 }
 
 /* ----- split visual ----- */
