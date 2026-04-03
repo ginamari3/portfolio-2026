@@ -407,11 +407,8 @@ body.case-flat .site-header {
 }
 
 .cs-large-image {
-    width: 850px;
-    max-width: 100%;
+    width: 30%;
     height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
 .cs-center .cs-tall {
