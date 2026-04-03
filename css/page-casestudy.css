@@ -406,10 +406,10 @@ body.case-flat .site-header {
     display: block;
 }
 
-.cs-sitemap-small {
-    width: 80%;
-    /* 20% smaller */
-    height: auto;
+.cs-center img.cs-wireframe-small,
+.cs-center img.cs-sitemap-small {
+    width: 50%;
+    /* or 80% depending what you want */
 }
 
 .cs-large-image {
