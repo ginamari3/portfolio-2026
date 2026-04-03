@@ -406,6 +406,12 @@ body.case-flat .site-header {
     display: block;
 }
 
+.cs-sitemap-small {
+    width: 80%;
+    /* 20% smaller */
+    height: auto;
+}
+
 .cs-large-image {
     width: 30%;
     height: auto;
