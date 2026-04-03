@@ -134,7 +134,7 @@ body.case-flat .site-header {
 }
 
 .case-ll-animation .cs-hero-media {
-    background-image: url("../ll-animation/img/gina-placeholder1x1.jpg");
+    background-image: url("../ll-animation/img/hawaii-background.png");
 }
 
 .case-tourism-logo .cs-hero-media {
@@ -303,6 +303,31 @@ body.case-flat .site-header {
     font-size: 18px;
     font-weight: 600;
 } */
+
+.cs-center img.cs-sketch-medium {
+    width: 55%;
+    height: auto;
+}
+
+.case-ll-animation .cs-center img.cs-ll-small {
+    width: 30%;
+    height: auto;
+}
+
+.case-ll-animation .cs-credits-img {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.case-ll-animation .cs-credits-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 🔥 fills the container */
+    object-position: center;
+    /* keeps it centered */
+    display: block;
+}
 
 .cs-center img.cs-sketch-small {
     width: 40%;
