@@ -142,7 +142,7 @@ body.case-flat .site-header {
 }
 
 .case-volt-fitness .cs-hero-media {
-    background-image: url("../volt-fitness/img/gina-placeholder1x1.jpg");
+    background-image: url("../volt-fitness/img/running-group.png");
 }
 
 .cs-hero-img {
@@ -302,6 +302,12 @@ body.case-flat .site-header {
     margin-bottom: 28px;
     font-size: 18px;
     font-weight: 600;
+} */
+
+
+/* 
+.case-volt-fitness .cs-row-2 {
+    max-width: 840px;
 } */
 
 .cs-center img.cs-sketch-medium {
