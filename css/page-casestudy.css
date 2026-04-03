@@ -304,6 +304,19 @@ body.case-flat .site-header {
     font-weight: 600;
 } */
 
+.cs-img-half-wrap {
+    width: 50%;
+    margin: 80px auto 0;
+    /* 🔥 adds space above */
+    /* centers it */
+}
+
+.cs-img-half-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .case-volt-fitness .cs-hero-volt-logo {
     position: absolute;
     inset: auto;
