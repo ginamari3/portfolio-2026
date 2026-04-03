@@ -138,7 +138,7 @@ body.case-flat .site-header {
 }
 
 .case-tourism-logo .cs-hero-media {
-    background-image: url("../tourism-logo/img/gina-placeholder1x1.jpg");
+    background-image: url("../tourism-logo/img/amsterdam-hero-2.jpg");
 }
 
 .case-volt-fitness .cs-hero-media {
@@ -303,6 +303,29 @@ body.case-flat .site-header {
     font-size: 18px;
     font-weight: 600;
 } */
+
+.cs-center img.cs-sketch-small {
+    width: 40%;
+    height: auto;
+}
+
+.case-tourism-logo .cs-credits-img img {
+    border-radius: 12px;
+}
+
+.case-tourism-logo .cs-credits-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.case-tourism-logo .cs-credits-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
 .cs-text,
 .cs-hero-text,
