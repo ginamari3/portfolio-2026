@@ -231,6 +231,22 @@ section {
 /* =========================================================
    06) HERO
 ========================================================= */
+
+.hero-copy h1 {
+    margin-bottom: 16px;
+    line-height: 1.05;
+}
+
+.rotator {
+    margin: 0 0 16px;
+    transform: translateY(-2px);
+}
+
+.lead {
+    margin: 0;
+}
+
+
 .hero {
     display: flex;
     align-items: center;
