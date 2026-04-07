@@ -303,6 +303,15 @@ body.case-flat .site-header {
     font-size: 18px;
     font-weight: 600;
 } */
+
+.case-volt-fitness .cs-sitemap-large {
+    cursor: zoom-in;
+}
+
+.case-volt-fitness .cs-row-2 img {
+    cursor: zoom-in;
+}
+
 .case-volt-fitness .cs-pack-row img {
     width: 100%;
     height: 260px;

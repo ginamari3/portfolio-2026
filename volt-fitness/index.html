@@ -148,8 +148,9 @@
             </div>
 
             <div class="cs-wrap cs-row-2">
-                <img src="../volt-fitness/img/sitemap-logout.jpg" alt="Volt Site Map Logged Out">
-                <img src="../volt-fitness/img/sitemap-login.jpg" alt="Volt Site Map Logged In">
+                <img class="cs-sitemap-large" src="../volt-fitness/img/sitemap-logout.jpg"
+                    alt="Volt Site Map Logged Out">
+                <img class="cs-sitemap-large" src="../volt-fitness/img/sitemap-login.jpg" alt="Volt Site Map Logged In">
             </div>
         </section>
 
@@ -165,13 +166,9 @@
             </div>
 
             <div class="cs-wrap cs-asset cs-asset--palette">
-                <img src="../volt-fitness/img/volt-lofi.png" alt="Color palette">
+                <img class="cs-sitemap-large" src="../volt-fitness/img/volt-lofi.png" alt="Color palette">
             </div>
-            <!-- <div class="cs-wrap cs-pack-row">
-                <img src="../volt-fitness/img/gina-placeholder1x1.jpg" alt="Logo variation 1">
-                <img src="../volt-fitness/img/gina-placeholder1x1.jpg" alt="Logo variation 2">
-                <img src="../volt-fitness/img/gina-placeholder1x1.jpg" alt="Logo variation 3">
-            </div> -->
+
         </section>
 
         <!-- MY APPROACH -->
@@ -267,6 +264,14 @@
     <!-- ENABLE ON SCROLL TRIGGER EVENTS -->
     <link rel="stylesheet" href="../css/scrolltriggers.css">
     <script src="../js/scrolltriggers.js"></script>
+
+    <!-- Expand sitemap images on click -->
+    <div id="img-modal" class="img-modal">
+        <span class="img-close">&times;</span>
+        <img id="img-expanded" class="img-modal-content" alt="Expanded image">
+    </div>
+
+    <script src="../js/enlargeimage.js"></script>
 
 </body>
 
