@@ -70,6 +70,29 @@ body.case-flat .site-header {
     letter-spacing: -0.01em;
 } */
 
+.cs-pack-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.cs-pack-row figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cs-pack-row img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cs-pack-row figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
 .cs-h {
     font-size: clamp(24px, 2.4vw, 32px);
     font-weight: 600;
