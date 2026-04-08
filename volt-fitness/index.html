@@ -243,7 +243,7 @@
                 </p>
             </div>
 
-            <div class="cs-wrap cs-center">
+            <!-- <div class="cs-wrap cs-center">
                 <img src="../volt-fitness/img/volt-homepage-hifi.jpg" alt="Volt Fitness Tracker homepage hi-fi mockup"
                     class="cs-large-image">
                 <img src="../volt-fitness/img/volt-dashboard-hifi.jpg" alt="Volt Fitness Tracker dashboard hi-fi mockup"
@@ -254,7 +254,23 @@
                     class="cs-large-image">
                 <img src="../volt-fitness/img/volt-settings-hifi.jpg" alt="Volt Fitness Tracker settings hi-fi mockup"
                     class="cs-large-image">
+            </div> -->
+            <div class="cs-wrap cs-grid-gallery">
+
+                <img src="../volt-fitness/img/volt-homepage-hifi.jpg" alt="Homepage" class="zoom-img">
+                <img src="../volt-fitness/img/volt-dashboard-hifi.jpg" alt="Dashboard" class="zoom-img">
+                <img src="../volt-fitness/img/volt-log-activity-hifi.jpg" alt="Log Activity" class="zoom-img">
+                <img src="../volt-fitness/img/volt-calendar-hifi.jpg" alt="Calendar" class="zoom-img">
+                <img src="../volt-fitness/img/volt-settings-hifi.jpg" alt="Settings" class="zoom-img">
+
             </div>
+
+            <!-- Modal -->
+            <div class="img-modal" id="imgModal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modalImg">
+            </div>
+
         </section>
 
         <!-- BOTTOM NAV -->
@@ -281,6 +297,27 @@
     </div>
 
     <script src="../js/enlargeimage.js"></script>
+
+    <!-- your HTML above -->
+
+    <script>
+        const images = document.querySelectorAll(".zoom-img");
+        const modal = document.getElementById("imgModal");
+        const modalImg = document.getElementById("modalImg");
+        const closeBtn = document.querySelector(".close");
+
+        images.forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "block";
+                modalImg.src = img.src;
+            });
+        });
+
+        closeBtn.onclick = () => modal.style.display = "none";
+        modal.onclick = () => modal.style.display = "none";
+    </script>
+
+</body>
 
 </body>
 
