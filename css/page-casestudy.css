@@ -845,3 +845,549 @@ body.case-flat .site-header {
         animation: none;
     }
 }
+
+/* =========================================================
+   MY APPROACH — STEP 3 FINAL OVERRIDE
+   Paste at the very bottom of the stylesheet
+   ========================================================= */
+
+.step-visuals {
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(520px, 1fr);
+    gap: 40px 56px;
+    align-items: start;
+}
+
+.step-visuals .step-copy {
+    max-width: 340px;
+}
+
+.step-visuals-media {
+    width: 100%;
+    display: grid;
+    justify-items: start;
+}
+
+.step-palette-display {
+    width: 100%;
+    max-width: 988px;
+    /* ~30% bigger than 760px */
+    margin: 0;
+}
+
+.step-palette-display img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+
+.step-logo-variations {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.step-logo-variations img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.step-typeface-centered {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.step-typeface-centered img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* override older step-3 rules that were constraining size/layout */
+.step-media-triple-custom,
+.step-palette-centered,
+.step-palette,
+.step-visuals-media--stack,
+.step-palette-large,
+.step-typeface-large {
+    max-width: none;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+    .step-visuals {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .step-visuals .step-copy {
+        max-width: 100%;
+    }
+
+    .step-visuals-media {
+        justify-items: start;
+    }
+
+    .step-palette-display,
+    .step-typeface-centered,
+    .step-logo-variations {
+        max-width: 100%;
+    }
+
+    .step-logo-variations {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+
+}
+
+
+
+/* =========================
+   STEP 2 — sketches
+   shrink ~60%
+   ========================= */
+.step-media-logo {
+    max-width: 320px;
+    /* controls overall group size */
+    gap: 16px;
+}
+
+.step-media-logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* =========================================================
+   MY APPROACH — CLEAN CONSOLIDATED CSS
+   ========================================================= */
+
+.cs-approach-title {
+    margin: 0 0 56px;
+}
+
+.steps-editorial {
+    display: grid;
+    gap: 72px;
+}
+
+.steps-editorial .step {
+    display: grid;
+    align-items: start;
+    gap: 40px;
+}
+
+.step-copy {
+    width: 100%;
+    max-width: 340px;
+}
+
+.step-copy h3 {
+    margin: 0 0 10px;
+}
+
+.step-copy .cs-text {
+    margin: 0;
+    max-width: 100%;
+}
+
+.steps-editorial img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* -------------------------
+   STEP 1
+   text LEFT / image RIGHT
+   ------------------------- */
+.step-vibe {
+    grid-template-columns: minmax(300px, 360px) minmax(260px, 372px);
+    justify-content: space-between;
+}
+
+.step-vibe .step-copy {
+    order: 1;
+    justify-self: start;
+    text-align: left;
+}
+
+.step-vibe .step-core {
+    order: 2;
+    justify-self: end;
+    width: 100%;
+    max-width: 372px;
+    /* ~30% bigger */
+}
+
+/* -------------------------
+   STEP 2
+   image LEFT / text RIGHT
+   ------------------------- */
+.step-logo {
+    grid-template-columns: minmax(430px, 520px) minmax(280px, 340px);
+    justify-content: space-between;
+}
+
+.step-logo .step-media-logo {
+    order: 1;
+    justify-self: start;
+    width: 100%;
+    max-width: 520px;
+    /* ~45% bigger */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.step-logo .step-copy {
+    order: 2;
+    justify-self: end;
+    text-align: left;
+}
+
+/* keeps the tall sketch from overpowering the second image */
+.step-media-logo img:first-child {
+    aspect-ratio: 1 / 1.28;
+    object-fit: cover;
+}
+
+/* -------------------------
+   STEP 3
+   text LEFT / palette RIGHT
+   logos + type below
+   ------------------------- */
+.step-visuals {
+    grid-template-columns: minmax(280px, 340px) minmax(420px, 840px);
+    gap: 40px 48px;
+    justify-content: space-between;
+}
+
+.step-visuals .step-copy {
+    justify-self: start;
+    text-align: left;
+}
+
+.step-visuals-media {
+    width: 100%;
+    display: grid;
+    justify-items: start;
+}
+
+.step-palette-display {
+    width: 100%;
+    max-width: 840px;
+    /* ~15% smaller */
+}
+
+.step-visuals-assets {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 32px;
+    justify-items: center;
+    margin-top: 6px;
+}
+
+.step-logo-variations {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.step-typeface-centered {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* -------------------------
+   MOBILE
+   ------------------------- */
+@media (max-width: 900px) {
+    .cs-approach-title {
+        margin-bottom: 32px;
+    }
+
+    .steps-editorial {
+        gap: 48px;
+    }
+
+    .step-vibe,
+    .step-logo,
+    .step-visuals {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .step-copy,
+    .step-vibe .step-copy,
+    .step-logo .step-copy,
+    .step-visuals .step-copy {
+        max-width: 100%;
+        justify-self: start;
+    }
+
+    .step-vibe .step-core,
+    .step-logo .step-media-logo,
+    .step-palette-display,
+    .step-logo-variations,
+    .step-typeface-centered {
+        max-width: 100%;
+        justify-self: start;
+    }
+
+    .step-vibe .step-copy,
+    .step-vibe .step-core,
+    .step-logo .step-media-logo,
+    .step-logo .step-copy {
+        order: initial;
+    }
+
+    .step-logo .step-media-logo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .step-logo-variations {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .step-visuals-assets {
+        grid-column: auto;
+        margin-top: 0;
+        gap: 24px;
+    }
+}
+
+/* =========================================================
+   MY APPROACH — FINAL FIX (CLEAN + WORKING)
+   ========================================================= */
+
+/* -------------------------
+   STEP 1 — move image inward (ACTUALLY WORKS)
+   ------------------------- */
+.step-vibe {
+    grid-template-columns: minmax(300px, 360px) minmax(260px, 360px);
+    justify-content: space-between;
+}
+
+.step-vibe .step-core {
+    max-width: 330px;
+    /* slightly smaller */
+    justify-self: center;
+    /* centers inside column */
+    transform: translateX(-40px);
+    /* 🔥 THIS is what actually moves it inward */
+}
+
+
+/* -------------------------
+   STEP 2 — bigger sketches
+   ------------------------- */
+.step-logo {
+    grid-template-columns: minmax(520px, 640px) minmax(280px, 340px);
+}
+
+.step-logo .step-media-logo {
+    max-width: 640px;
+    /* bigger */
+    gap: 22px;
+}
+
+
+/* -------------------------
+   STEP 3 — fix alignment
+   ------------------------- */
+.step-visuals {
+    grid-template-columns: minmax(300px, 360px) minmax(600px, 760px);
+    gap: 40px 48px;
+    justify-content: space-between;
+}
+
+.step-palette-display {
+    max-width: 760px;
+    /* reduced so it aligns with above sections */
+}
+
+/* ensure palette lines up with sketches visually */
+.step-visuals-media {
+    justify-self: start;
+}
+
+/* =========================================================
+   MY APPROACH — FINAL WORKING FIX
+   ========================================================= */
+
+/* -------------------------
+   STEP 1 — TRUE CENTER SHIFT
+   ------------------------- */
+.step-vibe {
+    grid-template-columns: 1fr 1fr;
+}
+
+.step-vibe .step-core {
+    max-width: 330px;
+    justify-self: start;
+
+    /* 🔥 this centers it visually between text + edge */
+    margin-left: -80px;
+}
+
+
+/* -------------------------
+   STEP 2 — sketches bigger
+   ------------------------- */
+.step-logo .step-media-logo {
+    max-width: 680px;
+    gap: 24px;
+}
+
+
+/* -------------------------
+   STEP 3 — ALIGN FIX
+   ------------------------- */
+.step-visuals {
+    grid-template-columns: 1fr 1fr;
+}
+
+.step-visuals .step-copy {
+    max-width: 340px;
+}
+
+.step-visuals-media {
+    justify-self: start;
+}
+
+/* 🔥 THIS fixes alignment */
+.step-palette-display {
+    max-width: 700px;
+    /* smaller = aligns with sketches */
+    margin-left: 0;
+}
+
+/* =========================================================
+   STEP 3 — ALIGN PALETTE WITH TITLE
+   ========================================================= */
+
+/* move palette UP to align with heading */
+.step-visuals-media {
+    align-self: start;
+    transform: translateY(-13%);
+}
+
+/* optional: tighten text spacing so alignment feels exact */
+.step-visuals .step-copy h3 {
+    margin-top: 0;
+}
+
+/* =========================================================
+   CHALLENGE / SOLUTION — QUIETER STORY BLOCKS
+   ========================================================= */
+
+.cs-story {
+    padding: 72px 0;
+}
+
+.cs-story-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) minmax(420px, 760px);
+    gap: 56px;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.cs-story-head {
+    display: block;
+}
+
+.cs-story-title {
+    margin: 0 0 28px 0;
+    /* more space below title */
+    font-size: clamp(24px, 2.4vw, 32px);
+    /* same feeling as My Approach */
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: rgba(11, 11, 11, 0.96);
+}
+
+.cs-story-body {
+    max-width: 620px;
+}
+
+.cs-story-body .cs-text {
+    margin: 0;
+    font-size: 15px;
+    /* same family/feel as rest of case study */
+    line-height: 1.7;
+    color: rgba(11, 11, 11, 0.72);
+}
+
+/* zig-zag flip for solution */
+.cs-story--solution .cs-story-grid {
+    grid-template-columns: minmax(420px, 760px) minmax(260px, 340px);
+}
+
+.cs-story--solution .cs-story-body {
+    order: 1;
+    justify-self: start;
+}
+
+.cs-story--solution .cs-story-head {
+    order: 2;
+    justify-self: end;
+    text-align: left;
+}
+
+/* softer dividers */
+.cs-story.cs-sec {
+    border-top: 1px solid rgba(11, 11, 11, 0.08);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .cs-story {
+        padding: 56px 0;
+    }
+
+    .cs-story-grid,
+    .cs-story--solution .cs-story-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .cs-story--solution .cs-story-body,
+    .cs-story--solution .cs-story-head {
+        order: initial;
+        justify-self: start;
+    }
+
+    .cs-story-title {
+        margin-bottom: 18px;
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    .cs-story-body .cs-text {
+        font-size: 15px;
+    }
+}
+
+.cs-story-title {
+    margin: 0 0 28px 0;
+    transform: translateY(-35%);
+}
