@@ -513,9 +513,52 @@ body.case-flat .site-header {
     gap: 40px;
 }
 
-.cs-credits-img {
+/* .cs-credits-img {
     width: 100%;
     max-height: 420px;
+    border: 1px solid rgba(11, 11, 11, .12);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.cs-credits-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+} */
+
+/* =========================================================
+   CREDITS
+   ========================================================= */
+
+.cs-credits-sec {
+    padding: 0;
+    border-top: 1px solid rgba(11, 11, 11, .12);
+}
+
+.cs-credits-body {
+    padding: 44px 0 64px;
+}
+
+.cs-credits-grid {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 40px;
+    align-items: center;
+    overflow: visible;
+}
+
+.cs-credits-img {
+    margin: 0;
+    /* reset default figure margin */
+    justify-self: start;
+    width: calc(100% + 220px);
+    /* make it noticeably wider */
+    margin-left: -220px;
+    /* break out to the left only */
+    max-width: none;
+
     border: 1px solid rgba(11, 11, 11, .12);
     border-radius: 12px;
     overflow: hidden;
@@ -533,7 +576,8 @@ body.case-flat .site-header {
     padding-right: 30px;
 }
 
-.cs-credits-title {
+.cs-credits-title,
+.cs-credits-heading {
     margin: 0 0 24px 0;
     font-size: 20px;
     font-weight: 600;
@@ -545,7 +589,6 @@ body.case-flat .site-header {
     margin: 0;
     display: grid;
     gap: 14px;
-    /* font-size: 13px; */
     line-height: 1.6;
     color: rgba(11, 11, 11, .72);
 }
@@ -564,6 +607,22 @@ body.case-flat .site-header {
 
 .cs-dl dd {
     margin: 0;
+}
+
+@media (max-width: 900px) {
+    .cs-credits-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cs-credits-img {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .cs-credits {
+        padding: 32px 0 0;
+    }
 }
 
 /* ----- text layouts ----- */
