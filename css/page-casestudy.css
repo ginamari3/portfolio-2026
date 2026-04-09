@@ -745,36 +745,9 @@ body.case-flat .site-header {
 }
 
 /* ----- bottom nav ----- */
-.cs-bottom {
-    border-top: 1px solid rgba(11, 11, 11, .12);
-    padding: 0;
-}
-
-.cs-bottom-bar {
-    background: #6e6466;
-    color: rgba(255, 255, 255, .9);
-    padding: 34px 0;
-}
-
-.cs-bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    align-items: center;
-}
-
-.cs-bottom-grid a {
-    color: rgba(255, 255, 255, .9);
-    font-size: 12px;
-    opacity: .9;
-}
-
-.cs-bottom-grid a:hover {
-    opacity: 1;
-}
-
 .cs-bottom-under {
-    padding: 22px 0 42px;
+    padding: 32px 0 48px;
+    /* slightly more breathing room */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
@@ -782,12 +755,26 @@ body.case-flat .site-header {
 }
 
 .cs-bottom-under a {
-    font-size: 12px;
-    opacity: .8;
+    font-size: 13px;
+    /* matches your system */
 }
 
-.cs-bottom-under a:hover {
-    opacity: 1;
+/* align buttons cleanly */
+.cs-bottom-under a:last-child {
+    justify-self: end;
+    text-align: right;
+}
+
+.cs-bottom-under a {
+    width: fit-content;
+}
+
+.cs-bottom-under a:first-child {
+    justify-self: start;
+}
+
+.cs-bottom-under a:last-child {
+    justify-self: end;
 }
 
 /* ----- optional older components ----- */
