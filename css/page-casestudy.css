@@ -1581,3 +1581,134 @@ body.case-flat .site-header {
         line-height: 1.4;
     }
 }
+
+
+/* =========================================================
+   AETHER MOBILE — MY APPROACH DIAGRAM
+   ========================================================= */
+
+.cs-approach-mobile {
+    padding: 60px 0 100px;
+    background: #ffffff;
+}
+
+.approach-flow-mobile {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(260px, 420px) minmax(180px, 1fr);
+    grid-template-rows: repeat(5, auto);
+    column-gap: 48px;
+    row-gap: 130px;
+    align-items: center;
+}
+
+/* center image */
+.approach-flow-mobile .flow-image {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    width: 100%;
+    justify-self: center;
+    align-self: start;
+}
+
+.approach-flow-mobile .flow-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* callouts */
+.approach-flow-mobile .callout {
+    max-width: 310px;
+}
+
+.approach-flow-mobile .callout h3 {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 2vw, 34px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: #000000;
+    text-transform: none;
+}
+
+.approach-flow-mobile .callout p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.35;
+    color: #000000;
+}
+
+/* left / right placement */
+.approach-flow-mobile .callout-left {
+    grid-column: 1;
+    justify-self: end;
+    text-align: left;
+}
+
+.approach-flow-mobile .callout-right {
+    grid-column: 3;
+    justify-self: start;
+    text-align: left;
+}
+
+/* rows */
+.approach-flow-mobile .row-1 {
+    grid-row: 1;
+}
+
+.approach-flow-mobile .row-2 {
+    grid-row: 2;
+}
+
+.approach-flow-mobile .row-3 {
+    grid-row: 3;
+}
+
+.approach-flow-mobile .row-4 {
+    grid-row: 4;
+}
+
+.approach-flow-mobile .row-5 {
+    grid-row: 5;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .approach-flow-mobile {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        row-gap: 28px;
+    }
+
+    .approach-flow-mobile .flow-image {
+        grid-column: 1;
+        grid-row: auto;
+        max-width: 420px;
+        margin: 0 auto 12px;
+    }
+
+    .approach-flow-mobile .callout,
+    .approach-flow-mobile .callout-left,
+    .approach-flow-mobile .callout-right,
+    .approach-flow-mobile .row-1,
+    .approach-flow-mobile .row-2,
+    .approach-flow-mobile .row-3,
+    .approach-flow-mobile .row-4,
+    .approach-flow-mobile .row-5 {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: start;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .approach-flow-mobile .callout h3 {
+        font-size: 22px;
+    }
+
+    .approach-flow-mobile .callout p {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+}
