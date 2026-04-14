@@ -56,21 +56,7 @@ body.case-flat .site-header {
     padding-bottom: 90px;
 }
 
-/* ----- type system ----- */
-/* .cs-h {
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
-    color: rgba(11, 11, 11, 0.92);
-} */
-
-/* .cs-h {
-    font-size: clamp(20px, 2vw, 26px);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-} */
-
-
+/* ----- shared gallery / modal ----- */
 .cs-grid-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -88,59 +74,37 @@ body.case-flat .site-header {
     transform: scale(1.02);
 }
 
-/* Modal */
 .img-modal {
     display: none;
     position: fixed;
-    z-index: 999;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
 }
 
-.modal-content {
-    margin: auto;
+.img-modal-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
     display: block;
-    max-width: 90%;
-    max-height: 80vh;
     border-radius: 12px;
 }
 
-.close {
+.img-close {
     position: absolute;
     top: 20px;
-    right: 35px;
-    color: white;
-    font-size: 30px;
+    right: 28px;
+    font-size: 40px;
+    line-height: 1;
+    color: #fff;
     cursor: pointer;
 }
 
-.cs-pack-row {
-    display: flex;
-    gap: 2rem;
-}
-
-.cs-pack-row figure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cs-pack-row img {
-    max-width: 100%;
-    height: auto;
-}
-
-.cs-pack-row figcaption {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-}
-
+/* ----- shared type ----- */
 .cs-h {
     font-size: clamp(24px, 2.4vw, 32px);
     font-weight: 600;
@@ -149,7 +113,6 @@ body.case-flat .site-header {
 
 .cs-text {
     margin: 0;
-    /* font-size: 14px; */
     line-height: 1.7;
     color: rgba(11, 11, 11, 0.72);
 }
@@ -160,16 +123,11 @@ body.case-flat .site-header {
     color: rgba(11, 11, 11, 0.72);
 }
 
-.step h3 {
-    margin: 0 0 8px;
-    font-size: 16px;
-    line-height: 1.3;
-    font-weight: 600;
-    color: rgba(11, 11, 11, 0.92);
-}
-
-.step+.step {
-    margin-top: 24px;
+.cs-text,
+.cs-hero-text,
+.cs-dl {
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 /* ----- hero ----- */
@@ -184,20 +142,11 @@ body.case-flat .site-header {
     min-height: clamp(468px, 82vh, 831px);
     border-bottom: 1px solid rgba(11, 11, 11, .12);
     overflow: hidden;
-    /* background-image: url("../aetherair-branding/img/1-hero-airplane-3.jpg"); */
     background-size: cover;
     background-position: center 60%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #e9eef4;
-}
-
-.case-aetherair-branding .cs-hero-media {
-    background-image: url("../aetherair-branding/img/1-hero-airplane-3.jpg");
-}
-
-.case-aetherair-mobile .cs-hero-media {
-    background-image: url("../aetherair-mobile/img/eugene-krasnaok-3N5WhUFufDI-unsplash.jpg");
 }
 
 .case-aetherair-website .cs-hero-media {
@@ -299,7 +248,6 @@ body.case-flat .site-header {
     margin: 12px 0 0;
     max-width: 62ch;
     color: rgba(255, 255, 255, .9);
-    /* font-size: 14px; */
     line-height: 1.55;
 }
 
@@ -369,168 +317,10 @@ body.case-flat .site-header {
 }
 
 /* ----- credits ----- */
-/* .cs-credits h2 {
-    margin-bottom: 28px;
-    font-size: 18px;
-    font-weight: 600;
-} */
-
-.case-volt-fitness .cs-sitemap-large {
-    cursor: zoom-in;
-}
-
-.case-volt-fitness .cs-row-2 img {
-    cursor: zoom-in;
-}
-
-.case-volt-fitness .cs-pack-row img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
-}
-
-.cs-pack-row figure {
-    margin: 0;
-}
-
-.cs-pack-row figcaption {
-    margin-top: 8px;
-    font-size: 12px;
-    text-align: center;
-    color: rgba(11, 11, 11, 0.6);
-}
-
-.cs-img-half-wrap {
-    width: 50%;
-    margin: 80px auto 0;
-    /* 🔥 adds space above */
-    /* centers it */
-}
-
-.cs-img-half-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.case-volt-fitness .cs-hero-volt-logo {
-    position: absolute;
-    inset: auto;
-
-    right: 6%;
-    bottom: 6%;
-
-    z-index: 2;
-    opacity: 0.35;
-
-    width: min(10.2vw, 94px);
-    /* 🔥 15% smaller */
-    height: auto;
-
-    object-fit: contain;
-    pointer-events: none;
-}
-
-.case-volt-fitness .cs-row-2 {
-    max-width: 840px;
-}
-
-.cs-center img.cs-sketch-medium {
-    width: 55%;
-    height: auto;
-}
-
-.case-ll-animation .cs-center img.cs-ll-small {
-    width: 30%;
-    height: auto;
-}
-
-.case-ll-animation .cs-credits-img {
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-.case-ll-animation .cs-credits-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* 🔥 fills the container */
-    object-position: center;
-    /* keeps it centered */
-    display: block;
-}
-
-.cs-center img.cs-sketch-small {
-    width: 40%;
-    height: auto;
-}
-
-.case-tourism-logo .cs-credits-img img {
-    border-radius: 12px;
-}
-
-.case-tourism-logo .cs-credits-img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.case-tourism-logo .cs-credits-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.cs-text,
-.cs-hero-text,
-.cs-dl {
-    font-size: 15px;
-    line-height: 1.7;
-}
-
 .cs-credits h2 {
     margin-bottom: 28px;
     font-size: clamp(20px, 2vw, 26px);
 }
-
-.cs-credits-sec {
-    padding: 0;
-    border-top: 1px solid rgba(11, 11, 11, .12);
-}
-
-.cs-credits-body {
-    padding: 44px 0 64px;
-}
-
-.cs-credits-grid {
-    display: grid;
-    grid-template-columns: 55% 45%;
-    align-items: center;
-    gap: 40px;
-}
-
-/* .cs-credits-img {
-    width: 100%;
-    max-height: 420px;
-    border: 1px solid rgba(11, 11, 11, .12);
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
-}
-
-.cs-credits-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-} */
-
-/* =========================================================
-   CREDITS
-   ========================================================= */
 
 .cs-credits-sec {
     padding: 0;
@@ -551,14 +341,10 @@ body.case-flat .site-header {
 
 .cs-credits-img {
     margin: 0;
-    /* reset default figure margin */
     justify-self: start;
     width: calc(100% + 220px);
-    /* make it noticeably wider */
     margin-left: -220px;
-    /* break out to the left only */
     max-width: none;
-
     border: 1px solid rgba(11, 11, 11, .12);
     border-radius: 12px;
     overflow: hidden;
@@ -609,23 +395,7 @@ body.case-flat .site-header {
     margin: 0;
 }
 
-@media (max-width: 900px) {
-    .cs-credits-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .cs-credits-img {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .cs-credits {
-        padding: 32px 0 0;
-    }
-}
-
-/* ----- text layouts ----- */
+/* ----- shared layouts ----- */
 .cs-two {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -633,7 +403,6 @@ body.case-flat .site-header {
     align-items: start;
 }
 
-/* ----- centered visuals ----- */
 .cs-center {
     display: grid;
     place-items: center;
@@ -649,7 +418,6 @@ body.case-flat .site-header {
 .cs-center img.cs-wireframe-small,
 .cs-center img.cs-sitemap-small {
     width: 50%;
-    /* or 80% depending what you want */
 }
 
 .cs-large-image {
@@ -661,7 +429,6 @@ body.case-flat .site-header {
     max-width: 240px;
 }
 
-/* ----- 2 column image row ----- */
 .cs-row-2 {
     margin-top: 34px;
     display: grid;
@@ -690,7 +457,6 @@ body.case-flat .site-header {
 .case-aetherair-website .cs-sitemap-large {
     width: 100%;
     max-width: 780px;
-    /* 25% smaller */
     height: auto;
     display: block;
     margin: 0 auto;
@@ -698,38 +464,6 @@ body.case-flat .site-header {
     cursor: zoom-in;
 }
 
-.img-modal-content {
-    max-width: 95vw;
-    max-height: 95vh;
-    width: auto;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-}
-
-.img-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.88);
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-}
-
-
-.img-close {
-    position: absolute;
-    top: 20px;
-    right: 28px;
-    font-size: 40px;
-    line-height: 1;
-    color: #fff;
-    cursor: pointer;
-}
-
-/* ----- split visual ----- */
 .cs-split-visual {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -749,7 +483,6 @@ body.case-flat .site-header {
     color: rgba(11, 11, 11, .85);
 }
 
-/* ----- assets ----- */
 .cs-asset {
     display: grid;
     place-items: center;
@@ -773,7 +506,6 @@ body.case-flat .site-header {
     max-width: 940px;
 }
 
-/* ----- 3 column row ----- */
 .cs-pack-row {
     margin-top: 34px;
     display: grid;
@@ -789,7 +521,17 @@ body.case-flat .site-header {
     border-radius: 12px;
 }
 
-/* ----- single box image ----- */
+.cs-pack-row figure {
+    margin: 0;
+}
+
+.cs-pack-row figcaption {
+    margin-top: 8px;
+    font-size: 12px;
+    text-align: center;
+    color: rgba(11, 11, 11, 0.6);
+}
+
 .cs-box {
     margin-top: 40px;
     display: grid;
@@ -803,10 +545,84 @@ body.case-flat .site-header {
     border-radius: 12px;
 }
 
+.cs-img-half-wrap {
+    width: 50%;
+    margin: 80px auto 0;
+}
+
+.cs-img-half-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ----- project-specific shared helpers that still belong here ----- */
+.case-volt-fitness .cs-sitemap-large,
+.case-volt-fitness .cs-row-2 img {
+    cursor: zoom-in;
+}
+
+.case-volt-fitness .cs-pack-row img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+.case-volt-fitness .cs-row-2 {
+    max-width: 840px;
+}
+
+.case-volt-fitness .cs-hero-volt-logo {
+    position: absolute;
+    inset: auto;
+    right: 6%;
+    bottom: 6%;
+    z-index: 2;
+    opacity: 0.35;
+    width: min(10.2vw, 94px);
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.case-ll-animation .cs-center img.cs-ll-small {
+    width: 30%;
+    height: auto;
+}
+
+.case-ll-animation .cs-credits-img {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.case-ll-animation .cs-credits-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.case-tourism-logo .cs-credits-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.case-tourism-logo .cs-credits-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
 /* ----- bottom nav ----- */
 .cs-bottom-under {
     padding: 32px 0 48px;
-    /* slightly more breathing room */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px;
@@ -815,16 +631,6 @@ body.case-flat .site-header {
 
 .cs-bottom-under a {
     font-size: 13px;
-    /* matches your system */
-}
-
-/* align buttons cleanly */
-.cs-bottom-under a:last-child {
-    justify-self: end;
-    text-align: right;
-}
-
-.cs-bottom-under a {
     width: fit-content;
 }
 
@@ -834,6 +640,7 @@ body.case-flat .site-header {
 
 .cs-bottom-under a:last-child {
     justify-self: end;
+    text-align: right;
 }
 
 /* ----- optional older components ----- */
@@ -863,488 +670,7 @@ body.case-flat .site-header {
     display: block;
 }
 
-/* ----- responsive ----- */
-@media (max-width: 900px) {
-    .cs-pillnav {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .cs-two,
-    .cs-split-visual,
-    .cs-credits-grid,
-    .cs-triptych-grid,
-    .cs-pack-row,
-    .cs-bottom-grid,
-    .cs-bottom-under {
-        grid-template-columns: 1fr;
-    }
-
-    .cs-bottom-grid,
-    .cs-bottom-under {
-        text-align: center;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .cs-yellowbar-marquee {
-        animation: none;
-    }
-}
-
-/* =========================================================
-   MY APPROACH — STEP 3 FINAL OVERRIDE
-   Paste at the very bottom of the stylesheet
-   ========================================================= */
-
-.step-visuals {
-    display: grid;
-    grid-template-columns: minmax(280px, 340px) minmax(520px, 1fr);
-    gap: 40px 56px;
-    align-items: start;
-}
-
-.step-visuals .step-copy {
-    max-width: 340px;
-}
-
-.step-visuals-media {
-    width: 100%;
-    display: grid;
-    justify-items: start;
-}
-
-.step-palette-display {
-    width: 100%;
-    max-width: 988px;
-    /* ~30% bigger than 760px */
-    margin: 0;
-}
-
-.step-palette-display img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-}
-
-
-.step-logo-variations {
-    width: 100%;
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: center;
-}
-
-.step-logo-variations img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-}
-
-.step-typeface-centered {
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto;
-}
-
-.step-typeface-centered img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-}
-
-/* override older step-3 rules that were constraining size/layout */
-.step-media-triple-custom,
-.step-palette-centered,
-.step-palette,
-.step-visuals-media--stack,
-.step-palette-large,
-.step-typeface-large {
-    max-width: none;
-}
-
-/* mobile */
-@media (max-width: 900px) {
-    .step-visuals {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .step-visuals .step-copy {
-        max-width: 100%;
-    }
-
-    .step-visuals-media {
-        justify-items: start;
-    }
-
-    .step-palette-display,
-    .step-typeface-centered,
-    .step-logo-variations {
-        max-width: 100%;
-    }
-
-    .step-logo-variations {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-
-}
-
-
-
-/* =========================
-   STEP 2 — sketches
-   shrink ~60%
-   ========================= */
-.step-media-logo {
-    max-width: 320px;
-    /* controls overall group size */
-    gap: 16px;
-}
-
-.step-media-logo img {
-    width: 100%;
-    height: auto;
-}
-
-/* =========================================================
-   MY APPROACH — CLEAN CONSOLIDATED CSS
-   ========================================================= */
-
-.cs-approach-title {
-    margin: 0 0 56px;
-}
-
-.steps-editorial {
-    display: grid;
-    gap: 72px;
-}
-
-.steps-editorial .step {
-    display: grid;
-    align-items: start;
-    gap: 40px;
-}
-
-.step-copy {
-    width: 100%;
-    max-width: 340px;
-}
-
-.step-copy h3 {
-    margin: 0 0 10px;
-}
-
-.step-copy .cs-text {
-    margin: 0;
-    max-width: 100%;
-}
-
-.steps-editorial img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-}
-
-/* -------------------------
-   STEP 1
-   text LEFT / image RIGHT
-   ------------------------- */
-.step-vibe {
-    grid-template-columns: minmax(300px, 360px) minmax(260px, 372px);
-    justify-content: space-between;
-}
-
-.step-vibe .step-copy {
-    order: 1;
-    justify-self: start;
-    text-align: left;
-}
-
-.step-vibe .step-core {
-    order: 2;
-    justify-self: end;
-    width: 100%;
-    max-width: 372px;
-    /* ~30% bigger */
-}
-
-/* -------------------------
-   STEP 2
-   image LEFT / text RIGHT
-   ------------------------- */
-.step-logo {
-    grid-template-columns: minmax(430px, 520px) minmax(280px, 340px);
-    justify-content: space-between;
-}
-
-.step-logo .step-media-logo {
-    order: 1;
-    justify-self: start;
-    width: 100%;
-    max-width: 520px;
-    /* ~45% bigger */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: start;
-}
-
-.step-logo .step-copy {
-    order: 2;
-    justify-self: end;
-    text-align: left;
-}
-
-/* keeps the tall sketch from overpowering the second image */
-.step-media-logo img:first-child {
-    aspect-ratio: 1 / 1.28;
-    object-fit: cover;
-}
-
-/* -------------------------
-   STEP 3
-   text LEFT / palette RIGHT
-   logos + type below
-   ------------------------- */
-.step-visuals {
-    grid-template-columns: minmax(280px, 340px) minmax(420px, 840px);
-    gap: 40px 48px;
-    justify-content: space-between;
-}
-
-.step-visuals .step-copy {
-    justify-self: start;
-    text-align: left;
-}
-
-.step-visuals-media {
-    width: 100%;
-    display: grid;
-    justify-items: start;
-}
-
-.step-palette-display {
-    width: 100%;
-    max-width: 840px;
-    /* ~15% smaller */
-}
-
-.step-visuals-assets {
-    grid-column: 1 / -1;
-    display: grid;
-    gap: 32px;
-    justify-items: center;
-    margin-top: 6px;
-}
-
-.step-logo-variations {
-    width: 100%;
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    align-items: center;
-}
-
-.step-typeface-centered {
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto;
-}
-
-/* -------------------------
-   MOBILE
-   ------------------------- */
-@media (max-width: 900px) {
-    .cs-approach-title {
-        margin-bottom: 32px;
-    }
-
-    .steps-editorial {
-        gap: 48px;
-    }
-
-    .step-vibe,
-    .step-logo,
-    .step-visuals {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .step-copy,
-    .step-vibe .step-copy,
-    .step-logo .step-copy,
-    .step-visuals .step-copy {
-        max-width: 100%;
-        justify-self: start;
-    }
-
-    .step-vibe .step-core,
-    .step-logo .step-media-logo,
-    .step-palette-display,
-    .step-logo-variations,
-    .step-typeface-centered {
-        max-width: 100%;
-        justify-self: start;
-    }
-
-    .step-vibe .step-copy,
-    .step-vibe .step-core,
-    .step-logo .step-media-logo,
-    .step-logo .step-copy {
-        order: initial;
-    }
-
-    .step-logo .step-media-logo {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .step-logo-variations {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .step-visuals-assets {
-        grid-column: auto;
-        margin-top: 0;
-        gap: 24px;
-    }
-}
-
-/* =========================================================
-   MY APPROACH — FINAL FIX (CLEAN + WORKING)
-   ========================================================= */
-
-/* -------------------------
-   STEP 1 — move image inward (ACTUALLY WORKS)
-   ------------------------- */
-.step-vibe {
-    grid-template-columns: minmax(300px, 360px) minmax(260px, 360px);
-    justify-content: space-between;
-}
-
-.step-vibe .step-core {
-    max-width: 330px;
-    /* slightly smaller */
-    justify-self: center;
-    /* centers inside column */
-    transform: translateX(-40px);
-    /* 🔥 THIS is what actually moves it inward */
-}
-
-
-/* -------------------------
-   STEP 2 — bigger sketches
-   ------------------------- */
-.step-logo {
-    grid-template-columns: minmax(520px, 640px) minmax(280px, 340px);
-}
-
-.step-logo .step-media-logo {
-    max-width: 640px;
-    /* bigger */
-    gap: 22px;
-}
-
-
-/* -------------------------
-   STEP 3 — fix alignment
-   ------------------------- */
-.step-visuals {
-    grid-template-columns: minmax(300px, 360px) minmax(600px, 760px);
-    gap: 40px 48px;
-    justify-content: space-between;
-}
-
-.step-palette-display {
-    max-width: 760px;
-    /* reduced so it aligns with above sections */
-}
-
-/* ensure palette lines up with sketches visually */
-.step-visuals-media {
-    justify-self: start;
-}
-
-/* =========================================================
-   MY APPROACH — FINAL WORKING FIX
-   ========================================================= */
-
-/* -------------------------
-   STEP 1 — TRUE CENTER SHIFT
-   ------------------------- */
-.step-vibe {
-    grid-template-columns: 1fr 1fr;
-}
-
-.step-vibe .step-core {
-    max-width: 330px;
-    justify-self: start;
-
-    /* 🔥 this centers it visually between text + edge */
-    margin-left: -80px;
-}
-
-
-/* -------------------------
-   STEP 2 — sketches bigger
-   ------------------------- */
-.step-logo .step-media-logo {
-    max-width: 680px;
-    gap: 24px;
-}
-
-
-/* -------------------------
-   STEP 3 — ALIGN FIX
-   ------------------------- */
-.step-visuals {
-    grid-template-columns: 1fr 1fr;
-}
-
-.step-visuals .step-copy {
-    max-width: 340px;
-}
-
-.step-visuals-media {
-    justify-self: start;
-}
-
-/* 🔥 THIS fixes alignment */
-.step-palette-display {
-    max-width: 700px;
-    /* smaller = aligns with sketches */
-    margin-left: 0;
-}
-
-/* =========================================================
-   STEP 3 — ALIGN PALETTE WITH TITLE
-   ========================================================= */
-
-/* move palette UP to align with heading */
-.step-visuals-media {
-    align-self: start;
-    transform: translateY(-13%);
-}
-
-/* optional: tighten text spacing so alignment feels exact */
-.step-visuals .step-copy h3 {
-    margin-top: 0;
-}
-
-/* =========================================================
-   CHALLENGE / SOLUTION — QUIETER STORY BLOCKS
-   ========================================================= */
-
+/* ----- challenge / solution ----- */
 .cs-story {
     padding: 72px 0;
 }
@@ -1363,9 +689,8 @@ body.case-flat .site-header {
 
 .cs-story-title {
     margin: 0 0 28px 0;
-    /* more space below title */
+    transform: translateY(-35%);
     font-size: clamp(24px, 2.4vw, 32px);
-    /* same feeling as My Approach */
     line-height: 1.05;
     letter-spacing: -0.01em;
     font-weight: 600;
@@ -1379,12 +704,10 @@ body.case-flat .site-header {
 .cs-story-body .cs-text {
     margin: 0;
     font-size: 15px;
-    /* same family/feel as rest of case study */
     line-height: 1.7;
     color: rgba(11, 11, 11, 0.72);
 }
 
-/* zig-zag flip for solution */
 .cs-story--solution .cs-story-grid {
     grid-template-columns: minmax(420px, 760px) minmax(260px, 340px);
 }
@@ -1400,42 +723,8 @@ body.case-flat .site-header {
     text-align: left;
 }
 
-/* softer dividers */
 .cs-story.cs-sec {
     border-top: 1px solid rgba(11, 11, 11, 0.08);
-}
-
-/* responsive */
-@media (max-width: 900px) {
-    .cs-story {
-        padding: 56px 0;
-    }
-
-    .cs-story-grid,
-    .cs-story--solution .cs-story-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    .cs-story--solution .cs-story-body,
-    .cs-story--solution .cs-story-head {
-        order: initial;
-        justify-self: start;
-    }
-
-    .cs-story-title {
-        margin-bottom: 18px;
-        font-size: clamp(24px, 7vw, 32px);
-    }
-
-    .cs-story-body .cs-text {
-        font-size: 15px;
-    }
-}
-
-.cs-story-title {
-    margin: 0 0 28px 0;
-    transform: translateY(-35%);
 }
 
 /* =========================================================
@@ -1460,7 +749,6 @@ body.case-flat .site-header {
     align-items: center;
 }
 
-/* center image */
 .flow-image {
     grid-column: 2;
     grid-row: 1 / span 7;
@@ -1475,7 +763,6 @@ body.case-flat .site-header {
     display: block;
 }
 
-/* callouts */
 .callout {
     max-width: 260px;
 }
@@ -1496,21 +783,18 @@ body.case-flat .site-header {
     color: rgba(0, 0, 0, 0.9);
 }
 
-/* left side */
 .callout-left {
     grid-column: 1;
     justify-self: end;
     text-align: right;
 }
 
-/* right side */
 .callout-right {
     grid-column: 3;
     justify-self: start;
     text-align: left;
 }
 
-/* row placement */
 .row-1 {
     grid-row: 1;
 }
@@ -1539,8 +823,68 @@ body.case-flat .site-header {
     grid-row: 7;
 }
 
-/* responsive */
+/* ----- responsive ----- */
 @media (max-width: 900px) {
+    .cs-credits-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cs-credits-img {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .cs-credits {
+        padding: 32px 0 0;
+    }
+
+    .cs-pillnav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cs-two,
+    .cs-split-visual,
+    .cs-credits-grid,
+    .cs-triptych-grid,
+    .cs-pack-row,
+    .cs-bottom-grid,
+    .cs-bottom-under {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-bottom-grid,
+    .cs-bottom-under {
+        text-align: center;
+    }
+
+    .cs-story {
+        padding: 56px 0;
+    }
+
+    .cs-story-grid,
+    .cs-story--solution .cs-story-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .cs-story--solution .cs-story-body,
+    .cs-story--solution .cs-story-head {
+        order: initial;
+        justify-self: start;
+    }
+
+    .cs-story-title {
+        margin-bottom: 18px;
+        font-size: clamp(24px, 7vw, 32px);
+        transform: none;
+    }
+
+    .cs-story-body .cs-text {
+        font-size: 15px;
+    }
+
     .approach-flow {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -1582,133 +926,8 @@ body.case-flat .site-header {
     }
 }
 
-
-/* =========================================================
-   AETHER MOBILE — MY APPROACH DIAGRAM
-   ========================================================= */
-
-.cs-approach-mobile {
-    padding: 60px 0 100px;
-    background: #ffffff;
-}
-
-.approach-flow-mobile {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(180px, 1fr) minmax(260px, 420px) minmax(180px, 1fr);
-    grid-template-rows: repeat(5, auto);
-    column-gap: 48px;
-    row-gap: 130px;
-    align-items: center;
-}
-
-/* center image */
-.approach-flow-mobile .flow-image {
-    grid-column: 2;
-    grid-row: 1 / span 5;
-    width: 100%;
-    justify-self: center;
-    align-self: start;
-}
-
-.approach-flow-mobile .flow-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* callouts */
-.approach-flow-mobile .callout {
-    max-width: 310px;
-}
-
-.approach-flow-mobile .callout h3 {
-    margin: 0 0 8px;
-    font-size: clamp(24px, 2vw, 34px);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    font-weight: 600;
-    color: #000000;
-    text-transform: none;
-}
-
-.approach-flow-mobile .callout p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.35;
-    color: #000000;
-}
-
-/* left / right placement */
-.approach-flow-mobile .callout-left {
-    grid-column: 1;
-    justify-self: end;
-    text-align: left;
-}
-
-.approach-flow-mobile .callout-right {
-    grid-column: 3;
-    justify-self: start;
-    text-align: left;
-}
-
-/* rows */
-.approach-flow-mobile .row-1 {
-    grid-row: 1;
-}
-
-.approach-flow-mobile .row-2 {
-    grid-row: 2;
-}
-
-.approach-flow-mobile .row-3 {
-    grid-row: 3;
-}
-
-.approach-flow-mobile .row-4 {
-    grid-row: 4;
-}
-
-.approach-flow-mobile .row-5 {
-    grid-row: 5;
-}
-
-/* responsive */
-@media (max-width: 900px) {
-    .approach-flow-mobile {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        row-gap: 28px;
-    }
-
-    .approach-flow-mobile .flow-image {
-        grid-column: 1;
-        grid-row: auto;
-        max-width: 420px;
-        margin: 0 auto 12px;
-    }
-
-    .approach-flow-mobile .callout,
-    .approach-flow-mobile .callout-left,
-    .approach-flow-mobile .callout-right,
-    .approach-flow-mobile .row-1,
-    .approach-flow-mobile .row-2,
-    .approach-flow-mobile .row-3,
-    .approach-flow-mobile .row-4,
-    .approach-flow-mobile .row-5 {
-        grid-column: 1;
-        grid-row: auto;
-        justify-self: start;
-        text-align: left;
-        max-width: 100%;
-    }
-
-    .approach-flow-mobile .callout h3 {
-        font-size: 22px;
-    }
-
-    .approach-flow-mobile .callout p {
-        font-size: 15px;
-        line-height: 1.45;
+@media (prefers-reduced-motion: reduce) {
+    .cs-yellowbar-marquee {
+        animation: none;
     }
 }

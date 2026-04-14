@@ -1,0 +1,229 @@
+/* =========================================================
+   AETHER BRANDING
+   ========================================================= */
+
+
+/* hero */
+.case-aetherair-branding .cs-hero-media {
+    background-image: url("../aetherair-branding/img/1-hero-airplane-3.jpg");
+}
+
+/* approach */
+.case-aetherair-branding .cs-approach-title {
+    margin: 0 0 56px;
+}
+
+.case-aetherair-branding .steps-editorial {
+    display: grid;
+    gap: 72px;
+}
+
+.case-aetherair-branding .steps-editorial .step {
+    display: grid;
+    align-items: start;
+    gap: 40px;
+}
+
+.case-aetherair-branding .step-copy {
+    width: 100%;
+    max-width: 340px;
+}
+
+.case-aetherair-branding .step-copy h3 {
+    margin: 0 0 10px;
+}
+
+.case-aetherair-branding .step-copy .cs-text {
+    margin: 0;
+    max-width: 100%;
+}
+
+.case-aetherair-branding .steps-editorial img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* step 1 */
+.case-aetherair-branding .step-vibe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.case-aetherair-branding .step-vibe .step-copy {
+    order: 1;
+    justify-self: start;
+    text-align: left;
+}
+
+.case-aetherair-branding .step-vibe .step-core {
+    order: 2;
+    max-width: 330px;
+    justify-self: start;
+    margin-left: -80px;
+}
+
+/* step 2 */
+.case-aetherair-branding .step-logo {
+    display: grid;
+    grid-template-columns: minmax(520px, 640px) minmax(280px, 340px);
+    justify-content: space-between;
+}
+
+.case-aetherair-branding .step-logo .step-media-logo {
+    order: 1;
+    justify-self: start;
+    width: 100%;
+    max-width: 680px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.case-aetherair-branding .step-logo .step-copy {
+    order: 2;
+    justify-self: end;
+    text-align: left;
+}
+
+.case-aetherair-branding .step-media-logo img:first-child {
+    aspect-ratio: 1 / 1.28;
+    object-fit: cover;
+}
+
+/* step 3 */
+.case-aetherair-branding .step-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 48px;
+}
+
+.case-aetherair-branding .step-visuals .step-copy {
+    max-width: 340px;
+    justify-self: start;
+    text-align: left;
+}
+
+.case-aetherair-branding .step-visuals-media {
+    width: 100%;
+    display: grid;
+    justify-items: start;
+    justify-self: start;
+    align-self: start;
+    transform: translateY(-13%);
+}
+
+.case-aetherair-branding .step-palette-display {
+    width: 100%;
+    max-width: 700px;
+    margin-left: 0;
+}
+
+.case-aetherair-branding .step-palette-display img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.case-aetherair-branding .step-visuals-assets {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 32px;
+    justify-items: center;
+    margin-top: 6px;
+}
+
+.case-aetherair-branding .step-logo-variations {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.case-aetherair-branding .step-logo-variations img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.case-aetherair-branding .step-typeface-centered {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.case-aetherair-branding .step-typeface-centered img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .case-aetherair-branding .cs-approach-title {
+        margin-bottom: 32px;
+    }
+
+    .case-aetherair-branding .steps-editorial {
+        gap: 48px;
+    }
+
+    .case-aetherair-branding .step-vibe,
+    .case-aetherair-branding .step-logo,
+    .case-aetherair-branding .step-visuals {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .case-aetherair-branding .step-copy,
+    .case-aetherair-branding .step-vibe .step-copy,
+    .case-aetherair-branding .step-logo .step-copy,
+    .case-aetherair-branding .step-visuals .step-copy {
+        max-width: 100%;
+        justify-self: start;
+    }
+
+    .case-aetherair-branding .step-vibe .step-core,
+    .case-aetherair-branding .step-logo .step-media-logo,
+    .case-aetherair-branding .step-palette-display,
+    .case-aetherair-branding .step-logo-variations,
+    .case-aetherair-branding .step-typeface-centered {
+        max-width: 100%;
+        justify-self: start;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .case-aetherair-branding .step-vibe .step-copy,
+    .case-aetherair-branding .step-vibe .step-core,
+    .case-aetherair-branding .step-logo .step-media-logo,
+    .case-aetherair-branding .step-logo .step-copy {
+        order: initial;
+    }
+
+    .case-aetherair-branding .step-logo .step-media-logo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .case-aetherair-branding .step-logo-variations {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .case-aetherair-branding .step-visuals-assets {
+        grid-column: auto;
+        margin-top: 0;
+        gap: 24px;
+    }
+
+    .case-aetherair-branding .step-visuals-media {
+        transform: none;
+    }
+}

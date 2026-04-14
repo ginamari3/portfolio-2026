@@ -1,0 +1,267 @@
+/* =========================================================
+   AETHER MOBILE
+   ========================================================= */
+
+/* hero */
+.case-aetherair-mobile .cs-hero-media {
+    background-image: url("../aetherair-mobile/img/eugene-krasnaok-3N5WhUFufDI-unsplash.jpg");
+}
+
+/* intro row above mobile diagram */
+.case-aetherair-mobile .approach-intro {
+    display: grid;
+    grid-template-columns: minmax(280px, 420px) 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.case-aetherair-mobile .approach-intro-copy {
+    width: 100%;
+}
+
+.case-aetherair-mobile .approach-intro-box {
+    max-width: 360px;
+    padding: 24px;
+    border: 1px solid rgba(11, 11, 11, 0.12);
+    border-radius: 16px;
+    background: #fff;
+}
+
+.case-aetherair-mobile .approach-intro-box h3 {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: #000;
+}
+
+.case-aetherair-mobile .approach-intro-box .cs-text {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.72);
+}
+
+.case-aetherair-mobile .step-core {
+    justify-self: center;
+    display: grid;
+    gap: 20px;
+}
+
+.case-aetherair-mobile .cs-sitemap-small,
+.case-aetherair-mobile .cs-wireframe-small {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+}
+
+/* =========================================================
+   AETHER MOBILE — MY APPROACH DIAGRAM
+   ========================================================= */
+
+.case-aetherair-mobile .cs-approach-mobile {
+    padding: 60px 0 100px;
+    background: #ffffff;
+}
+
+.case-aetherair-mobile .cs-approach-mobile .cs-approach-title {
+    margin: 0 0 48px;
+}
+
+.case-aetherair-mobile .approach-flow-mobile {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(260px, 420px) minmax(180px, 1fr);
+    grid-template-rows: repeat(5, auto);
+    column-gap: 48px;
+    row-gap: 130px;
+    align-items: center;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .flow-image {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    width: 100%;
+    justify-self: center;
+    align-self: start;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .flow-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .callout {
+    max-width: 310px;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .callout h3 {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 2vw, 34px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: #000000;
+    text-transform: none;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .callout p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.35;
+    color: #000000;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .callout-left {
+    grid-column: 1;
+    justify-self: end;
+    text-align: left;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .callout-right {
+    grid-column: 3;
+    justify-self: start;
+    text-align: left;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .row-1 {
+    grid-row: 1;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .row-2 {
+    grid-row: 2;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .row-3 {
+    grid-row: 3;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .row-4 {
+    grid-row: 4;
+}
+
+.case-aetherair-mobile .approach-flow-mobile .row-5 {
+    grid-row: 5;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .case-aetherair-mobile .approach-intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+
+    .case-aetherair-mobile .approach-intro-box {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .case-aetherair-mobile .step-core {
+        justify-self: start;
+    }
+
+    .case-aetherair-mobile .approach-flow-mobile {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        row-gap: 28px;
+    }
+
+    .case-aetherair-mobile .approach-flow-mobile .flow-image {
+        grid-column: 1;
+        grid-row: auto;
+        max-width: 420px;
+        margin: 0 auto 12px;
+    }
+
+    .case-aetherair-mobile .approach-flow-mobile .callout,
+    .case-aetherair-mobile .approach-flow-mobile .callout-left,
+    .case-aetherair-mobile .approach-flow-mobile .callout-right,
+    .case-aetherair-mobile .approach-flow-mobile .row-1,
+    .case-aetherair-mobile .approach-flow-mobile .row-2,
+    .case-aetherair-mobile .approach-flow-mobile .row-3,
+    .case-aetherair-mobile .approach-flow-mobile .row-4,
+    .case-aetherair-mobile .approach-flow-mobile .row-5 {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: start;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .case-aetherair-mobile .approach-flow-mobile .callout h3 {
+        font-size: 22px;
+    }
+
+    .case-aetherair-mobile .approach-flow-mobile .callout p {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+}
+
+
+/* intro row above mobile diagram */
+.approach-intro {
+    display: grid;
+    grid-template-columns: minmax(280px, 420px) 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.approach-intro-copy {
+    width: 100%;
+}
+
+.approach-intro-box {
+    max-width: 360px;
+    padding: 24px;
+    border: 1px solid rgba(11, 11, 11, 0.12);
+    border-radius: 16px;
+    background: #fff;
+}
+
+.approach-intro-box h3 {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: #000;
+}
+
+.approach-intro-box .cs-text {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.72);
+}
+
+.cs-approach-mobile .step-core {
+    justify-self: center;
+}
+
+.cs-approach-mobile .cs-sitemap-small {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+    .approach-intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+
+    .approach-intro-box {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .cs-approach-mobile .step-core {
+        justify-self: start;
+    }
+}
