@@ -165,9 +165,15 @@
     border-radius: 12px;
 }
 
-.case-aetherair-branding .shapes-img {
+/* .case-aetherair-branding .shapes-img {
     width: 80%;
     margin: 0 auto;
+} */
+
+.case-aetherair-branding .step-typeface-centered img.shapes-img {
+    width: 80% !important;
+    display: block;
+    margin: 24px auto 0;
 }
 
 /* responsive */

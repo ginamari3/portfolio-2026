@@ -150,7 +150,7 @@ body.case-flat .site-header {
 }
 
 .case-aetherair-website .cs-hero-media {
-    background-image: url("../aetherair-website/img/AA-website-3.jpg");
+    background-image: url("../aetherair-website/img/airport-guy.png");
 }
 
 .case-ll-animation .cs-hero-media {
@@ -731,6 +731,12 @@ body.case-flat .site-header {
    AETHER WEBSITE — MY APPROACH DIAGRAM
    ========================================================= */
 
+.cs-sitemap-small {
+    width: 55%;
+    /* 100% - 45% = 55% */
+    height: auto;
+}
+
 .cs-approach-diagram {
     padding: 60px 0 100px;
 }
@@ -823,8 +829,229 @@ body.case-flat .site-header {
     grid-row: 7;
 }
 
+/* =========================================================
+   SHARED EDITORIAL STEP LAYOUT
+   based on Aether Branding approach
+   ========================================================= */
+
+.steps-editorial {
+    display: grid;
+    gap: 72px;
+}
+
+.steps-editorial .step {
+    display: grid;
+    align-items: start;
+    gap: 40px;
+}
+
+.step-copy {
+    width: 100%;
+    max-width: 340px;
+}
+
+.step-copy h3 {
+    margin: 0 0 10px;
+}
+
+.step-copy .cs-text {
+    margin: 0;
+    max-width: 100%;
+}
+
+.steps-editorial img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* step 1 */
+.step-vibe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.step-vibe .step-copy {
+    order: 1;
+    justify-self: start;
+    text-align: left;
+}
+
+.step-vibe .step-core {
+    order: 2;
+    max-width: 330px;
+    justify-self: start;
+    margin-left: -80px;
+}
+
+/* step 2 */
+.step-logo {
+    display: grid;
+    grid-template-columns: minmax(520px, 640px) minmax(280px, 340px);
+    justify-content: space-between;
+}
+
+.step-logo .step-media-logo {
+    order: 1;
+    justify-self: start;
+    width: 100%;
+    max-width: 680px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.step-logo .step-copy {
+    order: 2;
+    justify-self: end;
+    text-align: left;
+}
+
+.step-media-logo img:first-child {
+    aspect-ratio: 1 / 1.28;
+    object-fit: cover;
+}
+
+/* step 3 */
+.step-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 48px;
+}
+
+.step-visuals .step-copy {
+    max-width: 340px;
+    justify-self: start;
+    text-align: left;
+}
+
+.step-visuals-media {
+    width: 100%;
+    display: grid;
+    justify-items: start;
+    justify-self: start;
+    align-self: start;
+    transform: translateY(-13%);
+}
+
+.step-palette-display {
+    width: 100%;
+    max-width: 700px;
+    margin-left: 0;
+}
+
+.step-palette-display img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.step-visuals-assets {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 32px;
+    justify-items: center;
+    margin-top: 6px;
+}
+
+.step-logo-variations {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.step-logo-variations img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.step-typeface-centered {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.step-typeface-centered img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.step-typeface-centered img.shapes-img {
+    width: 80% !important;
+    display: block;
+    margin: 24px auto 0;
+}
+
+
 /* ----- responsive ----- */
 @media (max-width: 900px) {
+
+    .steps-editorial {
+        gap: 48px;
+    }
+
+    .step-vibe,
+    .step-logo,
+    .step-visuals {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .step-copy,
+    .step-vibe .step-copy,
+    .step-logo .step-copy,
+    .step-visuals .step-copy {
+        max-width: 100%;
+        justify-self: start;
+    }
+
+    .step-vibe .step-core,
+    .step-logo .step-media-logo,
+    .step-palette-display,
+    .step-logo-variations,
+    .step-typeface-centered {
+        max-width: 100%;
+        justify-self: start;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .step-vibe .step-copy,
+    .step-vibe .step-core,
+    .step-logo .step-media-logo,
+    .step-logo .step-copy {
+        order: initial;
+    }
+
+    .step-logo .step-media-logo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .step-logo-variations {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .step-visuals-assets {
+        grid-column: auto;
+        margin-top: 0;
+        gap: 24px;
+    }
+
+    .step-visuals-media {
+        transform: none;
+    }
+
     .cs-credits-grid {
         grid-template-columns: 1fr;
         gap: 24px;
