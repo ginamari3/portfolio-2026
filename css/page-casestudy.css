@@ -342,8 +342,10 @@ body.case-flat .site-header {
 .cs-credits-img {
     margin: 0;
     justify-self: start;
-    width: calc(100% + 220px);
-    margin-left: -220px;
+    width: calc(100% + 143px);
+    /* reduced from 220px */
+    margin-left: -143px;
+    /* reduced from -220px */
     max-width: none;
     border: 1px solid rgba(11, 11, 11, .12);
     border-radius: 12px;
@@ -1086,6 +1088,28 @@ body.case-flat .site-header {
         text-align: center;
     }
 
+    /* .cs-story {
+        padding: 56px 0;
+    }
+
+    .cs-story-grid,
+    .cs-story--solution .cs-story-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    } */
+
+    /* .cs-story--solution .cs-story-body,
+    .cs-story--solution .cs-story-head {
+        order: initial;
+        justify-self: start;
+    } */
+
+    /* MOBILE: My Approach heading smaller */
+    .cs-approach-title {
+        font-size: clamp(20px, 5.5vw, 26px);
+        margin-bottom: 28px;
+    }
+
     .cs-story {
         padding: 56px 0;
     }
@@ -1096,9 +1120,14 @@ body.case-flat .site-header {
         gap: 22px;
     }
 
-    .cs-story--solution .cs-story-body,
+    /* FIX: Keep "The Solution" title above text */
     .cs-story--solution .cs-story-head {
-        order: initial;
+        order: 1;
+        justify-self: start;
+    }
+
+    .cs-story--solution .cs-story-body {
+        order: 2;
         justify-self: start;
     }
 
