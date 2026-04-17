@@ -343,9 +343,7 @@ body.case-flat .site-header {
     margin: 0;
     justify-self: start;
     width: calc(100% + 143px);
-    /* reduced from 220px */
     margin-left: -143px;
-    /* reduced from -220px */
     max-width: none;
     border: 1px solid rgba(11, 11, 11, .12);
     border-radius: 12px;
@@ -358,6 +356,7 @@ body.case-flat .site-header {
     height: auto;
     display: block;
 }
+
 
 .cs-credits {
     padding: 60px 50px 60px 50px;
