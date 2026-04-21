@@ -56,6 +56,14 @@
     display: block;
 }
 
+.case-aetherair-mobile .cs-sitemap-small {
+    max-width: !important 480px;
+}
+
+.case-aetherair-mobile .cs-wireframe-small {
+    max-width: 320px;
+}
+
 /* =========================================================
    AETHER MOBILE — MY APPROACH DIAGRAM
    ========================================================= */
