@@ -171,10 +171,12 @@
 } */
 
 .case-aetherair-branding .step-typeface-centered img.shapes-img {
-    width: 80% !important;
+    width: 60% !important;
     display: block;
-    margin: 24px auto 0;
+    margin: 18px auto 0;
 }
+
+
 
 /* responsive */
 @media (max-width: 900px) {

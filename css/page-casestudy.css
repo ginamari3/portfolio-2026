@@ -919,7 +919,7 @@ body.case-flat .site-header {
 .step-visuals {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px 48px;
+    gap: 30px 48px;
 }
 
 .step-visuals .step-copy {
