@@ -397,19 +397,18 @@ body.case-flat .site-header {
 }
 
 
-.case-tourism-logo .cs-credits-img,
-.case-volt-fitness .cs-credits-img {
-    display: flex;
-    justify-content: center;
-}
-
-.case-tourism-logo .cs-credits-img img,
-.case-volt-fitness .cs-credits-img img {
+/* .case-volt-fitness .cs-credits-img {
     width: 600px;
     height: 440px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.case-volt-fitness .cs-credits-img img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
-
 }
 
 .case-tourism-logo .cs-credits-img {
@@ -420,6 +419,16 @@ body.case-flat .site-header {
 .case-tourism-logo .cs-credits-img img {
     width: 600px !important;
     height: 440px !important;
+} */
+
+
+/* shared structure */
+.case-volt-fitness .cs-credits-img,
+.case-tourism-logo .cs-credits-img {
+    width: 600px;
+    height: 440px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 /* ----- shared layouts ----- */
