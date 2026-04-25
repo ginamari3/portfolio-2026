@@ -767,6 +767,12 @@ body.case-flat .site-header {
    AETHER WEBSITE — MY APPROACH DIAGRAM
    ========================================================= */
 
+.cs-approach-title {
+    font-size: clamp(24px, 2.4vw, 32px);
+    transform: translateY(-35%);
+    margin-bottom: 28px;
+}
+
 .cs-sitemap-small {
     width: 55%;
     /* 100% - 45% = 55% */
