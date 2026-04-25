@@ -767,6 +767,98 @@ body.case-flat .site-header {
    AETHER WEBSITE — MY APPROACH DIAGRAM
    ========================================================= */
 
+/* SHARED ZIG-ZAG APPROACH LAYOUT */
+.steps-editorial {
+    display: grid;
+    gap: 72px;
+}
+
+.steps-editorial .step {
+    display: grid;
+    align-items: start;
+    gap: 40px;
+}
+
+/* Step 1 */
+.step-vibe {
+    grid-template-columns: 1fr 1fr;
+}
+
+.step-vibe .step-copy {
+    justify-self: start;
+}
+
+.step-vibe .step-core {
+    max-width: 330px;
+    justify-self: start;
+    margin-left: -80px;
+}
+
+/* Step 2 */
+.step-logo {
+    grid-template-columns: minmax(520px, 640px) minmax(280px, 340px);
+    justify-content: space-between;
+}
+
+.step-logo .step-media-logo {
+    justify-self: start;
+    max-width: 680px;
+}
+
+.step-logo .step-copy {
+    justify-self: end;
+}
+
+/* Step 3 */
+.step-visuals {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 48px;
+}
+
+.step-visuals .step-copy {
+    max-width: 340px;
+    justify-self: start;
+}
+
+.step-visuals-media {
+    justify-self: start;
+    transform: translateY(-13%);
+}
+
+.step-palette-display {
+    max-width: 700px;
+}
+
+/* Images stay full inside their containers */
+.steps-editorial img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.case-tourism-logo .step-media-logo {
+    max-width: 680px;
+}
+
+.case-tourism-logo .steps-editorial img {
+    width: 100%;
+    height: auto;
+}
+
+.case-tourism-logo .step-palette-display {
+    max-width: 700px;
+}
+
+.case-tourism-logo .step-core {
+    max-width: 330px;
+}
+
+.cs-sketch-small {
+    width: 50%;
+    height: auto;
+}
+
 .cs-approach-title {
     font-size: clamp(24px, 2.4vw, 32px);
     transform: translateY(-35%);
