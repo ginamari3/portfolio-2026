@@ -1383,3 +1383,46 @@ body.case-flat .site-header {
     max-width: none;
     height: auto;
 }
+
+.case-ll-animation .steps-editorial {
+    gap: 40px;
+    /* smaller = tighter */
+}
+
+.case-ll-animation .step-visuals-media {
+    transform: translateY(-25%);
+}
+
+.case-ll-animation .cs-pack-row {
+    margin-bottom: 80px;
+    /* increase spacing before next section */
+}
+
+/* ===============================
+   STEP 3 SPACING FIX
+   =============================== */
+
+/* reduce space between step 2 and 3 */
+.case-ll-animation .steps-editorial {
+    gap: 40px;
+}
+
+/* pull visuals upward slightly */
+.case-ll-animation .step-visuals-media {
+    transform: translateY(-5%);
+}
+
+/* add space below gif row */
+.case-ll-animation .cs-pack-row {
+    margin-bottom: 80px;
+}
+
+/* ===============================
+   STEP 3 — ADD SPACE ABOVE GIFS
+   =============================== */
+
+/* push the GIF row DOWN */
+.case-ll-animation .cs-pack-row {
+    margin-top: 60px;
+    /* increase this */
+}
