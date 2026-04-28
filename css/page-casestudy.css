@@ -1458,8 +1458,8 @@ body.case-flat .site-header {
 
     object-fit: cover !important;
 
-    transform: scale(1.35) translateX(-10%);
-    /* 👈 KEY FIX */
+    transform: scale(1);
+    /* 👈 reset zoom */
 
     display: block !important;
 }
