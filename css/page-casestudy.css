@@ -1426,3 +1426,40 @@ body.case-flat .site-header {
     margin-top: 60px;
     /* increase this */
 }
+
+/* ===============================
+   TOURISM — STEP 2 FINAL
+   Image fits inside container
+   =============================== */
+
+.case-tourism-logo .step-logo {
+    grid-template-columns: 1.4fr 1fr !important;
+    gap: 12px !important;
+    align-items: center !important;
+}
+
+.case-tourism-logo .step-logo .step-media-logo {
+    width: 520px !important;
+    height: 300px !important;
+    max-width: none !important;
+    justify-self: start !important;
+    overflow: hidden !important;
+    border-radius: 12px;
+    background: #f7f7f7;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.case-tourism-logo .step-logo img.cs-sketch-small {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+
+    object-fit: cover !important;
+
+    transform: scale(1.35) translateX(-10%);
+    /* 👈 KEY FIX */
+
+    display: block !important;
+}
