@@ -1085,10 +1085,10 @@ body.case-flat .site-header {
     text-align: left;
 }
 
-.step-media-logo img:first-child {
+/* .step-media-logo img:first-child {
     aspect-ratio: 1 / 1.28;
     object-fit: cover;
-}
+} */
 
 /* step 3 */
 .step-visuals {
@@ -1686,4 +1686,150 @@ body.case-flat .site-header {
     /* slightly bold, not heavy */
     font-size: 14px;
     letter-spacing: 0.01em;
+}
+
+/* ===============================
+   VOLT — STEP 2 FIX (MATCH TOURISM)
+   =============================== */
+
+.case-volt-fitness .step-logo .step-media-logo {
+    display: block;
+    /* 👈 REMOVE GRID */
+    width: 100%;
+    max-width: 720px;
+    /* control size */
+    margin-left: 0;
+}
+
+.case-volt-fitness .step-logo .step-media-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    /* 👈 rounded edges */
+    display: block;
+}
+
+.case-volt-fitness .step-logo .step-media-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    object-fit: contain;
+    /* 👈 KEY FIX */
+}
+
+.case-volt-fitness .step-logo .step-media-logo {
+    border-radius: 12px;
+    overflow: hidden;
+    /* 👈 THIS is what you're missing */
+}
+
+/* VOLT — LOFI image polish */
+.case-volt-fitness .volt-lofi-card {
+    width: 115%;
+    max-width: none;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f6f6f6;
+}
+
+.case-volt-fitness .volt-lofi-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: left top;
+    display: block;
+}
+
+.steps-editorial {
+    gap: 72px;
+}
+
+.case-volt-fitness .step-logo {
+    margin-bottom: 72px;
+    /* or 80px if you want it more dramatic */
+}
+
+/* ===============================
+   VOLT — HI-FI HORIZONTAL CAROUSEL
+   =============================== */
+
+.case-volt-fitness .volt-hifi-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 24px 0 40px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.case-volt-fitness .volt-hifi-carousel img {
+    flex: 0 0 520px;
+    max-width: 80vw;
+    height: 620px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 14px;
+    scroll-snap-align: start;
+    cursor: zoom-in;
+}
+
+/* cleaner scrollbar */
+.case-volt-fitness .volt-hifi-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.case-volt-fitness .volt-hifi-carousel::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 999px;
+}
+
+/* mobile */
+@media (max-width: 700px) {
+    .case-volt-fitness .volt-hifi-carousel img {
+        flex-basis: 85vw;
+        height: 520px;
+    }
+}
+
+/* ===============================
+   VOLT — AUTO MOVING MARQUEE
+   =============================== */
+
+.case-volt-fitness .volt-hifi-marquee {
+    overflow: hidden;
+    width: 100%;
+    padding: 32px 0 60px;
+}
+
+.case-volt-fitness .volt-hifi-track {
+    display: flex;
+    gap: 28px;
+    width: max-content;
+    animation: voltScroll 35s linear infinite;
+}
+
+.case-volt-fitness .volt-hifi-track img {
+    flex: 0 0 420px;
+    height: 560px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 14px;
+    cursor: zoom-in;
+}
+
+/* speed control here 👇 */
+@keyframes voltScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.case-volt-fitness .cs-pack-row {
+    margin-top: -30px;
+    margin-bottom: 90px;
 }
