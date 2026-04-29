@@ -411,7 +411,7 @@ h1 {
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-auto-rows: 1fr;
+    grid-auto-rows: auto;
     gap: 16px;
 }
 
@@ -420,10 +420,11 @@ h1 {
     grid-row: span 2;
 }
 
-.card--featured .thumb {
-    aspect-ratio: 16 / 11;
-    min-height: 360px;
-}
+/* .card--featured {
+    align-self: stretch;
+} */
+
+
 
 .card--featured .meta h3 {
     font-size: 16px;
@@ -676,4 +677,106 @@ body.is-loading .snap {
 .loader-inner {
     position: relative;
     z-index: 1;
+}
+
+/* ===============================
+   PROJECT CARD ADJUSTMENTS ONLY
+   =============================== */
+
+/* Desktop: make featured Aether image taller */
+/* @media (min-width: 901px) {
+    .card--featured .thumb {
+        aspect-ratio: 16 / 10;
+        min-height: 430px;
+    }
+} */
+
+/* Mobile: stop cards from stretching / remove extra white space */
+/* @media (max-width: 700px) {
+    .grid {
+        grid-auto-rows: auto;
+    }
+
+    .card {
+        height: auto;
+    }
+
+    .thumb {
+        aspect-ratio: 16 / 10;
+    }
+
+    .card--featured .thumb {
+        min-height: 240px;
+        aspect-ratio: 16 / 10;
+    }
+
+    .meta {
+        padding: 12px 12px 14px;
+    }
+} */
+
+/* Desktop: taller featured image only */
+/* Desktop: make Aether Branding image taller */
+@media (min-width: 901px) {
+    .projects .card--featured .thumb {
+        aspect-ratio: auto;
+        height: 520px;
+        min-height: 0;
+    }
+
+    .projects .card--featured .thumb img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* Mobile: tighten card height */
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .card--featured {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .card--featured .thumb,
+    .thumb {
+        aspect-ratio: 16 / 10;
+        min-height: 0;
+    }
+}
+
+/* ===============================
+   NAV BAR
+   =============================== */
+
+.brand img {
+    height: 30px;
+    /* 👈 adjust this */
+    width: auto;
+    display: block;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* space between logo + name */
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand img {
+    height: 22px;
+    width: auto;
+}
+
+.brand {
+    font-weight: 500;
+    /* slightly bold, not heavy */
+    font-size: 14px;
+    letter-spacing: 0.01em;
 }
