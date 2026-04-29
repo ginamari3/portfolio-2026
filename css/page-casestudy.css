@@ -422,6 +422,20 @@ body.case-flat .site-header {
 } */
 
 
+/* Shrink Tourism credits image */
+.case-tourism-logo .cs-credits-img {
+    height: 320px;
+    /* 👈 adjust this */
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.case-tourism-logo .cs-credits-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* shared structure */
 .case-volt-fitness .cs-credits-img,
 .case-tourism-logo .cs-credits-img {
@@ -1462,4 +1476,108 @@ body.case-flat .site-header {
     /* 👈 reset zoom */
 
     display: block !important;
+}
+
+/* ===============================
+   MOBILE CASE STUDY FIX
+   Tourism / L&L / Volt
+   =============================== */
+
+@media (max-width: 900px) {
+    .cs-wrap {
+        width: min(100% - 32px, 1100px);
+    }
+
+    .steps-editorial .step,
+    .step-vibe,
+    .step-logo,
+    .step-visuals,
+    .cs-two,
+    .cs-story-grid,
+    .cs-credits-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+    }
+
+    .step-copy,
+    .step-media,
+    .step-media-logo,
+    .step-core,
+    .step-visuals-media,
+    .step-palette-display {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        transform: none !important;
+        justify-self: stretch !important;
+    }
+
+    .steps-editorial img,
+    .step-media img,
+    .step-media-logo img,
+    .step-palette-display img,
+    .cs-sketch-small,
+    .cs-sketch-medium {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        transform: none !important;
+    }
+
+    .case-tourism-logo .step-logo .step-media-logo,
+    .case-ll-animation .step-logo .step-media-logo {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        display: block !important;
+    }
+
+    .case-tourism-logo .step-logo img.cs-sketch-small {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    .cs-credits-img,
+    .case-tourism-logo .cs-credits-img,
+    .case-volt-fitness .cs-credits-img {
+        width: 100% !important;
+        height: auto !important;
+        margin-left: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .cs-credits {
+        padding: 28px 0 0 !important;
+    }
+}
+
+.case-tourism-logo .step-logo .step-media-logo {
+    width: 520px !important;
+    height: 300px !important;
+}
+
+.case-ll-animation .step-logo .step-media-logo {
+    width: 525px !important;
+}
+
+/* Tourism Step 2 — mobile crop fix */
+@media (max-width: 900px) {
+    .case-tourism-logo .step-logo .step-media-logo {
+        width: 100% !important;
+        height: 260px !important;
+        overflow: hidden !important;
+        border-radius: 12px;
+        display: block !important;
+    }
+
+    .case-tourism-logo .step-logo img.cs-sketch-small {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: none !important;
+    }
 }
