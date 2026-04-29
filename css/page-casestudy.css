@@ -1581,3 +1581,109 @@ body.case-flat .site-header {
         transform: none !important;
     }
 }
+
+/* ===============================
+   VOLT — STEP 1 (BIGGER + ZOOM)
+   =============================== */
+
+.case-volt-fitness .step-vibe .step-core {
+    max-width: 450px;
+    /* ~35% bigger than 330px */
+}
+
+.case-volt-fitness .cs-row-2 {
+    max-width: 1000px;
+    /* allow images to grow */
+}
+
+.case-volt-fitness .cs-row-2 img {
+    cursor: zoom-in;
+}
+
+.case-volt-fitness .zoom-img {
+    position: relative;
+}
+
+.case-volt-fitness .zoom-img:hover {
+    filter: brightness(0.95);
+}
+
+/* ===============================
+   VOLT — STEP 2 IMAGE RESIZE
+   =============================== */
+
+.case-volt-fitness .step-logo {
+    grid-template-columns: 1.4fr 1fr;
+    /* give image more space */
+    align-items: center;
+}
+
+.case-volt-fitness .step-logo .step-media-logo {
+    width: 140%;
+    /* +40% width */
+    max-width: none;
+}
+
+.case-volt-fitness .step-logo .step-media-logo img {
+    width: 100%;
+    height: 90%;
+    /* -10% height */
+    object-fit: contain;
+}
+
+/* VOLT — Step 1 sitemap stack */
+.case-volt-fitness .volt-sitemap-stack {
+    max-width: 760px;
+    display: grid;
+    gap: 22px;
+}
+
+.case-volt-fitness .volt-sitemap-stack figure {
+    margin: 0;
+}
+
+.case-volt-fitness .volt-sitemap-stack img {
+    width: 100%;
+    max-width: none;
+    cursor: zoom-in;
+    border-radius: 12px;
+}
+
+.case-volt-fitness .volt-sitemap-stack figcaption {
+    margin-top: 8px;
+    font-size: 12px;
+    color: rgba(11, 11, 11, 0.55);
+    text-align: center;
+}
+
+/* ===============================
+   NAV BAR
+   =============================== */
+
+.brand img {
+    height: 30px;
+    /* 👈 adjust this */
+    width: auto;
+    display: block;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* space between logo + name */
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand img {
+    height: 22px;
+    width: auto;
+}
+
+.brand {
+    font-weight: 500;
+    /* slightly bold, not heavy */
+    font-size: 14px;
+    letter-spacing: 0.01em;
+}

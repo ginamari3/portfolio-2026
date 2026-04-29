@@ -240,3 +240,35 @@
         transform: none;
     }
 }
+
+/* ===============================
+   NAV BAR
+   =============================== */
+
+.brand img {
+    height: 30px;
+    /* 👈 adjust this */
+    width: auto;
+    display: block;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* space between logo + name */
+    text-decoration: none;
+    color: inherit;
+}
+
+.brand img {
+    height: 22px;
+    width: auto;
+}
+
+.brand {
+    font-weight: 500;
+    /* slightly bold, not heavy */
+    font-size: 14px;
+    letter-spacing: 0.01em;
+}
