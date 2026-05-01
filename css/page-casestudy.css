@@ -1583,6 +1583,17 @@ body.case-flat .site-header {
 }
 
 /* ===============================
+   AETHER WEBSITE — HIDE CALLOUTS ON MOBILE
+   =============================== */
+
+
+@media (max-width: 900px) {
+    .case-aetherair-website .callout {
+        display: none;
+    }
+}
+
+/* ===============================
    VOLT — STEP 1 (BIGGER + ZOOM)
    =============================== */
 
