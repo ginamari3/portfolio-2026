@@ -780,3 +780,44 @@ body.is-loading .snap {
     font-size: 14px;
     letter-spacing: 0.01em;
 }
+
+
+/* ===============================
+   FOOTER
+   =============================== */
+
+.footer-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+/* CENTER CONTENT */
+.footer-center {
+    grid-column: 1;
+    /* 👈 move to LEFT */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* RIGHT NAV */
+.footer-links {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    gap: 18px;
+}
+
+/* logo */
+.footer-center img {
+    height: 18px;
+    width: auto;
+}
+
+/* text */
+.footer-text,
+.footer-name {
+    font-size: 13px;
+    opacity: 0.85;
+}
