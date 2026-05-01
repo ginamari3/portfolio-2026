@@ -749,6 +749,68 @@ body.is-loading .snap {
     }
 }
 
+/* .card .thumb {
+    height: 180px;
+}
+
+.card .thumb img {
+    height: 100%;
+    object-fit: cover;
+} */
+
+.card--aether-web .thumb,
+.card--aether-mobile .thumb {
+    aspect-ratio: auto;
+    height: 240px;
+    /* adjust this */
+}
+
+.card--aether-web .thumb img,
+.card--aether-mobile .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card--aether-branding .thumb {
+    aspect-ratio: auto;
+    height: 600px;
+    /* 👈 start here */
+}
+
+.card--aether-branding .thumb img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.card--featured .meta {
+    padding-bottom: 10px;
+}
+
+
+@media (min-width: 901px) {
+    .projects .card--featured.card--aether-branding .thumb {
+        aspect-ratio: auto;
+        height: 560px !important;
+        min-height: 0;
+    }
+
+    .projects .card--featured.card--aether-branding .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 700px) {
+    .card--aether-branding .thumb {
+        height: auto !important;
+        /* 👈 remove forced height */
+        aspect-ratio: 16 / 10;
+        /* 👈 match other cards */
+    }
+}
+
 /* ===============================
    NAV BAR
    =============================== */
