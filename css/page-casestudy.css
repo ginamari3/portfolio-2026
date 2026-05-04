@@ -445,6 +445,13 @@ body.case-flat .site-header {
     margin: 0 auto;
 }
 
+
+.case-tourism-logo .cs-sketch-small {
+    width: 70%;
+}
+
+
+
 /* ----- shared layouts ----- */
 .cs-two {
     display: grid;
@@ -1906,4 +1913,35 @@ body.case-flat .site-header {
 
 .case-aetherair-website #approach .cs-story-head {
     padding-left: 120px;
+}
+
+
+/* ===============================
+   TOURSIM — FIX STEP 2 LAYOUT + IMAGE CROP
+     (MAKE IT MATCH AETHER)
+   =============================== */
+
+
+/* TOURISM — make approach images bigger */
+.case-tourism-logo #approach .step-core {
+    max-width: 430px !important;
+    /* was 330px */
+    margin-left: 0 !important;
+}
+
+.case-tourism-logo #approach .step-media-logo {
+    width: 680px !important;
+    /* was 520px */
+    height: 390px !important;
+    /* was 300px */
+}
+
+.case-tourism-logo #approach .step-palette-display {
+    max-width: 910px !important;
+    /* was 700px */
+}
+
+.case-tourism-logo #approach img.cs-sketch-small {
+    width: 100% !important;
+    max-width: none !important;
 }
