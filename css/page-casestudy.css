@@ -1945,3 +1945,15 @@ body.case-flat .site-header {
     width: 100% !important;
     max-width: none !important;
 }
+
+/* ===============================
+   LL Animation margin
+   =============================== */
+
+.case-ll-animation .step-visuals {
+    margin-top: 60px;
+}
+
+.case-ll-animation .step-vibe {
+    margin-bottom: 60px;
+}
