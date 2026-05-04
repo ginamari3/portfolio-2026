@@ -1867,10 +1867,16 @@ body.case-flat .site-header {
     /* try 60–100px */
 }
 
+
+
 .case-aetherair-website .cs-sitemap-xlarge {
     width: 100%;
-    max-width: 1300px;
+    max-width: 1700px;
     /* 780 → ~1100 = ~40% bigger */
+}
+
+.case-aetherair-website #approach>.cs-wrap {
+    width: min(1400px, calc(100% - 56px));
 }
 
 .cs-figure {
@@ -1896,4 +1902,8 @@ body.case-flat .site-header {
 
 .case-aetherair-website .cs-figure:last-child {
     margin-bottom: 80px;
+}
+
+.case-aetherair-website #approach .cs-story-head {
+    padding-left: 120px;
 }
