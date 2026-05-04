@@ -1807,20 +1807,20 @@ body.case-flat .site-header {
    VOLT — AUTO MOVING MARQUEE
    =============================== */
 
-.case-volt-fitness .volt-hifi-marquee {
+.volt-hifi-marquee {
     overflow: hidden;
     width: 100%;
     padding: 32px 0 60px;
 }
 
-.case-volt-fitness .volt-hifi-track {
+.volt-hifi-track {
     display: flex;
     gap: 28px;
     width: max-content;
     animation: voltScroll 35s linear infinite;
 }
 
-.case-volt-fitness .volt-hifi-track img {
+.volt-hifi-track img {
     flex: 0 0 420px;
     height: 560px;
     object-fit: cover;
@@ -1840,7 +1840,7 @@ body.case-flat .site-header {
     }
 }
 
-.case-volt-fitness .cs-pack-row {
+.cs-pack-row {
     margin-top: -30px;
     margin-bottom: 90px;
 }
