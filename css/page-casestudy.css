@@ -1844,3 +1844,56 @@ body.case-flat .site-header {
     margin-top: -30px;
     margin-bottom: 90px;
 }
+
+/* ===============================
+   AETHER WEB- FONTS + VIDEO
+   =============================== */
+
+.case-aetherair-website video.cs-large-image {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.cs-subtitle {
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 600;
+}
+
+.case-aetherair-website .cs-center {
+    margin-top: 60px;
+    /* try 60–100px */
+}
+
+.case-aetherair-website .cs-sitemap-xlarge {
+    width: 100%;
+    max-width: 1300px;
+    /* 780 → ~1100 = ~40% bigger */
+}
+
+.cs-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* THIS is the real fix */
+    margin: 0;
+}
+
+.cs-figure img {
+    display: block;
+}
+
+.cs-figure figcaption {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 90%;
+    /* prevents weird wide stretching */
+}
+
+.case-aetherair-website .cs-figure:last-child {
+    margin-bottom: 80px;
+}
