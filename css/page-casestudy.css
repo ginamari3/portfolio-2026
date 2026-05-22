@@ -1957,3 +1957,79 @@ body.case-flat .site-header {
 .case-ll-animation .step-vibe {
     margin-bottom: 60px;
 }
+
+/* ===============================
+   TOURISM PAGE FIXES
+=============================== */
+
+/* 1) Story sections: keep content aligned left */
+.case-tourism-logo .cs-story-grid {
+    justify-items: start;
+}
+
+.case-tourism-logo .cs-story-head,
+.case-tourism-logo .cs-story-body {
+    justify-self: start;
+    text-align: left;
+}
+
+/* If your Solution section was pushing the title right */
+.case-tourism-logo .cs-story--solution .cs-story-head {
+    justify-self: start;
+    text-align: left;
+}
+
+
+/* 2) More gap above My Approach + line */
+.case-tourism-logo .cs-approach {
+    padding-top: clamp(60px, 6vw, 80px);
+    border-top: 1px solid rgba(11, 11, 11, 0.12);
+}
+
+.case-tourism-logo .cs-approach .cs-story-title {
+    margin-bottom: 48px;
+}
+
+
+/* 3) Credits image: undo forced width but keep max-width */
+.case-tourism-logo .cs-credits-img {
+    width: auto;
+    max-width: 100%;
+}
+
+.case-tourism-logo .cs-credits-img img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* 4) Mobile credits overlap fix */
+@media (max-width: 700px) {
+    .case-tourism-logo .cs-credits-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .case-tourism-logo .cs-credits-img {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .case-tourism-logo .cs-credits {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+}
+
+.cs-sec {
+    padding: 60px 0;
+}
+
+.cs-approach {
+    padding-top: 80px;
+}
