@@ -2089,3 +2089,91 @@ body.case-flat .site-header {
     margin-top: 22px;
     /* xs */
 }
+
+/* TOURISM — mobile fix for My Approach image + cut off text */
+@media (max-width: 900px) {
+
+    .case-tourism-logo #approach .step-logo,
+    .case-tourism-logo #approach .step-vibe,
+    .case-tourism-logo #approach .step-visuals {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .case-tourism-logo #approach .step-media-logo,
+    .case-tourism-logo #approach .step-core,
+    .case-tourism-logo #approach .step-palette-display {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin-left: 0 !important;
+        overflow: visible !important;
+    }
+
+    .case-tourism-logo #approach .step-media-logo img,
+    .case-tourism-logo #approach .step-core img,
+    .case-tourism-logo #approach .step-palette-display img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block !important;
+    }
+
+    .case-tourism-logo #approach .step-copy {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .case-tourism-logo #approach .step-copy p {
+        overflow-wrap: break-word;
+    }
+}
+
+/* L&L — mobile fix for My Approach image + cut off text */
+@media (max-width: 900px) {
+
+    .case-ll-animation #approach .step-logo,
+    .case-ll-animation #approach .step-vibe,
+    .case-ll-animation #approach .step-visuals {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .case-ll-animation #approach .step-media-logo,
+    .case-ll-animation #approach .step-core,
+    .case-ll-animation #approach .step-visuals-media {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin-left: 0 !important;
+        transform: none !important;
+        overflow: visible !important;
+    }
+
+    .case-ll-animation #approach .step-media-logo img,
+    .case-ll-animation #approach .step-core img,
+    .case-ll-animation #approach .step-visuals-media img,
+    .case-ll-animation #approach .cs-ll-small,
+    .case-ll-animation #approach .cs-sketch-medium {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block !important;
+        transform: none !important;
+    }
+
+    .case-ll-animation #approach .step-copy {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .case-ll-animation #approach .step-copy p {
+        overflow-wrap: break-word;
+    }
+}
