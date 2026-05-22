@@ -882,3 +882,61 @@ body.is-loading .snap {
     font-size: 13px;
     opacity: 0.85;
 }
+
+
+
+/* REVISIONS */
+
+
+.rotator-word {
+    display: inline-block;
+
+    padding: 4px 10px;
+    border-radius: 999px;
+
+    /* 👇 purple outline */
+    border: 1px solid rgba(165, 165, 165, 0.8);
+
+    /* 👇 very subtle background */
+    background: rgba(255, 255, 255, 0.6);
+
+    /* 👇 purple text */
+    color: #8f7cff;
+    font-weight: 500;
+
+    transition: all 0.25s ease;
+}
+
+
+
+/* ===============================
+   ABOUT TEXT FIX
+=============================== */
+
+.about-copy {
+    text-align: left;
+    max-width: 520px;
+}
+
+/* reset all paragraph spacing */
+.about-copy .muted {
+    margin: 0;
+    padding-left: 0;
+}
+
+/* add space ONLY between the two paragraphs */
+.about-copy .muted+.muted {
+    margin-top: 24px;
+}
+
+.about-card {
+    align-items: flex-start;
+}
+
+.about-copy {
+    text-align: left;
+}
+
+.about-copy {
+    max-width: 520px;
+}
