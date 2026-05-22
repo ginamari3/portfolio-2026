@@ -331,12 +331,21 @@ body.case-flat .site-header {
     padding: 44px 0 64px;
 }
 
-.cs-credits-grid {
+/* .cs-credits-grid {
     display: grid;
     grid-template-columns: 55% 45%;
     gap: 40px;
     align-items: center;
     overflow: visible;
+} */
+
+.cs-credits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* equal columns */
+    gap: 3rem;
+    /* adjust as needed */
+    align-items: center;
 }
 
 .cs-credits-img {
@@ -1870,7 +1879,7 @@ body.case-flat .site-header {
 }
 
 .case-aetherair-website .cs-center {
-    margin-top: 60px;
+    margin-top: 48px;
     /* try 60–100px */
 }
 
@@ -2032,4 +2041,55 @@ body.case-flat .site-header {
 
 .cs-approach {
     padding-top: 80px;
+}
+
+/* AETHER WEB */
+
+/* .cs-credits-img {
+    max-width: 80%;
+}
+
+.cs-credits-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+} */
+
+.cs-credits-img {
+    width: 100%;
+}
+
+.cs-credits-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cs-credits-img {
+    justify-self: end;
+}
+
+/* MY APPROACH - AA WEB */
+
+/* AETHER WEBSITE — tighten My Approach spacing */
+.case-aetherair-website #approach {
+    padding-top: 2rem !important;
+}
+
+.case-aetherair-website #approach>.cs-wrap>.cs-story-title {
+    margin-bottom: 1.5rem !important;
+    transform: none !important;
+}
+
+.case-aetherair-website #approach .cs-story {
+    padding: 24px 0 40px !important;
+}
+
+.case-aetherair-website #approach .cs-story-grid {
+    align-items: start;
+}
+
+.case-aetherair-website .cs-live-site-cta {
+    margin-top: 22px;
+    /* xs */
 }
