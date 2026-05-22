@@ -2071,22 +2071,18 @@ body.case-flat .site-header {
 
 /* MY APPROACH - AA WEB */
 
-/* AETHER WEBSITE — tighten My Approach spacing */
-.case-aetherair-website #approach {
-    padding-top: 2rem !important;
+/* AETHER WEBSITE — real My Approach spacing fix */
+.case-aetherair-website section#approach.cs-sec.cs-approach-diagram {
+    padding: 24px 0 60px !important;
 }
 
-.case-aetherair-website #approach>.cs-wrap>.cs-story-title {
-    margin-bottom: 1.5rem !important;
+.case-aetherair-website section#approach .cs-story {
+    padding: 16px 0 24px !important;
+}
+
+.case-aetherair-website section#approach>.cs-wrap>.cs-story-title {
+    margin: 0 0 16px 0 !important;
     transform: none !important;
-}
-
-.case-aetherair-website #approach .cs-story {
-    padding: 24px 0 40px !important;
-}
-
-.case-aetherair-website #approach .cs-story-grid {
-    align-items: start;
 }
 
 .case-aetherair-website .cs-live-site-cta {
